@@ -1,0 +1,42 @@
+.float_center {
+    float: right;  
+    position: relative;
+    left: -50%; /* or right 50% */
+    text-align: left;
+}
+.float_center > .child {
+    position: relative;
+    left: 50%;
+}
+
+.subcategories-container {
+    width: 80vw;
+    margin: 20px auto 0 auto;
+    position: absolute;
+    z-index: 5;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul li {
+        float: left;
+        list-style-type: none;
+        margin: .5em;
+      }
+      ul a {
+        display: block;
+        height: 26px;
+        line-height: 26px;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: .25em .5em;
+        background-color: #ffffff;
+          border-radius: 4px;
+      }
+}

@@ -1,0 +1,38 @@
+[
+    {
+        "id":1,
+        "product_name":"eggflant",
+        "description":"lorem ipsum del fidil iri son deutromo si",
+        "price":56.7,
+        "per_qty_type":"piece",
+        "is_negotiable":true,
+        "qty_in_stock":100,
+        "upload_date":"July somthing",
+        "rating_value":4.5,
+        "seller_id":"3453-f343g-34sdf-233434",
+        "image_Url":"https://unlimitedworks.blob.core.windows.net/farmecommerce/product-eggplant.jpg",
+        "address":{
+            "barangay":"Nailon",
+            "region":"Region 7",
+            "city":"Municipal of San Remegio"
+        }
+    },
+    {
+        "id":2,
+        "product_name":"watermelon",
+        "description":"lorem ipsum del fidil iri son deutromo si",
+        "price":30,
+        "per_qty_type":"kilo",
+        "is_negotiable":true,
+        "qty_in_stock":100,
+        "upload_date":"August-Something",
+        "rating_value":4.2,
+        "seller_id":"3453-f343g-34sdf-233434",
+        "image_Url":"https://unlimitedworks.blob.core.windows.net/farmecommerce/product-watermelon.jpg",
+        "address":{
+            "barangay":"Nailon",
+            "region":"Region 7",
+            "city":"Municipal of San Remegio"
+        }
+    }
+]
