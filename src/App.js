@@ -5,6 +5,8 @@ import { Route, Routes, Outlet } from 'react-router-dom';
 import Home from './routes/home';
 import Navigation from './routes/navigation';
 import Registration from './routes/registration';
+import Authentication from './routes/authentication';
+import ProductCreate from './components/products/product-create';
 
 class App extends Component {
   constructor(){
@@ -18,8 +20,10 @@ class App extends Component {
     return (
       <Routes>
         <Route path='/' element={<Navigation/>}>
-        <Route index element={<Home/>} />
-        <Route path='sign-up' element={<Registration />} />        
+          <Route index element={<Home/>} />
+          <Route path='sign-up' element={<Registration />} />        
+          <Route path='sign-in' element={<Authentication />} />       
+          <Route path='product/create' element={<ProductCreate />}/>
         </Route>
       </Routes>
     );
