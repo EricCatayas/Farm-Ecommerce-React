@@ -1,7 +1,7 @@
 import './product_categories.styles.scss';
 import { Component } from 'react';
 import SubCategories from './product_subcategories';
-import Category_Mini_Card from './category_mini_card';
+import CategoryMiniCard from './categoryMiniCard';
 
 class ProductCategories extends Component {
     constructor({categories}){
@@ -48,7 +48,7 @@ class ProductCategories extends Component {
                             <ul className="nav navbar-nav justify-content-evenly d-flex flex-row">
                                 {
                                 categories.map((category) => (
-                                    <Category_Mini_Card key={category.id} category={category} onClickHandler={onClickEvent}/>                           
+                                    <CategoryMiniCard key={category.id} category={category} onClickHandler={onClickEvent}/>                           
                                 ))
                                 }
                             </ul>

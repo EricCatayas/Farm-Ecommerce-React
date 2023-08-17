@@ -1,5 +1,5 @@
 import { Component } from "react";
-
+import SignInForm from "../authentication/sign-in";
 class AuthenticationDirectory extends Component {
     constructor(){
         super();
@@ -12,6 +12,7 @@ class AuthenticationDirectory extends Component {
         return (
             <div className="authentication">
                 <div className='container'>
+                    <SignInForm/>
                 </div>
             </div>
         );

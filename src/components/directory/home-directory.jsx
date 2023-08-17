@@ -5,16 +5,27 @@ import ProductsList from '../products/products-list';
 import GoogleMapLocations from '../map/google-map-locations';
 import MainMenu from '../main-menu/main-menu';
 //mock data
+import { ProductsContext } from '../../contexts/products.context';
 import categories_data from '../../categories-data.json';
-import products_data from '../../products-data.json';
 
 class HomeDirectory extends Component {
+    static contextType = ProductsContext;
+
     constructor(){
         super();
         this.state = {
-            products : products_data,
+            products: [],
             product_categories : categories_data
           }
+    }
+
+    componentDidMount(){
+        const { products } = this.context;
+        this.setState(()=>{
+                return {
+                    products : products
+                }
+            })
     }
 
     render(){

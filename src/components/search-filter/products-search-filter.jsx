@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import './products-search-filter.jsx';
 
 class ProductSearchFilter extends Component{
     constructor(){

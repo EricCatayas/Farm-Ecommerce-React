@@ -1,6 +1,6 @@
 import './mini_card.styles.css';
 
-const Category_Mini_Card = ({category, onClickHandler}) => {
+const CategoryMiniCard = ({category, onClickHandler}) => {
     
     return(
         <li key={category.id} className="mini-card align-items-center theme-color">
@@ -16,4 +16,4 @@ const Category_Mini_Card = ({category, onClickHandler}) => {
     )
 }
 
-export default Category_Mini_Card;
+export default CategoryMiniCard;

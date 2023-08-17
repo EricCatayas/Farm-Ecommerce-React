@@ -2,7 +2,7 @@ import { Component } from "react";
 import './products-list.styles.css';
 
 class ProductsList extends Component{
-
+// Used in HomeDirectory, Store; Hence, parameterized
     constructor({products}){
         super();
 
@@ -10,6 +10,7 @@ class ProductsList extends Component{
             products
         }
     }
+
     render(){
         const {products} = this.state;
 
