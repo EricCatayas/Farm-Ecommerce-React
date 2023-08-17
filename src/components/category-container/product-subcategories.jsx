@@ -1,4 +1,4 @@
-import './product_subcategories.styles.scss';
+import './product-subcategories.styles.scss';
 const SubCategories = ({category_id, subcategories, onCloseHandler}) => {
     return(
         <section class="subcategories-container">

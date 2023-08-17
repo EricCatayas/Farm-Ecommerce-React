@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import ProductCategories from '../category-container/product_categories';
+import ProductCategories from '../category-container/product-categories';
 import ProductSearchFilter from '../search-filter/products-search-filter';
 import ProductsList from '../products/products-list';
 import GoogleMapLocations from '../map/google-map-locations';

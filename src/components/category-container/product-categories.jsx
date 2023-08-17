@@ -1,7 +1,7 @@
-import './product_categories.styles.scss';
+import './product-categories.styles.scss';
 import { Component } from 'react';
-import SubCategories from './product_subcategories';
-import CategoryMiniCard from './categoryMiniCard';
+import SubCategories from './product-subcategories';
+import CategoryMiniCard from './category-mini-card';
 
 class ProductCategories extends Component {
     constructor({categories}){

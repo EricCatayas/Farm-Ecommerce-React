@@ -1,5 +1,5 @@
-
-import ProductCategories from "../category-container/product_categories";
+import { useState } from "react";
+import ProductCategories from "../category-container/product-categories";
 import categories_data from "../../categories-data.json";
 import { DefaultPanel } from "../panel/panel";
 import { defaultPostRequestAsync } from "../../utils/form.utils";
