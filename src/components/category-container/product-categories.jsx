@@ -2,26 +2,30 @@ import './product-categories.styles.scss';
 import { Component } from 'react';
 import SubCategories from './product-subcategories';
 import CategoryMiniCard from './category-mini-card';
+import categories_data from '../../categories-data.json';
 
 class ProductCategories extends Component {
-    constructor({categories}){
+    
+    // TODO use ProductCategoriesContext 
+    constructor({onCategorySelectEvent}){
         super();
         this.state = {
-            categories,
+            categories : categories_data,
             is_clicked: false,
-            clicked_category : {}
+            clickedParentCategory : {},
+            onCategorySelectEvent
         }
     }
 
     
     onClickEvent = (event) => {
         const id = event.currentTarget.dataset.id;
-        const clicked_category = this.state.categories.find(cat => cat.id == id);
-        if(clicked_category != null){
+        const clickedParentCategory = this.state.categories.find(cat => cat.id == id);
+        if(clickedParentCategory != null){
             this.setState(()=>{
                 return{
                     is_clicked :true,
-                    clicked_category
+                    clickedParentCategory
                 }
             })
         }
@@ -35,7 +39,7 @@ class ProductCategories extends Component {
     }
     
     render(){
-        const {categories, is_clicked, clicked_category} = this.state;
+        const {categories, is_clicked, clickedParentCategory, onCategorySelectEvent} = this.state;
         const {onClickEvent, onCloseEvent} = this;
         
         console.log(categories);
@@ -55,7 +59,7 @@ class ProductCategories extends Component {
                         {/* </div> */}
                         {
                             is_clicked ?
-                            <SubCategories category_id={clicked_category.id} subcategories={clicked_category.subcategories} onCloseHandler={onCloseEvent}/>    :
+                            <SubCategories category_id={clickedParentCategory.id} subcategories={clickedParentCategory.subcategories} onSelectEvent={onCategorySelectEvent} onCloseHandler={onCloseEvent}/>    :
                             ""                                             
                         }
                     </div>

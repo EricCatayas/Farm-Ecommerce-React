@@ -1,8 +1,9 @@
 import { useState, useContext } from 'react';
-import { SignInUserAsync } from '../../utils/sign-in.utils';
+import { defaultPostRequestAsync } from '../../utils/form.utils';
 import { FormInputField } from '../form-input/form-input';
-import './sign-up.styles.scss';
+import { getCookie } from '../../utils/cookie.utils';
 import { UserContext } from '../../contexts/user.context';
+import './sign-up.styles.scss';
 
 const defaultFormFields = {
     email : '',
@@ -11,17 +12,29 @@ const defaultFormFields = {
 }
 const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
-    const {email,password, rememberMe} = formFields;
     const { setSignedIn } = useContext(UserContext);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
-            var response = await SignInUserAsync(email, password, rememberMe);
+            
+            var response = await defaultPostRequestAsync(
+                formFields,
+                `/api/v1/Account/Login?RememberMe=${formFields.rememberMe}`,
+                (data) => {
+                // Set cookies
+                document.cookie = `authorization= Bearer ${encodeURIComponent(data.token)}; expires=${data.expiration}`;
+                document.cookie = `refreshToken=${encodeURIComponent(data.refreshToken)}; expires=${data.refreshTokenExpirationDateTime}`;           
+                // Retrieve stored cookies
+                console.log("Here is your sign in cookie");
+                console.log(getCookie('authorization'));
+
+                setSignedIn(true);
+                },                                                         
+            );
             
             console.log("you have been authen");
-            console.log(response);
-            setSignedIn(true);
+            console.log(response);            
         }
         catch(error){
             alert(error.message);

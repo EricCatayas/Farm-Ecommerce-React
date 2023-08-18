@@ -2,12 +2,14 @@ import { useState } from "react";
 import ProductCategories from "../category-container/product-categories";
 import categories_data from "../../categories-data.json";
 import { DefaultPanel } from "../panel/panel";
+import { handleChange } from "../../utils/form.utils";
 import { defaultPostRequestAsync } from "../../utils/form.utils";
 
 const defaultFormFields = {
     productName : '',
     description : '',
     price: '',
+    category_Id : '',
     per_Qty_Type:'',
     qty_In_Stock : '',
     is_Negotiable: true,
@@ -36,16 +38,19 @@ const ProductCreate = () =>  {
             console.log("lelelle");
         }
     }
-    const handleChange = async (event) => {
-        const { name, value } = event.target;
-        setFormFields({...formFields, [name]:value});
+
+    const categorySelectEventHandler = (event) => {
+        const { value } = event.target;
+        setFormFields({...formFields, ['category_Id']:value});
     }
+    console.log("Form Fields in Product Create");
+    console.log(formFields);
 
     return(
         <section className="product-create-container">
             <form onSubmit={handleSubmit}>
                 <DefaultPanel heading={"1. Category"}/>
-                <ProductCategories categories={categories_data}/>
+                <ProductCategories onCategorySelectEvent={categorySelectEventHandler}/>
                 <DefaultPanel heading={"2. Product"}/>
                 <input type="text" name='productName' placeholder="Name" required onChange={handleChange} />
                 <input type="text" name='description' placeholder="Description" onChange={handleChange} />
