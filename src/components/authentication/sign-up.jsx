@@ -73,7 +73,7 @@ const SignUpForm = () => {
             // redirect
         }
     }
-    const handleChange = async (event) => {
+    const inputChangeHandler = async (event) => {
         const { name, value } = event.target;
         setFormFields({...formFields, [name]:value});
     }
@@ -89,29 +89,29 @@ const SignUpForm = () => {
                         <form onSubmit={handleSubmit}>
                             <div className="input_field"> 
                                 <span><i aria-hidden="true" className="fa fa-user"></i></span>                                
-                                <input type="text" name='userName' placeholder="userName" required onChange={handleChange} />
+                                <input type="text" name='userName' placeholder="userName" required onChange={inputChangeHandler} />
                             </div>
                             <div className="input_field">
                                 <span><i aria-hidden="true" className="fa fa-envelope"></i></span>
-                                <input type="email" name='email' placeholder="email" required onChange={handleChange} />
+                                <input type="email" name='email' placeholder="email" required onChange={inputChangeHandler} />
                             </div>
                             <div className="input_field"> 
                                 <span><i aria-hidden="true" className="fa fa-lock"></i></span>
-                                <input type="password" name='password'  placeholder="password" required onChange={handleChange} />
+                                <input type="password" name='password'  placeholder="password" required onChange={inputChangeHandler} />
                             </div>
                             <div className="input_field">
                                 <span><i aria-hidden="true" className="fa fa-lock"></i></span>
-                                <input type="password" name='confirmPassword' placeholder="Re-type password" required onChange={handleChange}/>
+                                <input type="password" name='confirmPassword' placeholder="Re-type password" required onChange={inputChangeHandler}/>
                             </div>
                             <div className="row clearfix">
                                 <div className="col_half">
                                     <div className="input_field"> <span><i aria-hidden="true" className="fa fa-phone"></i></span>
-                                    <input type="tel" name='contactNum1' placeholder="Contact Num 1" onChange={handleChange} />
+                                    <input type="tel" name='contactNum1' placeholder="Contact Num 1" onChange={inputChangeHandler} />
                                     </div>
                                 </div>
                                 <div className="col_half">
                                     <div className="input_field"> <span><i aria-hidden="true" className="fa fa-phone"></i></span>
-                                    <input type="tel" name='contactNum2' placeholder="Contact Num 2" onChange={handleChange}/>
+                                    <input type="tel" name='contactNum2' placeholder="Contact Num 2" onChange={inputChangeHandler}/>
                                     </div>
                                 </div>
                             </div>
@@ -124,19 +124,19 @@ const SignUpForm = () => {
                             <h3>Address</h3>
                             <div className="input_field"> 
                                 <span><i aria-hidden="true" className="fa fa-map-marker"></i></span>
-                                <input type="text" name='barangay' placeholder="barangay" required onChange={handleChange}/>
+                                <input type="text" name='barangay' placeholder="barangay" required onChange={inputChangeHandler}/>
                             </div>
                             <div className="row clearfix">
                                 <div className="col_half">
                                     <div className="input_field"> 
                                     <span><i aria-hidden="true" className="fa fa-road"></i></span>
-                                    <input type="text" name='street' placeholder="street" onChange={handleChange}/>
+                                    <input type="text" name='street' placeholder="street" onChange={inputChangeHandler}/>
                                     </div>
                                 </div>
                                 <div className="col_half">
                                     <div className="input_field">
                                         <span><i aria-hidden="true" className="fa fa-map-signs"></i></span>
-                                        <input type="text" name='postalCode' placeholder="Postal Code" onChange={handleChange}/>
+                                        <input type="text" name='postalCode' placeholder="Postal Code" onChange={inputChangeHandler}/>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@ const SignUpForm = () => {
                                 <div className="select_arrow"></div>
                             </div>
                             <div className="input_field select_option">
-                                <select name='municipality_Id' onChange={handleChange}>
+                                <select name='municipality_Id' onChange={inputChangeHandler}>
                                 <option value={null}>Select City / Municipal</option>
                                 {
                                     municipalities.map((municipality) => (

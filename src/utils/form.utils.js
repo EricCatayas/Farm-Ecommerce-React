@@ -8,11 +8,12 @@ export const handleChange = async (event, formFields, setFormFields) => {
 export const defaultPostRequestAsync = (data, endpoint, callback, errorCallback) => {
     return new Promise((resolve, reject) => {  
         const url =  process.env.REACT_APP_FARM_ECOMMERCE_URL + endpoint;
-        console.log("Data sent in post request:\n");
+        console.log("Data sent in default post request:\n");
         console.log(data);
         
         fetch(url, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -27,11 +28,49 @@ export const defaultPostRequestAsync = (data, endpoint, callback, errorCallback)
             
             return response.json()
         })
-        .then(data => {   
+        .then(jsonResponse => {   
             if(callback)
-                callback(data);            
+                callback(jsonResponse);            
 
-            resolve(data);
+            resolve(jsonResponse);
+        })
+        .catch(error => {
+            if(errorCallback)
+                errorCallback(error);
+            
+            reject(error);
+        });
+    });
+}
+
+export const formDataPostRequestAsync = (formData, endpoint, callback, errorCallback) => {
+    return new Promise((resolve, reject) => {  
+        const url =  process.env.REACT_APP_FARM_ECOMMERCE_URL + endpoint;
+        console.log("Data sent in form data post request:\n");
+        console.log(formData);
+        
+        fetch(url, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'multipart/form-data'
+            },
+            body: formData
+        })
+        .then((response) => {
+            if(!response.ok){                
+                const errorMessages = formatErrorMessages(response.errors);
+                throw new Error(errorMessages);
+            }        
+            
+            return response.json()
+        })
+        .then(jsonResponse => {   
+            if(callback)
+                callback(jsonResponse);            
+
+            resolve(jsonResponse);
         })
         .catch(error => {
             if(errorCallback)
@@ -49,6 +88,7 @@ export const defaultGetRequestAsync = (endpoint, callback, errorCallback) => {
         
         fetch(url, {
             method: 'GET',
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
             },
@@ -61,11 +101,11 @@ export const defaultGetRequestAsync = (endpoint, callback, errorCallback) => {
             
             return response.json()
         })
-        .then(data => {   
+        .then(jsonResponse => {   
             if(callback)
-                callback(data);            
+                callback(jsonResponse);            
 
-            resolve(data);
+            resolve(jsonResponse);
         })
         .catch(error => {
             if(errorCallback)

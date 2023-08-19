@@ -40,7 +40,7 @@ const SignInForm = () => {
             alert(error.message);
         }
     }
-    const handleChange = (event) => {
+    const inputChangeHandler = (event) => {
         const { name, value } = event.target;
         setFormFields({...formFields, [name]:value});
     }
@@ -61,7 +61,7 @@ const SignInForm = () => {
                                     name:'email',
                                     placeholder:"email",
                                     required:true,
-                                    onChange: handleChange
+                                    onChange: inputChangeHandler
                                 }} 
                             />                                    
                             <FormInputField 
@@ -71,7 +71,7 @@ const SignInForm = () => {
                                     name:'password', 
                                     placeholder:"password", 
                                     required:true,
-                                    onChange: handleChange
+                                    onChange: inputChangeHandler
                                 }}
                             />                                       
                             
