@@ -10,7 +10,7 @@ class ProductCategories extends Component {
     constructor({onCategorySelectEvent}){
         super();
         this.state = {
-            categories : categories_data,
+            categories : categories_data, //TODO
             is_clicked: false,
             clickedParentCategory : {},
             onCategorySelectEvent
@@ -37,10 +37,16 @@ class ProductCategories extends Component {
             }
         })
     }
+
+    onCategorySelectEventHandler = (event) => {
+        const { onCategorySelectEvent } = this.state;
+        if(onCategorySelectEvent)
+            onCategorySelectEvent(event);
+    }
     
     render(){
-        const {categories, is_clicked, clickedParentCategory, onCategorySelectEvent} = this.state;
-        const {onClickEvent, onCloseEvent} = this;
+        const {categories, is_clicked, clickedParentCategory} = this.state;
+        const {onClickEvent, onCloseEvent, onCategorySelectEventHandler} = this;
         
         console.log(categories);
         
@@ -59,7 +65,7 @@ class ProductCategories extends Component {
                         {/* </div> */}
                         {
                             is_clicked ?
-                            <SubCategories category_id={clickedParentCategory.id} subcategories={clickedParentCategory.subcategories} onSelectEvent={onCategorySelectEvent} onCloseHandler={onCloseEvent}/>    :
+                            <SubCategories category_id={clickedParentCategory.id} subcategories={clickedParentCategory.subcategories} onSelectEvent={onCategorySelectEventHandler} onCloseHandler={onCloseEvent}/>    :
                             ""                                             
                         }
                     </div>

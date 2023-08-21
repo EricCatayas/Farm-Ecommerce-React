@@ -1,3 +1,4 @@
+import { getCookie } from "./cookie.utils";
 import { formatErrorMessages } from "./response.utils";
 
 export const handleChange = async (event, formFields, setFormFields) => {
@@ -46,21 +47,21 @@ export const defaultPostRequestAsync = (data, endpoint, callback, errorCallback)
 export const formDataPostRequestAsync = (formData, endpoint, callback, errorCallback) => {
     return new Promise((resolve, reject) => {  
         const url =  process.env.REACT_APP_FARM_ECOMMERCE_URL + endpoint;
-        console.log("Data sent in form data post request:\n");
-        console.log(formData);
-        
+        const authToken = getCookie("authorization");
+
         fetch(url, {
             method: 'POST',
             credentials: 'include',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'multipart/form-data'
+                'Authorization' : authToken
             },
             body: formData
         })
         .then((response) => {
             if(!response.ok){                
                 const errorMessages = formatErrorMessages(response.errors);
+                console.log(response);
                 throw new Error(errorMessages);
             }        
             
