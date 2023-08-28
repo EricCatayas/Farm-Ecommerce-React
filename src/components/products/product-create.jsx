@@ -4,7 +4,7 @@ import { DefaultPanel } from "../panel/panel";
 import { formDataPostRequestAsync } from "../../utils/form.utils";
 
 const productCreateFormFields = {
-    ProductName : '',
+    Name : '',
     Description : '',
     Price: null,
     Category_Id : null,
@@ -72,7 +72,7 @@ const ProductCreate = () =>  {
                 <div>Select Category</div>
                 <ProductCategories onCategorySelectEvent={categorySelectEventHandler}/>
                 <DefaultPanel heading={"2. Product"}/>
-                <input type="text" name='ProductName' placeholder="Name" required onChange={textInputChangeHandler} />
+                <input type="text" name='Name' placeholder="Name" required onChange={textInputChangeHandler} />
                 <input type="text" name='Description' placeholder="Description" onChange={textInputChangeHandler} />
                 <input type="number" name='Price' placeholder="Price" required onChange={numberInputChangeHandler} />
                 <input type="text" name='Per_Qty_Type' placeholder="Sold Per Qty" required onChange={textInputChangeHandler} />

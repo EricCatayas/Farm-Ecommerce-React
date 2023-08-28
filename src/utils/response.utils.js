@@ -1,8 +1,8 @@
 
 export function formatErrorMessages(errors) {
     let errorMessage = "Errors:\n";
-    errors.forEach(function(message, index){
-        errorMessage += `${message}\n`;
-    })
+    for(var key in errors){
+        errorMessage += `${key}: ${errors[key]}`
+    }
     return errorMessage;
 }
