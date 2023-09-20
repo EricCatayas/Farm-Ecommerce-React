@@ -1,11 +1,21 @@
-.mini-card{
-    border-radius: 10px;
-    width: 150px;
-    height: 150px;
-    box-shadow: 3px 4px 5px 4px #ddd;
-    margin: 1em;    
+.mini-card {
+  border-radius: 10px;
+  width: 150px;
+  height: 150px;
+  box-shadow: 3px 4px 5px 4px #ddd;
+  margin: 1em;
 }
 
-.mini-card .ico-container{
-    max-width: 80%;
+.mini-card .ico-container {
+  max-width: 80%;
+}
+
+.category-mini-card-container {
+  cursor: pointer;
+}
+
+.category-mini-card-container .ico-container,
+.category-mini-card-container .ico-text {
+  pointer-events: none;
+  /* This makes the inner elements non-clickable */
 }

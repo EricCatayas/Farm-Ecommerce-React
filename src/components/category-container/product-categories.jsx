@@ -1,93 +1,82 @@
 import "./product-categories.styles.scss";
-import { Component } from "react";
+import { useState, useEffect, useContext } from "react";
+import { defaultGetRequestAsync } from "../../utils/form.utils";
 import SubCategories from "./product-subcategories";
 import CategoryMiniCard from "./category-mini-card";
 import categories_data from "../../categories-data.json";
+import { ProductCategoriesContext } from "../../contexts/product-categories.context";
 
-class ProductCategories extends Component {
-  // TODO use ProductCategoriesContext
-  constructor({ onCategorySelectEvent }) {
-    super();
-    this.state = {
-      categories: categories_data, //TODO
-      is_clicked: false,
-      clickedParentCategory: {},
-      onCategorySelectEvent,
+const ProductCategories = ({ onCategorySelectEvent }) => {
+  //const [categories, setCategories] = useState(categories_data);
+  const { productCategories, setProductCategories } = useContext(
+    ProductCategoriesContext
+  );
+  const [isClicked, setIsClicked] = useState(false);
+  const [clickedParentCategory, setClickedParentCategory] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await defaultGetRequestAsync(
+          "/api/v1/ProductCategories/GetAll",
+          (data) => console.log(data)
+        );
+        setProductCategories(response);
+      } catch (error) {
+        console.log("An error occurred while retrieving categories.");
+      }
     };
-  }
 
-  useEffect = async () => {
-    //TODO Redux for ProductCategories
-    var data = await defaultGetRequestAsync(
-      "/api/v1/ProductCategories/GetAll",
-      (response) => console.log(response),
-      (error) => console.log("An error occured while retrieving categories.")
-    );
-  };
+    fetchData();
+  }, []);
 
-  onClickEvent = (event) => {
-    const id = event.currentTarget.dataset.id;
-    const clickedParentCategory = this.state.categories.find(
-      (cat) => cat.id == id
-    );
+  const onClickEvent = (event) => {
+    const id = event.target.dataset.id;
+    const clickedParentCategory = productCategories.find((cat) => cat.id == id);
+
+    console.log("category clicked event");
+
     if (clickedParentCategory != null) {
-      this.setState(() => {
-        return {
-          is_clicked: true,
-          clickedParentCategory,
-        };
-      });
+      setIsClicked(true);
+      setClickedParentCategory(clickedParentCategory);
     }
   };
-  onCloseEvent = (event) => {
-    this.setState(() => {
-      return {
-        is_clicked: false,
-      };
-    });
+
+  const onCloseEvent = () => {
+    setIsClicked(false);
   };
 
-  onCategorySelectEventHandler = (event) => {
-    const { onCategorySelectEvent } = this.state;
+  const onCategorySelectEventHandler = (event) => {
     if (onCategorySelectEvent) onCategorySelectEvent(event);
   };
 
-  render() {
-    const { categories, is_clicked, clickedParentCategory } = this.state;
-    const { onClickEvent, onCloseEvent, onCategorySelectEventHandler } = this;
-
-    console.log(categories);
-
-    return (
-      <section className="product-categories-container">
-        <div className="row">
-          <div className="col-xs-12">
-            {/* <div className="collapse navbar-collapse js-navbar-collapse"> */}
-            <ul className="nav navbar-nav justify-content-evenly d-flex flex-row">
-              {categories.map((category) => (
-                <CategoryMiniCard
-                  key={category.id}
-                  category={category}
-                  onClickHandler={onClickEvent}
-                />
-              ))}
-            </ul>
-            {/* </div> */}
-            {is_clicked ? (
-              <SubCategories
-                category_id={clickedParentCategory.id}
-                subcategories={clickedParentCategory.subcategories}
-                onSelectEvent={onCategorySelectEventHandler}
-                onCloseHandler={onCloseEvent}
+  return (
+    <section className="product-categories-container">
+      <div className="row">
+        <div className="col-xs-12">
+          <ul className="nav navbar-nav justify-content-evenly d-flex flex-row">
+            {productCategories.map((category) => (
+              <CategoryMiniCard
+                key={category.id}
+                category={category}
+                onClickHandler={onClickEvent}
               />
-            ) : (
-              ""
-            )}
-          </div>
+            ))}
+          </ul>
+          {isClicked ? (
+            <SubCategories
+              category_id={clickedParentCategory.id}
+              subproductCategories={clickedParentCategory.subCategories}
+              onSelectEvent={onCategorySelectEventHandler}
+              onCloseHandler={onCloseEvent}
+            />
+          ) : (
+            ""
+          )}
         </div>
-      </section>
-    );
-  }
-}
+      </div>
+    </section>
+  );
+};
 
 export default ProductCategories;
