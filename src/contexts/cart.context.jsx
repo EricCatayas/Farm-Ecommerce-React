@@ -56,7 +56,7 @@ const cartReducer = (state, action) => {
     case CART_ACTION_TYPES.TOGGLE_CART:
       return {
         ...state,
-        isCartOpen: !state.isCartOpen,
+        isCartOpen: payload.isCartOpen,
       };
     case CART_ACTION_TYPES.SET_CART_ITEMS:
       return {
@@ -107,8 +107,11 @@ export const CartProvider = ({ children }) => {
     const newCartItems = removeCartItem(cartItems, itemToRemove);
     updateCartReducer(newCartItems);
   };
-  const toggleCart = () => {
-    dispatch({ type: CART_ACTION_TYPES.TOGGLE_CART });
+  const toggleCart = (newIsCartOpen) => {
+    dispatch({
+      type: CART_ACTION_TYPES.TOGGLE_CART,
+      payload: { isCartOpen: newIsCartOpen },
+    });
   };
 
   const value = {

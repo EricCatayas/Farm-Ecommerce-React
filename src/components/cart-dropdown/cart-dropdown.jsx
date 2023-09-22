@@ -21,7 +21,7 @@ const CartDropdown = () => {
         )}
       </div>
       {/* TODO */}
-      <input className="btn">GO TO CHECKOUT</input>
+      <div className="btn">GO TO CHECKOUT</div>
     </div>
   );
 };

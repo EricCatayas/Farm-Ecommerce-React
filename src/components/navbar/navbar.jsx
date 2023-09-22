@@ -18,6 +18,7 @@ const Navbar = () => {
 
     const handleCartClick = () => {
       console.log("Cart link clicked");
+      console.log(isCartOpen);
       setIsCartOpen(!isCartOpen);
     };
 
@@ -32,7 +33,10 @@ const Navbar = () => {
               <div className="col-md-5 my-auto">
                 <form role="search">
                   <div className="input-group">
-                    <input type="search" placeholder="Search products" className="form-control"
+                    <input
+                      type="search"
+                      placeholder="Search products"
+                      className="form-control"
                     />
                     <button className="btn bg-white" type="submit">
                       <i className="fa fa-search"></i>
@@ -43,20 +47,28 @@ const Navbar = () => {
               <div className="col-md-5 my-auto">
                 {isSignedIn ? (
                   <ul className="nav justify-content-end">
-                    <li className="nav-item">
-                      <a className="nav-link" href="#" onClick={handleCartClick}>
+                    <li className="nav-item" onClick={handleCartClick}>
+                      <a className="nav-link" href="#">
                         <i className="fa fa-shopping-cart"></i> Cart (
                         {cartCount})
                       </a>
-                      { isCartOpen && <CartDropdown />}
                     </li>
+                    {
+                      isCartOpen && <CartDropdown />
+                    }
                     <li className="nav-item">
                       <a className="nav-link" href="#">
                         <i className="fa fa-heart"></i> Wishlist (0)
                       </a>
                     </li>
                     <li className="nav-item dropdown">
-                      <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                      <a
+                        className="nav-link dropdown-toggle"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
                       >
                         <i className="fa fa-user"></i> Account
                       </a>
@@ -85,7 +97,10 @@ const Navbar = () => {
                           </a>
                         </li>
                         <li>
-                          <a className="dropdown-item" href="#" onClick={handleSignOutClick}
+                          <a
+                            className="dropdown-item"
+                            href="#"
+                            onClick={handleSignOutClick}
                           >
                             <i className="fa fa-sign-out"></i> Logout
                           </a>
