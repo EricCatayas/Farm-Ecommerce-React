@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import ProductCategories from "../category-container/product-categories";
+import { UserContext } from "../../contexts/user.context";
 import { DefaultPanel } from "../panel/panel";
 import { formDataPostRequestAsync } from "../../utils/form.utils";
 
@@ -15,6 +16,8 @@ const productCreateFormFields = {
 }
 
 const ProductCreate = () =>  {
+    //TODO Authenticate user first
+    const { isSignedIn } = useContext(UserContext);
     
     const [formFields, setFormFields] = useState(productCreateFormFields);
 
@@ -55,6 +58,7 @@ const ProductCreate = () =>  {
         setFormFields({...formFields, [name]:checked});
     }
     const categorySelectEventHandler = (event) => {
+
         const { value, innerText } = event.target;
         const categoryId = parseInt(value); 
         setFormFields((prevFormFields) => ({
@@ -62,6 +66,7 @@ const ProductCreate = () =>  {
             Category_Id: categoryId,
           }));
     }
+
     console.log("Form Fields in Product Create");
     console.log(formFields);
 

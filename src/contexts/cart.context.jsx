@@ -5,7 +5,9 @@ export const CartContext = createContext({
   setIsCartOpen: () => {},
   cartItems: [],
   addItemToCart: () => {},
-  cartItemCount: 0,
+  removeItemFromCart: () => {},
+  cartCount: 0,
+  cartTotal: 0,
 });
 
 export const CART_ACTION_TYPES = {
@@ -15,7 +17,7 @@ export const CART_ACTION_TYPES = {
   SET_CART_ITEMS: "SET_CART_ITEMS",
 };
 
-export const addCartItem = (cartItems, productToAdd) => {
+const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
   );
@@ -30,6 +32,21 @@ export const addCartItem = (cartItems, productToAdd) => {
 
   const newCartItems = [...cartItems, { ...productToAdd, quantity: 1 }];
   return newCartItems;
+};
+const removeCartItem = (cartItems, cartItemToRemove) => {
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === cartItemToRemove.id
+  );
+
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
+  }
+
+  return cartItems.map((cartItem) =>
+    cartItem.id === cartItemToRemove.id
+      ? { ...cartItem, quantity: cartItem.quantity - 1 }
+      : cartItem
+  );
 };
 
 const cartReducer = (state, action) => {

@@ -16,11 +16,7 @@ const SubCategories = ({
         <div className="col-xs-12">
           <div className="float_center">
             <ul className="child">
-              <li
-                name="category_Id"
-                value={category_id}
-                onClick={onSelectEvent}
-              >
+              <li name="category_Id" value={category_id} onClick={onSelectEvent}>
                 All
               </li>
               {subcategories

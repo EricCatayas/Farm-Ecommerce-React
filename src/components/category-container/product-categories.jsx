@@ -6,8 +6,7 @@ import CategoryMiniCard from "./category-mini-card";
 import categories_data from "../../categories-data.json";
 import { ProductCategoriesContext } from "../../contexts/product-categories.context";
 
-const ProductCategories = ({ onCategorySelectEvent }) => {
-  //const [categories, setCategories] = useState(categories_data);
+const ProductCategories = ({ onCategorySelectEvent }) => {  
   const { productCategories, setProductCategories } = useContext(
     ProductCategoriesContext
   );
@@ -47,7 +46,8 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
   };
 
   const onCategorySelectEventHandler = (event) => {
-    if (onCategorySelectEvent) onCategorySelectEvent(event);
+    if (onCategorySelectEvent) 
+      onCategorySelectEvent(event);
   };
 
   return (
@@ -66,7 +66,7 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
           {isClicked ? (
             <SubCategories
               category_id={clickedParentCategory.id}
-              subproductCategories={clickedParentCategory.subCategories}
+              subcategories={clickedParentCategory.subCategories}
               onSelectEvent={onCategorySelectEventHandler}
               onCloseHandler={onCloseEvent}
             />
