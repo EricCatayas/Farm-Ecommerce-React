@@ -7,6 +7,7 @@ import Navigation from './routes/navigation';
 import Registration from './routes/registration';
 import Authentication from './routes/authentication';
 import ProductCreate from './components/products/product-create';
+import ProductView from './routes/productView';
 
 class App extends Component {
   constructor(){
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path='sign-up' element={<Registration />} />        
           <Route path='sign-in' element={<Authentication />} />       
           <Route path='product/create' element={<ProductCreate />}/>
+          <Route path='product?id' element={<ProductView/>}/>
         </Route>
       </Routes>
     );

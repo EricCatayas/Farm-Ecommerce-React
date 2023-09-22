@@ -32,7 +32,7 @@ const Navbar = () => {
               </div>
               <div className="col-md-5 my-auto">
                 <form role="search">
-                  <div className="input-group">
+                  <div className="input-group">  
                     <input
                       type="search"
                       placeholder="Search products"
@@ -56,11 +56,11 @@ const Navbar = () => {
                     {
                       isCartOpen && <CartDropdown />
                     }
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                       <a className="nav-link" href="#">
                         <i className="fa fa-heart"></i> Wishlist (0)
                       </a>
-                    </li>
+                    </li> */}
                     <li className="nav-item dropdown">
                       <a
                         className="nav-link dropdown-toggle"
@@ -85,12 +85,7 @@ const Navbar = () => {
                           <a className="dropdown-item" href="#">
                             <i className="fa fa-list"></i> My Orders
                           </a>
-                        </li>
-                        <li>
-                          <a className="dropdown-item" href="#">
-                            <i className="fa fa-heart"></i> My Wishlist
-                          </a>
-                        </li>
+                        </li>                        
                         <li>
                           <a className="dropdown-item" href="#">
                             <i className="fa fa-shopping-cart"></i> My Cart

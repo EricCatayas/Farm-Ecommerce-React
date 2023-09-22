@@ -1,25 +1,12 @@
-import { Component } from "react";
 
-class Product extends Component{
-    constructor({productId}){
-        super();
-        this.state = {
-            productId,
-            product : null
-        }
-    }
+const Product = ({product}) =>{
 
-    componentDidMount(){
-        // fetch Product
-    }
+    return(
+        <section>
 
-    render(){
-        return(
-            <section>
-
-            </section>
-        )
-    }
+        </section>
+    )
+    
 }
 
 export default Product;
