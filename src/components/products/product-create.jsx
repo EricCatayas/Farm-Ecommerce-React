@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import ProductCategories from "../category-container/product-categories";
 import { UserContext } from "../../contexts/user.context";
 import { DefaultPanel } from "../panel/panel";
-import { formDataPostRequestAsync } from "../../utils/form.utils";
+import { multiPartPostRequestAsync } from "../../utils/form.utils";
 
 const productCreateFormFields = {
     Name : '',
@@ -12,7 +12,7 @@ const productCreateFormFields = {
     Per_Qty_Type: '',
     Qty_In_Stock : null,
     Is_Negotiable: false,
-    Image_File : null,
+    Image_Files : null,
 }
 
 const ProductCreate = () =>  {
@@ -29,7 +29,7 @@ const ProductCreate = () =>  {
             for (const key in formFields) {
                 formData.append(key, formFields[key]);
             }
-            const response = await formDataPostRequestAsync(formData, 
+            const response = await multiPartPostRequestAsync(formData, 
                 "/api/v1/Products/Create",
                 (data) => { 
                     console.log("Product Create response:\n"); 
@@ -66,28 +66,75 @@ const ProductCreate = () =>  {
             Category_Id: categoryId,
           }));
     }
-
+    const handleFileInputChange = (event) => {
+      const selectedFiles = event.target.files;
+      setFormFields({
+        ...formFields,
+        Image_Files: selectedFiles,
+      });
+    };
     console.log("Form Fields in Product Create");
     console.log(formFields);
 
-    return(
-        <section className="product-create-container">
-            <form onSubmit={handleSubmit}>
-                <DefaultPanel heading={"1. Category"}/>
-                <div>Select Category</div>
-                <ProductCategories onCategorySelectEvent={categorySelectEventHandler}/>
-                <DefaultPanel heading={"2. Product"}/>
-                <input type="text" name='Name' placeholder="Name" required onChange={textInputChangeHandler} />
-                <input type="text" name='Description' placeholder="Description" onChange={textInputChangeHandler} />
-                <input type="number" name='Price' placeholder="Price" required onChange={numberInputChangeHandler} />
-                <input type="text" name='Per_Qty_Type' placeholder="Sold Per Qty" required onChange={textInputChangeHandler} />
-                <label>Is Negotiable?</label>
-                <input type="checkbox" name='Is_Negotiable' placeholder="Negotiable" onChange={checkBoxChangeHandler} />
-                <input type="number" name='Qty_In_Stock' placeholder="Qty In Stock" onChange={numberInputChangeHandler} />
+    return (
+      <section className="product-create-container">
+        <form onSubmit={handleSubmit} enctype="multipart/form-data">
+          <DefaultPanel heading={"1. Category"} />
+          <div>Select Category</div>
+          <ProductCategories
+            onCategorySelectEvent={categorySelectEventHandler}
+          />
+          <DefaultPanel heading={"2. Product"} />
+          <input
+            type="file"
+            name="image_Files"
+            multiple
+            onChange={handleFileInputChange}
+          />
+          <input
+            type="text"
+            name="Name"
+            placeholder="Name"
+            required
+            onChange={textInputChangeHandler}
+          />
+          <input
+            type="text"
+            name="Description"
+            placeholder="Description"
+            onChange={textInputChangeHandler}
+          />
+          <input
+            type="number"
+            name="Price"
+            placeholder="Price"
+            required
+            onChange={numberInputChangeHandler}
+          />
+          <input
+            type="text"
+            name="Per_Qty_Type"
+            placeholder="Sold Per Qty"
+            required
+            onChange={textInputChangeHandler}
+          />
+          <label>Is Negotiable?</label>
+          <input
+            type="checkbox"
+            name="Is_Negotiable"
+            placeholder="Negotiable"
+            onChange={checkBoxChangeHandler}
+          />
+          <input
+            type="number"
+            name="Qty_In_Stock"
+            placeholder="Qty In Stock"
+            onChange={numberInputChangeHandler}
+          />
 
-                <input className="button" type="submit" value="Add Product" />
-            </form>
-        </section>  
+          <input className="button" type="submit" value="Add Product" />
+        </form>
+      </section>
     );    
     
 }

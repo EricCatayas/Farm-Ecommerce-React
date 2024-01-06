@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { useHistory } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom"; 
 import { ProductsContext } from "../../contexts/products.context";
 import "./products-list.styles.css";
 
 function ProductsList({ products }) {
-  const history = useHistory();
+  const history = useNavigate();
 
   const onViewProductClickEvent = (event) => {
     console.log(event);
