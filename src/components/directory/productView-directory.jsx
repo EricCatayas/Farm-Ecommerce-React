@@ -17,12 +17,12 @@ const ProductViewDirectory = () => {
 
     useEffect(async() => {
         try{
-        var product = await defaultGetRequestAsync(
-            `/api/v1/Product/Get?Id=${productId}`,
-            (data) => console.log(data),
-            (error) => console.log(error)
-        )
-        setSelectedProduct(product);
+            var product = await defaultGetRequestAsync(
+                `/api/v1/Product/Get?Id=${productId}`,
+                (data) => console.log(data),
+                (error) => console.log(error)
+            )
+            setSelectedProduct(product);
 
         } catch(error){
             console.log(error);
