@@ -1,6 +1,6 @@
 
 // TODO
-export const DefaultBreadCrumb = ({page, category}) => {
+export const DefaultBreadCrumb = ({page, subpage}) => {
   return (
     <div className="panel-heading">
       <div className="row justify-content-between">
@@ -13,7 +13,7 @@ export const DefaultBreadCrumb = ({page, category}) => {
               <a href="#">{page}</a>
             </li>
             <li>
-              <a href="#">{category}</a>
+              <a href="#">{subpage}</a>
             </li>
             <li>Italy</li>
           </ul>

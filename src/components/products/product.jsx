@@ -1,35 +1,71 @@
 
-import { DefaultBreadCrumb } from "../breadcrumb/breadcrumb";
-import { DefaultAdvertisement } from "../../advertisement/advertisement";
-
 const Product = ({product}) =>{
 
     return (    
-      <section>
+      <section cla> 
         <div className="container">
-          <DefaultBreadCrumb
-            page={"Product"}
-            category={product.category_Name}
-          />
+          
           <section className="row product-details">
-            <div className="col-dx-8">
-                <div className="row m-b-20">
-                    <div className="col-sm-6">
+            <div className="col-xs-8">
+                <div className="row mb-20">
+                    <div className="col-sm-12">
                         {/* Product Picture & Slider */}
-                    </div>
-                    <div className="col-sm-6">
-                        {/* Product Information */}
                     </div>
                 </div>
                 <div className="row">
+                    {/* Product Information */}
+                    <div className="col-sm-6">
+                      <div className="row mb-10">
+                        <div className="col-xs-12">
+                          <span className="info-details-label">Name:</span>
+                          <span className="info-details-content">{product.product_name}</span>
+                        </div>
+                      </div>
+                      <div className="row mb-10">
+                        <div className="col-xs-12">
+                          <span className="info-details-label">Price:</span>
+                          <span className="info-details-content">{product.price}</span>
+                        </div>
+                      </div>
+                      <div className="row mb-10">
+                        <div className="col-xs-12">
+                          <span className="info-details-label">Sold Per:</span>
+                          <span className="info-details-content">{product.per_qty_type}</span>
+                        </div>
+                      </div>
+                      <div className="row mb-10">
+                        <div className="col-xs-12">
+                          <span className="info-details-label">Quantity in Stock:</span>
+                          <span className="info-details-content">{product.qty_in_stock}</span>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Product Information II */}
+                    <div className="col-sm-6">
+                      <div className="row mb-10">
+                        <div className="col-xs-12">
+                          <span className="info-details-label">Region:</span>
+                          <span className="info-details-content">{product.address.region}</span>
+                        </div>
+                      </div>
+                      <div className="row mb-10">
+                        <div className="col-xs-12">
+                          <span className="info-details-label">Barangay:</span>
+                          <span className="info-details-content">{product.address.barangay}</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div className="row">
+                    {/* Product Description */}     
                     <div className="col-sm-12">
-                        {/* Product Description */}                    
+                      <p>{product.description}</p>
                     </div>
                 </div>
             </div>
           </section> 
 
-        <DefaultAdvertisement/>
+        
 
         {/* Should be related to user's search */}
         <section className="row product-list">

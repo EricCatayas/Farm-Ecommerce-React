@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom";
-import MainMenu from '../main-menu/main-menu';
 import { defaultGetRequestAsync } from '../../utils/form.utils';
+import { DefaultBreadCrumb } from "../breadcrumb/breadcrumb";
+import { DefaultAdvertisement } from "../../advertisement/advertisement";
 import { ProductsContext } from '../../contexts/products.context';
+import MainMenu from '../main-menu/main-menu';
 import Product from '../products/product';
 import ProductsList from '../products/products-list';
 
@@ -29,16 +31,21 @@ const ProductViewDirectory = () => {
         }        
     }, []);
 
-    return(
-        <div className="home">
-            <div className='container'>
-                <MainMenu/>
-                <Product product={selectedProduct}/>
-                {/* <ProductsList products={}/> */}
-            </div>
+    //TODO: GetRequest for Products for Product List
+
+    return (
+      <div className="home">
+        <div className="container">
+          <MainMenu />
+          <DefaultBreadCrumb page={"Product"} subpage={product.category_Name} />
+          {/* TODO: Mini Google Maps */}
+          <Product product={selectedProduct} />
+          <DefaultAdvertisement />
+          {/* TODO: ProductsList */}
+          
         </div>
-        
-    )
+      </div>
+    );
 }
 
 export default ProductViewDirectory;
