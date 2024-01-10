@@ -1,22 +1,24 @@
 
 // TODO
-export const DefaultBreadCrumb = ({page, subpage}) => {
+export const BootstrapBreadCrumb = ({items}) => {
   return (
     <div className="panel-heading">
       <div className="row justify-content-between">
         <div className="col">
-          <ul class="breadcrumb">
+          <ol class="breadcrumb">
             <li>
-              <a href="#">Farm Ecommerce</a>
+              <a className="breadcrumb-item" href="/">
+                Farm Ecommerce
+              </a>
             </li>
-            <li>
-              <a href="#">{page}</a>
-            </li>
-            <li>
-              <a href="#">{subpage}</a>
-            </li>
-            <li>Italy</li>
-          </ul>
+            {items.map((item, index) => (
+              <li key={index}>
+                <a className="breadcrumb-item active" href="#">
+                  {item}
+                </a>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </div>

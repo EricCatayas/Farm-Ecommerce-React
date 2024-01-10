@@ -39,19 +39,25 @@ const Product = ({product}) =>{
                           <span className="info-details-content">{product.qty_in_stock}</span>
                         </div>
                       </div>
+                      <div className="row mb-10">
+                        <div className="col-xs-12">
+                          <span className="info-details-label">Upload Date:</span>
+                          <span className="info-details-content">{product.images[0].upload_Date}</span>
+                        </div>
+                      </div>
                     </div>
                     {/* Product Information II */}
                     <div className="col-sm-6">
                       <div className="row mb-10">
                         <div className="col-xs-12">
                           <span className="info-details-label">Region:</span>
-                          <span className="info-details-content">{product.address.region}</span>
+                          <span className="info-details-content">{product.store.address.province}</span>
                         </div>
                       </div>
                       <div className="row mb-10">
                         <div className="col-xs-12">
                           <span className="info-details-label">Barangay:</span>
-                          <span className="info-details-content">{product.address.barangay}</span>
+                          <span className="info-details-content">{product.store.address.barangay}</span>
                         </div>
                       </div>
                     </div>
@@ -63,14 +69,7 @@ const Product = ({product}) =>{
                     </div>
                 </div>
             </div>
-          </section> 
-
-        
-
-        {/* Should be related to user's search */}
-        <section className="row product-list">
-        
-        </section>       
+          </section>                   
         </div>
       </section>
     );

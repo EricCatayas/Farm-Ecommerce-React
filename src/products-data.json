@@ -1,7 +1,9 @@
 [
     {
         "id":1,
-        "product_name":"eggflant",
+        "name":"eggflant",
+        "category_Id":"2",
+        "category_Name":"Vegetables",
         "description":"Eggplant, aubergine, brinjal, or baigan is a plant species in the nightshade family Solanaceae. Solanum melongena is grown worldwide for its edible fruit.",
         "price":56.7,
         "is_Negotiable":true,
@@ -33,36 +35,38 @@
         "discount":{}
     },
     {
-        "id":1,
-        "product_name":"watermelon",
-        "description":"Watermelon is a flowering plant species of the Cucurbitaceae family and the name of its edible fruit. A scrambling and trailing vine-like plant, it is a highly cultivated fruit worldwide, with more than 1,000 varieties.",
-        "price":90.0,
-        "per_qty_type":"piece",
-        "is_Negotiable":true,
-        "qty_In_Stock":100,
-        "images":[
-            {
-                "images_Id":"",
-                "image_Url":"https://unlimitedworks.blob.core.windows.net/farmecommerce/product-watermelon.jpg",      
-                "upload_Date":"2024-01-09T15:30:00Z"
-            }
-        ],
-        "store":{
-            "store_Id":2,
-            "name":"Test1's Store",
-            "description":"lorem ipsum del fidil iri son deutromo si",
-            "established_Date":"2024-01-09T15:30:00Z",            
-            "seller_id":"a98a893f-ccbe-457e-a9a2-894aaa89df9e",
-            "images_Id":"2003",
-            "address":{
-                "id":"remove?",
-                "street":"Jose street",
-                "barangay":"Lourdes",
-                "municipality":"Municipal of San Remegio",
-                "postal_Code":"6010",
-                "province":"Cebu"
-            }
-        },
-        "discount":{}
+      "id": 1,
+      "name": "watermelon",
+      "category_Id": "18",
+      "category_Name": "Watermelon",
+      "description": "Watermelon is a flowering plant species of the Cucurbitaceae family and the name of its edible fruit. A scrambling and trailing vine-like plant, it is a highly cultivated fruit worldwide, with more than 1,000 varieties.",
+      "price": 90.0,
+      "per_qty_type": "piece",
+      "is_Negotiable": true,
+      "qty_In_Stock": 100,
+      "images": [
+        {
+          "images_Id": "",
+          "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/product-watermelon.jpg",
+          "upload_Date": "2024-01-09T15:30:00Z"
+        }
+      ],
+      "store": {
+        "store_Id": 2,
+        "name": "Test1's Store",
+        "description": "lorem ipsum del fidil iri son deutromo si",
+        "established_Date": "2024-01-09T15:30:00Z",
+        "seller_id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+        "images_Id": "2003",
+        "address": {
+          "id": "remove?",
+          "street": "Jose street",
+          "barangay": "Lourdes",
+          "municipality": "Municipal of San Remegio",
+          "postal_Code": "6010",
+          "province": "Cebu"
+        }
+      },
+      "discount": {}
     }
 ]

@@ -25,7 +25,7 @@ class App extends Component {
           <Route path='sign-up' element={<Registration />} />        
           <Route path='sign-in' element={<Authentication />} />       
           <Route path='product/create' element={<ProductCreate />}/>
-          <Route path='product?id' element={<ProductView/>}/>
+          <Route path='product/:id' element={<ProductView/>}/>
         </Route>
       </Routes>
     );

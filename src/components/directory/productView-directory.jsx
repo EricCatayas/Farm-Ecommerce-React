@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
-import { useLocation } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 import { defaultGetRequestAsync } from '../../utils/form.utils';
-import { DefaultBreadCrumb } from "../breadcrumb/breadcrumb";
+import { BootstrapBreadCrumb } from "../breadcrumb/breadcrumb";
 import { DefaultAdvertisement } from "../../advertisement/advertisement";
 import { ProductsContext } from '../../contexts/products.context';
 import MainMenu from '../main-menu/main-menu';
@@ -9,18 +9,18 @@ import Product from '../products/product';
 import ProductsList from '../products/products-list';
 
 const ProductViewDirectory = () => { 
-    const location = useLocation();
     const [ selectedProduct, setSelectedProduct ] = useState();
-    const queryParams = new URLSearchParams(location.search);
 
-    const productId = queryParams.get("id");
+    const params = useParams();
+    const  productID = params.id;
+
     console.log("ProductViewDirectory");
-    console.log(`Product Id: ${productId}`);
+    console.log(`Product Id: ${productID}`);
 
     useEffect(async() => {
         try{
             var product = await defaultGetRequestAsync(
-                `/api/v1/Product/Get?Id=${productId}`,
+                `/api/v1/Product/Get?Id=${productID}`,
                 (data) => console.log(data),
                 (error) => console.log(error)
             )
@@ -31,13 +31,13 @@ const ProductViewDirectory = () => {
         }        
     }, []);
 
-    //TODO: GetRequest for Products for Product List
+    //TODO: GetRequest of Products for Product List
 
     return (
       <div className="home">
         <div className="container">
           <MainMenu />
-          <DefaultBreadCrumb page={"Product"} subpage={product.category_Name} />
+          <BootstrapBreadCrumb items={["Products", selectedProduct.category_Name]} />
           {/* TODO: Mini Google Maps */}
           <Product product={selectedProduct} />
           <DefaultAdvertisement />
