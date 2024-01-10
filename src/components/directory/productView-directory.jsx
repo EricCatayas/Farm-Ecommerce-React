@@ -9,26 +9,35 @@ import Product from '../products/product';
 import ProductsList from '../products/products-list';
 
 const ProductViewDirectory = () => { 
-    const [ selectedProduct, setSelectedProduct ] = useState();
-
+    const { products, setProducts } = useState(ProductsContext);
+    const [ product, setProduct ] = useState(null);
     const params = useParams();
-    const  productID = params.id;
+    const productID = params.id;
+    const breadcrumbItems = product ? ["Products", product.category_Name] : ["Products"];
 
-    console.log("ProductViewDirectory");
-    console.log(`Product Id: ${productID}`);
+    // TODO: figure out a more efficient or reliable shit
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const productData = await defaultGetRequestAsync(
+              `/api/v1/Products?id=${productID}`,
+              (data) => console.log(data),
+              (error) => console.log(error)
+            );
+            setProduct(productData);
 
-    useEffect(async() => {
-        try{
-            var product = await defaultGetRequestAsync(
-                `/api/v1/Product/Get?Id=${productID}`,
-                (data) => console.log(data),
-                (error) => console.log(error)
-            )
-            setSelectedProduct(product);
-
-        } catch(error){
+            const filteredProducts = await defaultGetRequestAsync(
+              `/api/v1/Products/GetFilteredProducts?category_Id=${productData.category_Id}`,
+              (data) => console.log(data),
+              (error) => console.log(error)
+            );
+            setProducts(filteredProducts);
+          } catch (error) {
             console.log(error);
-        }        
+          }
+        };
+
+        fetchData();
     }, []);
 
     //TODO: GetRequest of Products for Product List
@@ -37,11 +46,12 @@ const ProductViewDirectory = () => {
       <div className="home">
         <div className="container">
           <MainMenu />
-          <BootstrapBreadCrumb items={["Products", selectedProduct.category_Name]} />
+          <BootstrapBreadCrumb items={breadcrumbItems} />
           {/* TODO: Mini Google Maps */}
-          <Product product={selectedProduct} />
+          
+          { product && <Product product={product} /> }
           <DefaultAdvertisement />
-          {/* TODO: ProductsList */}
+          { products && <ProductsList products={products}/> }
           
         </div>
       </div>

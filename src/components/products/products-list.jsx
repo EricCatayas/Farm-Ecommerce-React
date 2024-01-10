@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom"; 
-import { ProductsContext } from "../../contexts/products.context";
 import "./products-list.styles.css";
 
 // TODO: useContext, selectedProduct 
@@ -9,7 +7,6 @@ function ProductsList({ products }) {
   const navigate = useNavigate();
 
   const onViewProductClickEvent = (event) => {
-    console.log(event);
     const selectedProductId = event.target.value;
     navigate(`/product/${selectedProductId}`);
   };
@@ -50,7 +47,7 @@ function ProductsList({ products }) {
                           </div>
                           <div className="col-2">
                             <div className="row">Sold Per</div>
-                            <div className="row">{product.per_qty_type}</div>
+                            <div className="row">{product.per_Qty_Type}</div>
                           </div>
                           <div className="col-2">
                             <div className="row">Stock Qty</div>

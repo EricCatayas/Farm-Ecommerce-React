@@ -7,7 +7,7 @@
         "description":"Eggplant, aubergine, brinjal, or baigan is a plant species in the nightshade family Solanaceae. Solanum melongena is grown worldwide for its edible fruit.",
         "price":56.7,
         "is_Negotiable":true,
-        "per_qty_type":"kilo",
+        "per_Qty_Type":"kilo",
         "qty_In_Stock":100,
         "images":[
             {
@@ -41,7 +41,7 @@
       "category_Name": "Watermelon",
       "description": "Watermelon is a flowering plant species of the Cucurbitaceae family and the name of its edible fruit. A scrambling and trailing vine-like plant, it is a highly cultivated fruit worldwide, with more than 1,000 varieties.",
       "price": 90.0,
-      "per_qty_type": "piece",
+      "per_Qty_Type": "piece",
       "is_Negotiable": true,
       "qty_In_Stock": 100,
       "images": [

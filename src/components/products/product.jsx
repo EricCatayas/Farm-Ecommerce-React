@@ -18,7 +18,7 @@ const Product = ({product}) =>{
                       <div className="row mb-10">
                         <div className="col-xs-12">
                           <span className="info-details-label">Name:</span>
-                          <span className="info-details-content">{product.product_name}</span>
+                          <span className="info-details-content">{product.name}</span>
                         </div>
                       </div>
                       <div className="row mb-10">
@@ -30,13 +30,13 @@ const Product = ({product}) =>{
                       <div className="row mb-10">
                         <div className="col-xs-12">
                           <span className="info-details-label">Sold Per:</span>
-                          <span className="info-details-content">{product.per_qty_type}</span>
+                          <span className="info-details-content">{product.per_Qty_Type}</span>
                         </div>
                       </div>
                       <div className="row mb-10">
                         <div className="col-xs-12">
                           <span className="info-details-label">Quantity in Stock:</span>
-                          <span className="info-details-content">{product.qty_in_stock}</span>
+                          <span className="info-details-content">{product.qty_In_Stock}</span>
                         </div>
                       </div>
                       <div className="row mb-10">
