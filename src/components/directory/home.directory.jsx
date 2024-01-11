@@ -4,7 +4,6 @@ import ProductSearchFilter from '../search-filter/products-search-filter.compone
 import ProductsVerticalList from '../products/products-list.component';
 import GoogleMapLocations from '../map/google-map-locations.component';
 import MainMenu from '../main-menu/main-menu.component';
-//mock data
 import { ProductsContext } from '../../contexts/products.context';
 
 import productsList from '../../products-data.json';

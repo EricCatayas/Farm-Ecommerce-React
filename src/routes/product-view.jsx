@@ -1,4 +1,4 @@
-import ProductViewDirectory from "../components/directory/productView.directory";
+import ProductViewDirectory from "../components/directory/product-view.directory";
 
 const ProductView = () => {
   return <ProductViewDirectory />;

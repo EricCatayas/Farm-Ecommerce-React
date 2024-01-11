@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { defaultPostRequestAsync } from '../../utils/form.utils';
-import { FormInputField } from '../form-input/form-input';
+import { FormInputField } from '../form-input/form-input-field.component';
 import { getCookie } from '../../utils/cookie.utils';
 import { UserContext } from '../../contexts/user.context';
 import './sign-up.styles.scss';

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { defaultGetRequestAsync } from '../../utils/form.utils';
 import { BreadCrumb } from "../breadcrumb/breadcrumb.component";
-import { DefaultAdvertisement } from "../advertisement/advertisement.component";
+import { Advertisement } from "../advertisement/advertisement.component";
 import { ProductsContext } from '../../contexts/products.context';
 import MainMenu from '../main-menu/main-menu.component';
 import Product from '../products/product.component';
@@ -66,7 +66,7 @@ const ProductViewDirectory = () => {
           {/* TODO: Mini Google Maps */}
           
           { product && <Product product={product} /> }
-          <DefaultAdvertisement />
+          <Advertisement />
           { products && <ProductsVerticalList products={products}/> }
           
         </div>

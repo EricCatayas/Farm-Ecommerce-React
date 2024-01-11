@@ -1,6 +1,6 @@
 
 // TODO
-export const DefaultAdvertisement = () => {
+export const Advertisement = () => {
     return (
       <div className="alert alert-info add-ad-info">
         <div className="row">
