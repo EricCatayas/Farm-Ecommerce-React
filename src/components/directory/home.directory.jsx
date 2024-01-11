@@ -4,17 +4,19 @@ import ProductSearchFilter from '../search-filter/products-search-filter.compone
 import ProductsVerticalList from '../products/products-list.component';
 import GoogleMapLocations from '../map/google-map-locations.component';
 import MainMenu from '../main-menu/main-menu.component';
-import { ProductsContext } from '../../contexts/products.context';
-
-import productsList from '../../products-data.json';
+import ProductsService from '../../services/productsService';
 
 const  HomeDirectory = () => {
-
-    const { products, setProducts } = useContext(ProductsContext);
+    const { products, setProducts } = useContext([]);
+    const productsService = new ProductsService();
 
     useEffect(()=>{
-        // TODO: Call server side
-        setProducts(productsList);
+        const fetchData = async () => {
+            var productsList = await productsService.fetchPaginatedProducts(1, 4);
+            setProducts(productsList);
+        }
+
+        fetchData();
     }, [])
 
     const categorySelectEventHandler = (event) => {

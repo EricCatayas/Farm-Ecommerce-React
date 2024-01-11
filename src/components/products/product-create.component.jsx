@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
-import ProductCategories from "../category-container/product-categories";
+import ProductCategories from "../category-container/product-categories.component";
 import { UserContext } from "../../contexts/user.context";
-import { DefaultPanel } from "../panel/panel";
+import { DefaultPanel } from "../panel/panel.component";
 import { multiPartPostRequestAsync } from "../../utils/form.utils";
 
 const productCreateFormFields = {
