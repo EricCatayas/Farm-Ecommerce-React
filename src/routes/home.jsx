@@ -1,4 +1,4 @@
-import HomeDirectory from '../components/directory/home-directory';
+import HomeDirectory from '../components/directory/home.directory';
 
 const Home = () => {
     return (

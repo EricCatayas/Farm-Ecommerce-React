@@ -5,7 +5,7 @@ export const BootstrapBreadCrumb = ({items}) => {
     <div className="panel-heading">
       <div className="row justify-content-between">
         <div className="col">
-          <ol class="breadcrumb">
+          <ol className="breadcrumb">
             <li>
               <a className="breadcrumb-item" href="/">
                 Farm Ecommerce

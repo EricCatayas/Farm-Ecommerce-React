@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import ProductCategories from '../category-container/product-categories';
 import ProductSearchFilter from '../search-filter/products-search-filter';
-import ProductsList from '../products/products-list';
+import ProductsVerticalList from '../products/productsList.component';
 import GoogleMapLocations from '../map/google-map-locations';
 import MainMenu from '../main-menu/main-menu';
 //mock data
@@ -14,6 +14,7 @@ const  HomeDirectory = () => {
     const { products, setProducts } = useContext(ProductsContext);
 
     useEffect(()=>{
+        // TODO: Call server side
         setProducts(productsList);
     }, [])
 
@@ -30,7 +31,7 @@ const  HomeDirectory = () => {
             <ProductCategories onCategorySelectEvent={categorySelectEventHandler}/>
             <GoogleMapLocations/>
             <ProductSearchFilter/>
-            <ProductsList products={products}/>
+            <ProductsVerticalList products={products}/>
             </div>
         </div>
     );

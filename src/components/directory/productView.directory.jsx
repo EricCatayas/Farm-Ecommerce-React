@@ -6,7 +6,7 @@ import { DefaultAdvertisement } from "../../advertisement/advertisement";
 import { ProductsContext } from '../../contexts/products.context';
 import MainMenu from '../main-menu/main-menu';
 import Product from '../products/product';
-import ProductsList from '../products/products-list';
+import ProductsVerticalList from '../products/productsList.component';
 
 const ProductViewDirectory = () => { 
     const { products, setProducts } = useState(ProductsContext);
@@ -19,19 +19,17 @@ const ProductViewDirectory = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const productData = await defaultGetRequestAsync(
-              `/api/v1/Products?id=${productID}`,
-              (data) => console.log(data),
-              (error) => console.log(error)
-            );
-            setProduct(productData);
+            const productData = await fetchSelectedProduct();
 
-            const filteredProducts = await defaultGetRequestAsync(
-              `/api/v1/Products/GetFilteredProducts?category_Id=${productData.category_Id}`,
-              (data) => console.log(data),
-              (error) => console.log(error)
-            );
-            setProducts(filteredProducts);
+            if(productData){
+              console.log("Product data:" + JSON.stringify(productData));
+              setProduct(productData);
+
+              const filteredProducts = await GetProductsForList(productData);
+              
+              console.log("Filtered Products:" + JSON.stringify(filteredProducts));
+              setProducts(filteredProducts);
+            }
           } catch (error) {
             console.log(error);
           }
@@ -39,6 +37,24 @@ const ProductViewDirectory = () => {
 
         fetchData();
     }, []);
+
+    async function fetchSelectedProduct(){
+      return await defaultGetRequestAsync(
+        `/api/v1/Products/Get?Id=${productID}`,
+        (data) => console.log(data),
+        (error) => console.log(error)
+      );
+    }
+    async function GetProductsForList(product){
+      const endpoint = "/api/v1/Products/GetFilteredProducts";
+      if(product.category_Id)
+        endpoint += `?category_Id=${product.category_Id}`;
+      return await defaultGetRequestAsync(
+                endpoint,
+                (data) => console.log(data),
+                (error) => console.log(error)
+      );
+    }
 
     //TODO: GetRequest of Products for Product List
 
@@ -51,7 +67,7 @@ const ProductViewDirectory = () => {
           
           { product && <Product product={product} /> }
           <DefaultAdvertisement />
-          { products && <ProductsList products={products}/> }
+          { products && <ProductsVerticalList products={products}/> }
           
         </div>
       </div>

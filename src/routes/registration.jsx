@@ -1,4 +1,4 @@
-import RegistrationDirectory from "../components/directory/registration-directory";
+import RegistrationDirectory from "../components/directory/registration.directory";
 
 const Registration = () => {
     return (
