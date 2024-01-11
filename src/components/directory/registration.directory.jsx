@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-import SignUpForm from "../authentication/sign-up";
+import SignUpForm from "../authentication/sign-up.component";
 
 class RegistrationDirectory extends Component {
     constructor(){

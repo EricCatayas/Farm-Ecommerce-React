@@ -1,8 +1,8 @@
 import "./product-categories.styles.scss";
 import { useState, useEffect, useContext } from "react";
 import { defaultGetRequestAsync } from "../../utils/form.utils";
-import SubCategories from "./product-subcategories";
-import CategoryMiniCard from "./category-mini-card";
+import SubCategories from "./product-subcategories.component";
+import CategoryMiniCard from "./category-mini-card.component";
 import categories_data from "../../categories-data.json";
 import { ProductCategoriesContext } from "../../contexts/product-categories.context";
 

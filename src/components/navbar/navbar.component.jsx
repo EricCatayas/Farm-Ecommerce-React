@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/user.context";
 import { SignOutUser } from "../../utils/sign-in.utils";
 import { CartContext } from "../../contexts/cart.context";
-import CartDropdown from "../cart-dropdown/cart-dropdown";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import './navbar.styles.css';
 
 const Navbar = () => {

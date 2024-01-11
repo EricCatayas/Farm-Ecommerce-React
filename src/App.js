@@ -6,7 +6,7 @@ import Home from './routes/home';
 import Navigation from './routes/navigation';
 import Registration from './routes/registration';
 import Authentication from './routes/authentication';
-import ProductCreate from './components/products/product-create';
+import ProductCreate from './components/products/product-create.component';
 import ProductView from './routes/productView';
 
 class App extends Component {

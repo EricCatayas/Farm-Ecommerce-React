@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { defaultGetRequestAsync } from '../../utils/form.utils';
-import { BootstrapBreadCrumb } from "../breadcrumb/breadcrumb";
-import { DefaultAdvertisement } from "../../advertisement/advertisement";
+import { BreadCrumb } from "../breadcrumb/breadcrumb.component";
+import { DefaultAdvertisement } from "../advertisement/advertisement.component";
 import { ProductsContext } from '../../contexts/products.context';
-import MainMenu from '../main-menu/main-menu';
-import Product from '../products/product';
-import ProductsVerticalList from '../products/productsList.component';
+import MainMenu from '../main-menu/main-menu.component';
+import Product from '../products/product.component';
+import ProductsVerticalList from '../products/products-list.component';
 
 const ProductViewDirectory = () => { 
     const { products, setProducts } = useState(ProductsContext);
@@ -62,7 +62,7 @@ const ProductViewDirectory = () => {
       <div className="home">
         <div className="container">
           <MainMenu />
-          <BootstrapBreadCrumb items={breadcrumbItems} />
+          <BreadCrumb items={breadcrumbItems} />
           {/* TODO: Mini Google Maps */}
           
           { product && <Product product={product} /> }

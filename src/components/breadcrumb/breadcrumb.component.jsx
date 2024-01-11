@@ -1,6 +1,6 @@
 
 // TODO
-export const BootstrapBreadCrumb = ({items}) => {
+export const BreadCrumb = ({items}) => {
   return (
     <div className="panel-heading">
       <div className="row justify-content-between">

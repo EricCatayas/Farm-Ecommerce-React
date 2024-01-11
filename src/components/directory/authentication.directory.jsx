@@ -1,5 +1,5 @@
 import { Component } from "react";
-import SignInForm from "../authentication/sign-in";
+import SignInForm from "../authentication/sign-in.component";
 class AuthenticationDirectory extends Component {
     constructor(){
         super();

@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
-import ProductCategories from '../category-container/product-categories';
-import ProductSearchFilter from '../search-filter/products-search-filter';
-import ProductsVerticalList from '../products/productsList.component';
-import GoogleMapLocations from '../map/google-map-locations';
-import MainMenu from '../main-menu/main-menu';
+import ProductCategories from '../category-container/product-categories.component';
+import ProductSearchFilter from '../search-filter/products-search-filter.component';
+import ProductsVerticalList from '../products/products-list.component';
+import GoogleMapLocations from '../map/google-map-locations.component';
+import MainMenu from '../main-menu/main-menu.component';
 //mock data
 import { ProductsContext } from '../../contexts/products.context';
 
