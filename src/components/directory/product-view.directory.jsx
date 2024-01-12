@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { BreadCrumb } from "../breadcrumb/breadcrumb.component";
 import { Advertisement } from "../advertisement/advertisement.component";
-import { ProductsContext } from '../../contexts/products.context';
 import ProductService from '../../services/productService';
 import ProductsService from '../../services/productsService';
 import MainMenu from '../main-menu/main-menu.component';
@@ -10,7 +9,7 @@ import Product from '../products/product.component';
 import ProductsVerticalList from '../products/products-list.component';
 
 const ProductViewDirectory = () => { 
-    const { products, setProducts } = useState(ProductsContext);
+    const [ products, setProducts ] = useState([]);
     const [ product, setProduct ] = useState(null);
     const productService = new ProductService();
     const productsService = new ProductsService();
@@ -22,20 +21,18 @@ const ProductViewDirectory = () => {
         const fetchData = async () => {
           try {
             const productData = await productService.fetchProduct(productID);
+            setProduct(productData);
 
-            if(productData){
-              setProduct(productData);
-
-              const filteredProducts = [];
-              
-              if(productData.category_Id)
-                filteredProducts = await productsService.fetchFilteredProducts(`?category_Id=${productData.category_Id}`);
-              else 
-                filteredProducts = await productsService.fetchFilteredProducts();
-              
-              console.log("Filtered Products:" + JSON.stringify(filteredProducts));
-              setProducts(filteredProducts);
-            }
+            const filteredProducts = [];
+            
+            if(productData.category_Id)
+              filteredProducts = await productsService.fetchFilteredProducts(`?category_Id=${productData.category_Id}`);
+            else 
+              filteredProducts = await productsService.fetchFilteredProducts();
+            
+            console.log("Filtered Products:" + JSON.stringify(filteredProducts));
+            setProducts(filteredProducts);
+            
           } catch (error) {
             console.log(error);
           }

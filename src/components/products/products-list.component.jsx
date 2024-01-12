@@ -19,15 +19,10 @@ function ProductsVerticalList({ products }) {
             <tbody>
               {products.map((product) => (
                 <tr key={product.id}>
-                  {" "}
-                  {/* Add a unique key for each item */}
-                  <td>
+                <td>
                     <div className="row">
                       <div className="col-3">
-                        <img
-                          src={product.images[0] && product.images[0].image_Url}
-                          alt={`Product: ${product.name}`}
-                        />
+                        <img src={product.images[0] && product.images[0].image_Url} alt={`Product: ${product.name}`}/>
                       </div>
                       <div className="col-9">
                         <div className="row">
@@ -55,7 +50,7 @@ function ProductsVerticalList({ products }) {
                           </div>
                           <div className="col-2">
                             <div className="row">Stock Qty</div>
-                            <div className="row">{product.qty_in_stock}</div>
+                            <div className="row">{product.qty_In_Stock}</div>
                           </div>
                           <div className="col-3">
                             <div className="row">Upload Date</div>

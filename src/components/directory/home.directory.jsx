@@ -7,13 +7,13 @@ import MainMenu from '../main-menu/main-menu.component';
 import ProductsService from '../../services/productsService';
 
 const  HomeDirectory = () => {
-    const { products, setProducts } = useContext([]);
+    const [ products, setProducts ] = useState([]);
     const productsService = new ProductsService();
 
     useEffect(()=>{
         const fetchData = async () => {
-            var productsList = await productsService.fetchPaginatedProducts(1, 4);
-            setProducts(productsList);
+            var productsData = await productsService.fetchPaginatedProducts(1, 4);
+            setProducts(productsData.items);
         }
 
         fetchData();
@@ -32,7 +32,7 @@ const  HomeDirectory = () => {
             <ProductCategories onCategorySelectEvent={categorySelectEventHandler}/>
             <GoogleMapLocations/>
             <ProductSearchFilter/>
-            <ProductsVerticalList products={products}/>
+            { products && <ProductsVerticalList products={products}/> }
             </div>
         </div>
     );
