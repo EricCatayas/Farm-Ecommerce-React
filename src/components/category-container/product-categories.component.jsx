@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { defaultGetRequestAsync } from "../../utils/request.utils";
 import SubCategories from "./product-subcategories.component";
 import CategoryMiniCard from "./category-mini-card.component";
+import Spinner from "../spinner/spinner.component";
 //import categories_data from "../../categories-data.json";
 import { ProductCategoriesContext } from "../../contexts/product-categories.context";
 
@@ -55,13 +56,16 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
       <div className="row">
         <div className="col-xs-12">
           <ul className="nav navbar-nav justify-content-evenly d-flex flex-row">
-            {productCategories.map((category) => (
+            { productCategories && productCategories.length > 0 ? 
+            ( productCategories.map((category) => (
               <CategoryMiniCard
                 key={category.id}
                 category={category}
                 onClickHandler={onClickEvent}
               />
-            ))}
+            ))):(
+              <Spinner/>
+            )}
           </ul>
           {isClicked ? (
             <SubCategories

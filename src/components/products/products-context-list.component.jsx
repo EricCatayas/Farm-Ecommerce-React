@@ -22,7 +22,7 @@ const ProductsContextVerticalList = () => {
         <div className="col-sm-12">
           <table className="table">
             <tbody>
-              { products && products[0] ? (
+              { products && products.length > 0 ? (
                 products.map((product) => (
                   <tr key={product.id}>
                     <td>

@@ -1,13 +1,14 @@
 import { useState, useEffect, useContext } from 'react';
 import ProductCategories from '../category-container/product-categories.component';
 import ProductSearchFilter from '../search-filter/products-search-filter.component';
-import ProductsVerticalList from '../products/products-list.component';
+import ProductsContextVerticalList from '../products/products-context-list.component';
+import { ProductsContext } from '../../contexts/products.context';
 import GoogleMapLocations from '../map/google-map-locations.component';
 import MainMenu from '../main-menu/main-menu.component';
 import ProductsService from '../../services/productsService';
 
 const  HomeDirectory = () => {
-    const [ products, setProducts ] = useState([]);
+    const { setProducts } = useContext(ProductsContext);
     const productsService = new ProductsService();
 
     useEffect(()=>{
@@ -32,7 +33,7 @@ const  HomeDirectory = () => {
             <ProductCategories onCategorySelectEvent={categorySelectEventHandler}/>
             <GoogleMapLocations/>
             <ProductSearchFilter/>
-            { products && <ProductsVerticalList products={products}/> }
+            <ProductsContextVerticalList/> 
             </div>
         </div>
     );
