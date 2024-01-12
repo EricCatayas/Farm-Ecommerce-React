@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import PRODUCTS from "../products-data.json";
+// import PRODUCTS from "../products-data.json";
 
 export const ProductsContext = createContext({
     // selectedProduct : {},
@@ -9,7 +9,7 @@ export const ProductsContext = createContext({
 });
  
 export const ProductsProvider = ({children}) => {
-    const [products, setProducts] = useState(PRODUCTS);
+    const [products, setProducts] = useState([]);
     // const [selectedProduct, setSelectedProduct] = useState({});
     const value = { products, setProducts };
     return(

@@ -2,14 +2,15 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { BreadCrumb } from "../breadcrumb/breadcrumb.component";
 import { Advertisement } from "../advertisement/advertisement.component";
+import { ProductsContext } from '../../contexts/products.context';
 import ProductService from '../../services/productService';
 import ProductsService from '../../services/productsService';
 import MainMenu from '../main-menu/main-menu.component';
 import Product from '../products/product.component';
-import ProductsVerticalList from '../products/products-list.component';
+import ProductsContextVerticalList from '../products/products-context-list.component';
 
 const ProductViewDirectory = () => { 
-    const [ products, setProducts ] = useState([]);
+    const { setProducts } = useContext(ProductsContext);
     const [ product, setProduct ] = useState(null);
     const productService = new ProductService();
     const productsService = new ProductsService();
@@ -44,16 +45,15 @@ const ProductViewDirectory = () => {
     //TODO: GetRequest of Products for Product List
 
     return (
-      <div className="home">
+      <div className="product-view">
         <div className="container">
-          <MainMenu />
+          <MainMenu/>
           <BreadCrumb items={breadcrumbItems} />
-          {/* TODO: Mini Google Maps */}
-          
+          {/* TODO: Mini Google Maps */}          
           { product && <Product product={product} /> }
           <Advertisement />
-          { products && <ProductsVerticalList products={products}/> }
-          
+          <ProductsContextVerticalList/>
+          {/* TODO: Products List Menu Buttons */}
         </div>
       </div>
     );
