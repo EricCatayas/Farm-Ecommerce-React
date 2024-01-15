@@ -5,6 +5,8 @@ class ProductSearchFilter extends Component{
         super();
     }
 
+    //TODO
+
     render(){
         return (
             <section className="products-search-filter my-5" id="buffy-stuff-accordion-group">
@@ -24,7 +26,7 @@ class ProductSearchFilter extends Component{
                         <div className='row'>
                             <div className="col col-xs-3">
                                 <select className="form-select" aria-label="Default select example">
-                                    <option selected>Select Region</option>
+                                    <option selected>Select Province</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
                                     <option value="3">Three</option>

@@ -5,7 +5,7 @@ class ProductsService {
   constructor() {}
 
   async fetchFilteredProducts(query) {
-    const endpoint = "/api/v1/Products/GetFilteredProducts";
+    var endpoint = "/api/v1/Products/GetFilteredProducts";
 
     if (query) {
       endpoint += query;

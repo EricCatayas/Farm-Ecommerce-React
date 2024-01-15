@@ -24,7 +24,7 @@ const ProductViewDirectory = () => {
             const productData = await productService.fetchProduct(productID);
             setProduct(productData);
 
-            const filteredProducts = [];
+            let filteredProducts = [];
             
             if(productData.category_Id)
               filteredProducts = await productsService.fetchFilteredProducts(`?category_Id=${productData.category_Id}`);

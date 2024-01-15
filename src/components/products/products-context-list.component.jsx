@@ -4,8 +4,7 @@ import { ProductsContext } from "../../contexts/products.context";
 import "./products-list.styles.css";
 import Spinner from "../spinner/spinner.component";
 
-// TODO: useContext, selectedProduct
-
+// TODO: Fix loading new product if clicked on same page
 const ProductsContextVerticalList = () => {
   const { products } = useContext(ProductsContext);
   const navigate = useNavigate();
@@ -15,7 +14,6 @@ const ProductsContextVerticalList = () => {
     navigate(`/product/${selectedProductId}`);
   };
 
-  // TODO: Render a loading icon
   return (
     <section className="products-list-container my-5">
       <div className="row">

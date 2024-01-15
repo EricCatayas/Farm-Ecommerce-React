@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { RegisterUserAsync } from '../../utils/sign-up.utils';
 import { CreateUserAddressAsync } from '../../utils/user-address.utils';
+import ProvincesService from '../../services/provincesService';
 import './sign-up.styles.scss';
 
 const defaultFormFields = {
@@ -26,21 +27,10 @@ const SignUpForm = () => {
 
     useEffect(() => {
         //fetching provinces
-        const provinces_url = process.env.REACT_APP_FARM_ECOMMERCE_URL + '/api/v1/Address/Provinces';
-        fetch(provinces_url)
-            .then((response) => {
-                if(!response.ok){
-                    throw new Error("HTTP error " + response.status);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                console.log(data);
-                setProvinces(data);
-            })
-            .catch((error) => 
-                alert("Error: failed to fetch provinces data.")
-            );
+        fetchData = async () => {
+            const provinces = await ProvincesService.fetchProvinces();
+            setProvinces(provinces);
+        }
     }, []); 
 
     const onProvinceSelect = (event) => {
