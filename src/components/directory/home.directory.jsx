@@ -13,7 +13,7 @@ const  HomeDirectory = () => {
 
     useEffect(()=>{
         const fetchData = async () => {
-            var productsData = await productsService.fetchPaginatedProducts(1, 4);
+            var productsData = await productsService.fetchPaginatedProductsAsync(1, 4);
             setProducts(productsData.items);
         }
 

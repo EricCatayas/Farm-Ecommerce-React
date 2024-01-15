@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { RegisterUserAsync } from '../../utils/sign-up.utils';
 import { CreateUserAddressAsync } from '../../utils/user-address.utils';
 import ProvincesService from '../../services/provincesService';
+import MunicipalitiesService from '../../services/municipalitiesService';
 import './sign-up.styles.scss';
 
 const defaultFormFields = {
@@ -18,34 +19,27 @@ const defaultFormFields = {
     municipality_Id:null
 }
 
-const SignUpForm = () => {
-
+const SignUpForm = () => {    
     const [formFields, setFormFields] = useState(defaultFormFields);
     const [provinces, setProvinces] = useState([]);
     const [municipalities, setMunicipalities] = useState([]);
     const {userName, email, contactNum1, contactNum2, password, confirmPassword, barangay, street, postalCode, municipality_Id } = formFields;
 
     useEffect(() => {
-        //fetching provinces
-        fetchData = async () => {
-            const provinces = await ProvincesService.fetchProvinces();
-            setProvinces(provinces);
-        }
+      // Fetching the list of provinces asynchronously
+      const fetchData = async () => {
+        var provincesService = new ProvincesService();
+        const provinces = await provincesService.fetchAllAsync();
+        setProvinces(provinces);
+      };
+      fetchData();
     }, []); 
 
-    const onProvinceSelect = (event) => {
+    const onProvinceSelect = async (event) => {
         const province_Id = event.target.value;
-        fetch(`${process.env.REACT_APP_FARM_ECOMMERCE_URL}/api/v1/Address/Municipalities?province_Id=${province_Id}`)
-            .then((response) => {
-                if(!response.ok){
-                    throw new Error("HTTP error " + response.status);
-                }
-                return response.json();
-            })
-            .then((data) =>{
-                alert("Error: failed to fetch municipalities data.")
-                setMunicipalities(data);
-            })
+        var municipalitiesService = new MunicipalitiesService();
+        const municipalities = await municipalitiesService.fetchFromProvinceAsync(province_Id);
+        setMunicipalities(municipalities);            
     }
 
     const handleSubmit = async (event) => {

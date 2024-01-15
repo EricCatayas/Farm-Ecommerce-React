@@ -4,7 +4,7 @@ import { defaultGetRequestAsync } from "../utils/request.utils";
 class ProductsService {
   constructor() {}
 
-  async fetchFilteredProducts(query) {
+  async fetchFilteredProductsAsync(query) {
     var endpoint = "/api/v1/Products/GetFilteredProducts";
 
     if (query) {
@@ -18,7 +18,7 @@ class ProductsService {
     );
   }
 
-  async fetchPaginatedProducts(pageNumber, pageSize) {
+  async fetchPaginatedProductsAsync(pageNumber, pageSize) {
     
     if(!pageNumber || !pageSize)
       throw new Exception("Page number and page size must not be null.");

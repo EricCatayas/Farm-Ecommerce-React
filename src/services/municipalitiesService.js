@@ -1,10 +1,10 @@
 import { defaultGetRequestAsync } from "../utils/request.utils";
 
-class ProvincesService {
+class MunicipalitiesService {
   constructor() {}
 
-  async fetchAllAsync() {
-    const endpoint = "/api/v1/Address/Provinces";
+  async fetchFromProvinceAsync(province_Id) {
+    const endpoint = `/api/v1/Address/Municipalities?province_Id=${province_Id}`;
 
     return await defaultGetRequestAsync(
       endpoint,
@@ -14,4 +14,4 @@ class ProvincesService {
   }
 }
 
-export default ProvincesService;
+export default MunicipalitiesService;

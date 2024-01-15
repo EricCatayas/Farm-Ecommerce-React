@@ -21,15 +21,15 @@ const ProductViewDirectory = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const productData = await productService.fetchProduct(productID);
+            const productData = await productService.fetchProductAsync(productID);
             setProduct(productData);
 
             let filteredProducts = [];
             
             if(productData.category_Id)
-              filteredProducts = await productsService.fetchFilteredProducts(`?category_Id=${productData.category_Id}`);
+              filteredProducts = await productsService.fetchFilteredProductsAsync(`?category_Id=${productData.category_Id}`);
             else 
-              filteredProducts = await productsService.fetchFilteredProducts();
+              filteredProducts = await productsService.fetchFilteredProductsAsync();
             
             console.log("Filtered Products:" + JSON.stringify(filteredProducts));
             setProducts(filteredProducts);
