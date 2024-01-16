@@ -1,11 +1,11 @@
 import "./product-categories.styles.scss";
 import { useState, useEffect, useContext } from "react";
-import { defaultGetRequestAsync } from "../../utils/request.utils";
 import SubCategories from "./product-subcategories.component";
 import CategoryMiniCard from "./category-mini-card.component";
 import Spinner from "../spinner/spinner.component";
 //import categories_data from "../../categories-data.json";
 import { ProductCategoriesContext } from "../../contexts/product-categories.context";
+import ProductCategoriesService from "../../services/productCategoriesService";
 
 const ProductCategories = ({ onCategorySelectEvent }) => {  
   const { productCategories, setProductCategories } = useContext(
@@ -16,17 +16,10 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await defaultGetRequestAsync(
-          "/api/v1/ProductCategories/GetAll",
-          (data) => console.log(data)
-        );
-        setProductCategories(response);
-      } catch (error) {
-        console.log("An error occurred while retrieving categories.");
-      }
-    };
-
+      const productCategoriesService = new ProductCategoriesService();
+      const categories = await productCategoriesService.GetAllAsync();
+      setProductCategories(categories);
+    }
     fetchData();
   }, []);
 

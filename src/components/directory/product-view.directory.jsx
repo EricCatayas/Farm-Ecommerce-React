@@ -8,23 +8,26 @@ import ProductsService from '../../services/productsService';
 import MainMenu from '../main-menu/main-menu.component';
 import Product from '../products/product.component';
 import ProductsContextVerticalList from '../products/products-context-list.component';
+import { ApiVersion,ProductsServicesFactory } from '../../factories/productsServicesFactory';
+
 
 const ProductViewDirectory = () => { 
     const { setProducts } = useContext(ProductsContext);
     const [ product, setProduct ] = useState(null);
-    const productService = new ProductService();
-    const productsService = new ProductsService();
     const params = useParams();
     const productID = params.id;
     const breadcrumbItems = product ? ["Products", product.category_Name] : ["Products"];
+    const productsServicesFactory = new ProductsServicesFactory();    
 
     useEffect(() => {
         const fetchData = async () => {
           try {
+            const productService = productsServicesFactory.createProductService(ApiVersion.V1);
             const productData = await productService.fetchProductAsync(productID);
             setProduct(productData);
 
             let filteredProducts = [];
+            const productsService = productsServicesFactory.createProductsService(ApiVersion.V1);
             
             if(productData.category_Id)
               filteredProducts = await productsService.fetchFilteredProductsAsync(`?category_Id=${productData.category_Id}`);
@@ -41,8 +44,6 @@ const ProductViewDirectory = () => {
 
         fetchData();
     }, []);        
-
-    //TODO: GetRequest of Products for Product List
 
     return (
       <div className="product-view">

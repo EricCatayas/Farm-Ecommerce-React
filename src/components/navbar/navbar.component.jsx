@@ -28,7 +28,8 @@ const Navbar = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
-                <h5 className="brand-name">Farm Ecommerce</h5>
+              {/* TODO: remove decor */}
+                <h5 className="brand-name"><a href="/">Farm Ecommerce</a></h5>             
               </div>
               <div className="col-md-5 my-auto">
                 <form role="search">

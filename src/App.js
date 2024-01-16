@@ -16,8 +16,9 @@ class App extends Component {
   componentDidMount(){
     //fetch call
   }
+  // TODO: 
+  //      Factory (to remove new keywords)
   render(){
-
     return (
       <Routes>
         <Route path='/' element={<Navigation/>}>
