@@ -1,4 +1,4 @@
-import { defaultGetRequestAsync } from "../../utils/request.utils";
+import { defaultGetRequestAsync } from "../utils/request.utils";
 
 class ProductCategoriesService {
   constructor() {}

@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import { Component } from 'react';
+import { useContext, useState } from 'react';
+import { ProductCategoriesContext } from "../../contexts/product-categories.context";
 
 const ProductSearchFilter = () => {
 
