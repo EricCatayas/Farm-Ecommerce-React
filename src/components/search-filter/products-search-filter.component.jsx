@@ -1,14 +1,44 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductCategoriesContext } from "../../contexts/product-categories.context";
+import ProvincesService from '../../services/provincesService';
+import MunicipalitiesService from '../../services/municipalitiesService';
+
+const searchFormData = {
+    category_Id : '',
+    is_negotiable : '',
+    min_price : '',
+    max_price : '',
+    per_qty_type : '',
+    municipality_Id:null
+}
 
 const ProductSearchFilter = () => {
 
-    //TODO: Make functional to web server api
-    const { productCategories, setProductCategories } = useContext(
-        ProductCategoriesContext
-    );
+    const [formFields, setFormFields] = useState(searchFormData);
+    const [provinces, setProvinces] = useState([]);
+    const [municipalities, setMunicipalities] = useState([]);
+    const { productCategories, setProductCategories } = useContext(ProductCategoriesContext);
+    const {category_Id, is_negotiable, min_price, max_price, per_qty_type, municipality_Id } = formFields;
 
-    
+    useEffect(()=>{
+        const fetchData = async () => {
+          var provincesService = new ProvincesService();
+          const provinces = await provincesService.fetchAllAsync();
+          setProvinces(provinces);
+        };
+        fetchData();
+    },[]);
+    const onProvinceSelect = async (event) => {
+        const province_Id = event.target.value;
+        var municipalitiesService = new MunicipalitiesService();
+        const municipalities = await municipalitiesService.fetchFromProvinceAsync(province_Id);
+        setMunicipalities(municipalities);            
+    }
+    const inputChangeHandler = async (event) => {
+      const { name, value } = event.target;
+      setFormFields({ ...formFields, [name]: value });
+    };
+
     return (
         <section className="products-search-filter my-5" id="buffy-stuff-accordion-group">
             <div className="panel-heading" data-bs-toggle="collapse" data-parent="#buffy-stuff-accordion-group" href="#buffy-characters-body">
@@ -47,20 +77,24 @@ const ProductSearchFilter = () => {
                             </div>
                         </div>
                         <div className="col col-xs-3">
-                            <div class="input-group">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Select Province</option>
-                                    <option value="1">Kilo</option>
-                                    <option value="2">Ton</option>
-                                    <option value="3">Piece</option>
-                                </select>
+                            <div className="input-group">
+                            <select className="form-select" aria-label="Default select example" onChange={onProvinceSelect}>
+                                <option value={null}>Select Province</option>
+                                {
+                                    provinces.map((province) => (
+                                        <option  key={province.id} value={province.id}>{province.name}</option>
+                                    ))
+                                }
+                            </select>
                             </div>
                             <div className="input-group">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Select Municipality</option>
-                                    <option value="1">1-5</option>
-                                    <option value="2">5-20</option>
-                                    <option value="3">20-50</option>
+                            <select className="form-select" aria-label="Default select example"  name='municipality_Id' onChange={inputChangeHandler}>
+                                <option value={null}>Select City / Municipal</option>
+                                {
+                                    municipalities.map((municipality) => (
+                                        <option key={municipality.id} value={municipality.id}>{municipality.name}</option>
+                                    ))
+                                }
                                 </select>
                             </div>
                         </div>

@@ -5,13 +5,13 @@ import { getCookie } from '../../utils/cookie.utils';
 import { UserContext } from '../../contexts/user.context';
 import './sign-up.styles.scss';
 
-const defaultFormFields = {
+const loginFormData = {
     email : '',
     password : '',
     rememberMe : true,
 }
 const SignInForm = () => {
-    const [formFields, setFormFields] = useState(defaultFormFields);
+    const [formData, setFormData] = useState(loginFormData);
     const { setSignedIn } = useContext(UserContext);
 
     const handleSubmit = async (event) => {
@@ -19,8 +19,8 @@ const SignInForm = () => {
         try{
             
             var response = await defaultPostRequestAsync(
-                formFields,
-                `/api/v1/Account/Login?RememberMe=${formFields.rememberMe}`,
+                formData,
+                `/api/v1/Account/Login?RememberMe=${formData.rememberMe}`,
                 (data) => {
                 // Set cookies
                 document.cookie = `authorization= Bearer ${encodeURIComponent(data.token)}; expires=${data.expiration}`;
@@ -42,7 +42,7 @@ const SignInForm = () => {
     }
     const inputChangeHandler = (event) => {
         const { name, value } = event.target;
-        setFormFields({...formFields, [name]:value});
+        setFormData({...formData, [name]:value});
     }
 
     return (

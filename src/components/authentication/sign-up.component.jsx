@@ -5,7 +5,7 @@ import ProvincesService from '../../services/provincesService';
 import MunicipalitiesService from '../../services/municipalitiesService';
 import './sign-up.styles.scss';
 
-const defaultFormFields = {
+const registrationFormData = {
     userName : '',
     email : '',
     contactNum1 : '',
@@ -20,10 +20,10 @@ const defaultFormFields = {
 }
 
 const SignUpForm = () => {    
-    const [formFields, setFormFields] = useState(defaultFormFields);
+    const [formData, setFormData] = useState(registrationFormData);
     const [provinces, setProvinces] = useState([]);
     const [municipalities, setMunicipalities] = useState([]);
-    const {userName, email, contactNum1, contactNum2, password, confirmPassword, barangay, street, postalCode, municipality_Id } = formFields;
+    const {userName, email, contactNum1, contactNum2, password, confirmPassword, barangay, street, postalCode, municipality_Id } = formData;
 
     useEffect(() => {
       // Fetching the list of provinces asynchronously
@@ -59,7 +59,7 @@ const SignUpForm = () => {
     }
     const inputChangeHandler = async (event) => {
         const { name, value } = event.target;
-        setFormFields({...formFields, [name]:value});
+        setFormData({...formData, [name]:value});
     }
 
     return (

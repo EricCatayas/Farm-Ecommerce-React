@@ -3,7 +3,7 @@ import { defaultGetRequestAsync } from "../utils/request.utils";
 class ProductCategoriesService {
   constructor() {}
 
-  async GetAllAsync() {
+  async fetchAllAsync() {
 
     return await defaultGetRequestAsync(
         "/api/v1/ProductCategories/GetAll",

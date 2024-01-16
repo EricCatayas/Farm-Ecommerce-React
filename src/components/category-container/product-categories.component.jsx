@@ -8,16 +8,14 @@ import { ProductCategoriesContext } from "../../contexts/product-categories.cont
 import ProductCategoriesService from "../../services/productCategoriesService";
 
 const ProductCategories = ({ onCategorySelectEvent }) => {  
-  const { productCategories, setProductCategories } = useContext(
-    ProductCategoriesContext
-  );
+  const { productCategories, setProductCategories } = useContext(ProductCategoriesContext);
   const [isClicked, setIsClicked] = useState(false);
   const [clickedParentCategory, setClickedParentCategory] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       const productCategoriesService = new ProductCategoriesService();
-      const categories = await productCategoriesService.GetAllAsync();
+      const categories = await productCategoriesService.fetchAllAsync();
       setProductCategories(categories);
     }
     fetchData();
