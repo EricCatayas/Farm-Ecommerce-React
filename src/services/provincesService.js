@@ -1,26 +1,25 @@
-import Cookies from "js-cookie";
 import { defaultGetRequestAsync } from "../utils/request.utils";
+import CookieService from "./cookieService";
 
 class ProvincesService {  
-  cookieName = "provinces-cookie";
-  constructor() {}
+
+  constructor() {
+    this.cookieName = "provinces-data";
+    this.cookieService = new CookieService(this.cookieName);
+  }
 
   async fetchAllAsync() {
+    if (this.cookieService.hasData()) 
+      return this.cookieService.getArray();
+        
     const endpoint = "/api/v1/Address/Provinces";
-    var provinces = Cookies.get(cookieName);
-
-    if(provinces != null){
-      console.log("provinces cookie is not null.")
-      return provinces;
-    }
-
-    provinces = await defaultGetRequestAsync(
+    const provinces = await defaultGetRequestAsync(
       endpoint,
       (data) => console.log(data),
       (error) => console.log("Error: failed to fetch provinces data.")
     );
 
-    Cookies.set(cookieName, provinces);
+    this.cookieService.setArray(provinces);
     return provinces
   }
 }
