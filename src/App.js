@@ -17,7 +17,6 @@ class App extends Component {
     //fetch call
   }
   // TODO: 
-  //      Factory (to remove new keywords)
   render(){
     return (
       <Routes>

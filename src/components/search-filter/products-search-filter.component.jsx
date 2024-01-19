@@ -1,5 +1,8 @@
+import React from 'react';
 import { useContext, useEffect, useState } from 'react';
+import { Dropdown } from '../form-input/dropdown.component';
 import { ProductCategoriesContext } from "../../contexts/product-categories.context";
+import { flattenCategories } from '../../utils/categories.utils';
 import ProvincesService from '../../services/provincesService';
 import MunicipalitiesService from '../../services/municipalitiesService';
 
@@ -17,9 +20,10 @@ const ProductSearchFilter = () => {
     const [formFields, setFormFields] = useState(searchFormData);
     const [provinces, setProvinces] = useState([]);
     const [municipalities, setMunicipalities] = useState([]);
-    const { productCategories, setProductCategories } = useContext(ProductCategoriesContext);
+    const { productCategories } = useContext(ProductCategoriesContext);
+    const allCategories = flattenCategories(productCategories);
     const {category_Id, is_negotiable, min_price, max_price, per_qty_type, municipality_Id } = formFields;
-
+    
     useEffect(()=>{
         const fetchData = async () => {
           var provincesService = new ProvincesService();
@@ -28,10 +32,12 @@ const ProductSearchFilter = () => {
         };
         fetchData();
     },[]);
+
     const onProvinceSelect = async (event) => {
         const province_Id = event.target.value;
         var municipalitiesService = new MunicipalitiesService();
         const municipalities = await municipalitiesService.fetchFromProvinceAsync(province_Id);
+        console.log("New municipalities: " + JSON.stringify(municipalities));
         setMunicipalities(municipalities);            
     }
     const inputChangeHandler = async (event) => {
@@ -63,12 +69,7 @@ const ProductSearchFilter = () => {
                             </select>
                         </div>
                         <div className="col col-xs-3">
-                            <select className="form-select" aria-label="Default select example">
-                                <option selected>Select Category</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>                               
+                            <Dropdown args={allCategories} selectTitle={"Select Category"} onChange={inputChangeHandler}/>                        
                             <div className="input-group">
                                 <span class="input-group-text">Php</span>
                                 <input type="text" aria-label="First name" class="form-control" placeholder='Min'/>
@@ -78,24 +79,10 @@ const ProductSearchFilter = () => {
                         </div>
                         <div className="col col-xs-3">
                             <div className="input-group">
-                            <select className="form-select" aria-label="Default select example" onChange={onProvinceSelect}>
-                                <option value={null}>Select Province</option>
-                                {
-                                    provinces.map((province) => (
-                                        <option  key={province.id} value={province.id}>{province.name}</option>
-                                    ))
-                                }
-                            </select>
+                                <Dropdown args={provinces} selectTitle={"Select Province"} onChange={onProvinceSelect}/>
                             </div>
                             <div className="input-group">
-                            <select className="form-select" aria-label="Default select example"  name='municipality_Id' onChange={inputChangeHandler}>
-                                <option value={null}>Select City / Municipal</option>
-                                {
-                                    municipalities.map((municipality) => (
-                                        <option key={municipality.id} value={municipality.id}>{municipality.name}</option>
-                                    ))
-                                }
-                                </select>
+                                <Dropdown args={municipalities} selectTitle={"Select City/Municipal"} onChange={inputChangeHandler}/>
                             </div>
                         </div>
                         <div className="col col-xs-3">                                

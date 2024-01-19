@@ -15,7 +15,7 @@ class ProvincesService {
     const endpoint = "/api/v1/Address/Provinces";
     const provinces = await defaultGetRequestAsync(
       endpoint,
-      (data) => console.log(data),
+      (data) => console.log("Success: Provinces data has been fetched."),
       (error) => console.log("Error: failed to fetch provinces data.")
     );
 

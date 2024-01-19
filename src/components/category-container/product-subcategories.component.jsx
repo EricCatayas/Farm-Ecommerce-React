@@ -22,7 +22,7 @@ const SubCategories = ({
               {subcategories
                 ? subcategories.map((sub) => (
                     <li name="category_Id" key={sub.id} value={sub.id} onClick={onSelectEvent}>
-                      {sub.category_Name}
+                      {sub.name}
                     </li>
                   ))
                 : ""}

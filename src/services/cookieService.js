@@ -1,8 +1,11 @@
 import Cookies from "js-cookie";
 
+//TODO: Persist cookie expiration 
 class CookieService{
-    constructor(cookieName){
+
+    constructor(cookieName, durationInDays = 14){
         this.cookieName = cookieName;
+        this.durationInDays = durationInDays; // Days 
     }
     
     hasData(){
@@ -19,10 +22,10 @@ class CookieService{
     }
 
     set(value){
-        Cookies.set(this.cookieName, value);
+        Cookies.set(this.cookieName, value, { expires: this.durationInDays });
     }
     setArray(value){
-        Cookies.set(this.cookieName, JSON.stringify(value));
+        Cookies.set(this.cookieName, JSON.stringify(value), { expires: this.durationInDays });
     }
 }
 
