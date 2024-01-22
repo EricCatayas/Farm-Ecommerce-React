@@ -39,6 +39,7 @@ const ProductViewDirectory = () => {
             
           } catch (error) {
             console.log(error);
+            // TODO: error handling
           }
         };
 

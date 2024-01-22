@@ -11,11 +11,16 @@ class ProductsService {
       endpoint += query;
     }
 
-    return await defaultGetRequestAsync(
-      endpoint,
-      (data) => console.log(data),
-      (error) => console.log(error)
-    );
+    try{
+      return await defaultGetRequestAsync(
+        endpoint,
+        (data) => console.log(data),
+        (error) => console.log(error)
+      );
+      }
+    catch(error){
+      throw error;
+    }
   }
 
   async fetchPaginatedProductsAsync(pageNumber, pageSize) {
@@ -25,11 +30,16 @@ class ProductsService {
 
     const endpoint = `/api/v1/Products/GetPaginatedProducts?pageNumber=${pageNumber}&pageSize=${pageSize}`;
 
-    return await defaultGetRequestAsync(
-      endpoint,
-      (data) => console.log(data),
-      (error) => console.log(error)
-    );
+    try{
+      return await defaultGetRequestAsync(
+        endpoint,
+        (data) => console.log(data),
+        (error) => console.log(error)
+      );
+    }
+    catch(error){
+      throw error;
+    }
   }
 }
 

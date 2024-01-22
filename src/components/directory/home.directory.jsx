@@ -13,11 +13,17 @@ const  HomeDirectory = () => {
 
     useEffect(()=>{
         const fetchData = async () => {
-            var productsData = await productsService.fetchPaginatedProductsAsync(1, 4);
-            setProducts(productsData.items);
+            try{
+                var response = await productsService.fetchPaginatedProductsAsync(1, 4);
+                setProducts(response.items);
+            }
+            catch{
+                //  TODO: Error handling
+            }
         }
-
+        
         fetchData();
+
     }, [])
 
     const categorySelectEventHandler = (event) => {

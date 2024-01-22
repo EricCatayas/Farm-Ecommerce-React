@@ -3,11 +3,13 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./contexts/user.context";
 import { ProductsProvider } from "./contexts/products.context";
+import store from "./redux/store";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ProductCategoriesProvider } from "./contexts/product-categories.context";
 import { CartProvider } from "./contexts/cart.context";
+import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -15,15 +17,17 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ProductCategoriesProvider>
-        <ProductsProvider>
-          <CartProvider>
-            <UserProvider>
-              <App />
-            </UserProvider>
-          </CartProvider>
-        </ProductsProvider>
-      </ProductCategoriesProvider>
+      <Provider store={store}>
+        <ProductCategoriesProvider>
+          <ProductsProvider>
+            <CartProvider>
+              <UserProvider>
+                <App />
+              </UserProvider>
+            </CartProvider>
+          </ProductsProvider>
+        </ProductCategoriesProvider>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
