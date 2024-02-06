@@ -34,7 +34,7 @@ const SignUpForm = () => {
       };
       fetchData();
     }, []); 
-
+    
     const onProvinceSelect = async (event) => {
         const province_Id = event.target.value;
         var municipalitiesService = new MunicipalitiesService();

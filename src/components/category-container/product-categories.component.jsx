@@ -1,25 +1,20 @@
 import "./product-categories.styles.scss";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setProductCategories } from "../../redux/productCategoriesSlice";
+import { fetchProductCategories } from "../../redux/actions/productCategories.action.js";
 import SubCategories from "./product-subcategories.component";
 import CategoryMiniCard from "./category-mini-card.component";
 import Spinner from "../spinner/spinner.component";
-//import categories_data from "../../categories-data.json";
-import { ProductCategoriesContext } from "../../contexts/product-categories.context";
-import ProductCategoriesService from "../../services/productCategoriesService";
 
 const ProductCategories = ({ onCategorySelectEvent }) => {  
-  const { productCategories } = useSelector((state) => state.productCategories);
+  const { productCategories, isLoading, errors } = useSelector((state) => state.productCategories);
   const dispatch = useDispatch();
   const [isClicked, setIsClicked] = useState(false);
   const [clickedParentCategory, setClickedParentCategory] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
-      const productCategoriesService = new ProductCategoriesService();
-      const categories = await productCategoriesService.fetchAllAsync();
-      dispatch(setProductCategories(categories));
+      dispatch(fetchProductCategories());
     }
     fetchData();
   }, []);
@@ -50,7 +45,7 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
       <div className="row">
         <div className="col-xs-12">
           <ul className="nav navbar-nav justify-content-evenly d-flex flex-row">
-            { productCategories && productCategories.length > 0 ? 
+            { !isLoading && productCategories ? 
             ( productCategories.map((category) => (
               <CategoryMiniCard
                 key={category.id}

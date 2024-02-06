@@ -30,14 +30,14 @@ export const defaultPostRequestAsync = (data, endpoint, callback, errorCallback)
             return response.json()
         })
         .then(jsonResponse => {   
-            if(callback)
-                callback(jsonResponse);            
+            if (callback && typeof callback === "function")
+              callback(jsonResponse);            
 
             resolve(jsonResponse);
         })
         .catch(error => {
-            if(errorCallback)
-                errorCallback(error);
+            if (errorCallback && typeof errorCallback === "function")
+              errorCallback(error);
             
             reject(error);
         });
@@ -68,14 +68,14 @@ export const formPostRequestAsync = (formData, endpoint, callback, errorCallback
             return response.json()
         })
         .then(jsonResponse => {   
-            if(callback)
-                callback(jsonResponse);            
+            if (callback && typeof callback === "function")
+              callback(jsonResponse);            
 
             resolve(jsonResponse);
         })
         .catch(error => {
-            if(errorCallback)
-                errorCallback(error);
+            if (errorCallback && typeof errorCallback === "function")
+              errorCallback(error);
             
             reject(error);
         });
@@ -107,12 +107,14 @@ export const multiPartPostRequestAsync = (formData, endpoint, callback, errorCal
             return response.json();
           })
           .then((jsonResponse) => {
-            if (callback) callback(jsonResponse);
+            if (callback && typeof(callback) === 'function') 
+                callback(jsonResponse);
 
             resolve(jsonResponse);
           })
           .catch((error) => {
-            if (errorCallback) errorCallback(error);
+            if (errorCallback && typeof errorCallback === "function")
+              errorCallback(error);
 
             reject(error);
           });

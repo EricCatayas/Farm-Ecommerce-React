@@ -5,11 +5,17 @@ class ProductCategoriesService {
 
   async fetchAllAsync() {
 
-    return await defaultGetRequestAsync(
-        "/api/v1/ProductCategories/GetAll",
-        (data) => console.log(data),
-        (error) => console.log(error)
-    );      
+    try
+    {
+      return await defaultGetRequestAsync(
+          "/api/v1/ProductCategories/GetAll",
+          (data) => console.log(data),
+          (error) => console.log(error)
+      );      
+    }
+    catch(error){
+      throw error;      
+    }
   }
 }
 

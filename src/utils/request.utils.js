@@ -20,12 +20,12 @@ export const defaultGetRequestAsync = (endpoint, callback, errorCallback) => {
         return response.json();
       })
       .then((jsonResponse) => {
-        if (callback) callback(jsonResponse);
+        if (callback  && typeof(callback) === 'function') callback(jsonResponse);
 
         resolve(jsonResponse);
       })
       .catch((error) => {
-        if (errorCallback) errorCallback(error);
+        if (errorCallback && typeof(errorCallback) === 'function') errorCallback(error);
 
         reject(error);
       });
