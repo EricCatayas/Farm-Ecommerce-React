@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
-import { setCurrentUser } from '../../redux/user';
+import { setCurrentUser } from '../../redux/userSlice';
 import { defaultPostRequestAsync } from '../../utils/form.utils';
 import { FormInputField } from '../form-input/form-input-field.component';
 import { getCookie } from '../../utils/cookie.utils';
@@ -24,17 +24,17 @@ const SignInForm = () => {
                 formData,
                 `/api/v1/Account/Login?RememberMe=${formData.rememberMe}`,
                 (data) => {
-                // Set cookies
-                document.cookie = `authorization= Bearer ${encodeURIComponent(data.token)}; expires=${data.expiration}`;
-                document.cookie = `refreshToken=${encodeURIComponent(data.refreshToken)}; expires=${data.refreshTokenExpirationDateTime}`;           
-                // Retrieve stored cookies
-                console.log("Here is your sign in cookie");
-                console.log(getCookie('authorization'));
+                    // Set cookies
+                    document.cookie = `authorization= Bearer ${encodeURIComponent(data.token)}; expires=${data.expiration}`;
+                    document.cookie = `refreshToken=${encodeURIComponent(data.refreshToken)}; expires=${data.refreshTokenExpirationDateTime}`;           
+                    // Retrieve stored cookies
+                    console.log("Here is your sign in cookie");
+                    console.log(getCookie('authorization'));
 
-                dispatch(setCurrentUser(true));
                 },                                                         
             );
             
+            dispatch(setCurrentUser(response));
             console.log("you have been authen");
             console.log(response);            
         }

@@ -1,5 +1,7 @@
 import "./product-categories.styles.scss";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setProductCategories } from "../../redux/productCategoriesSlice";
 import SubCategories from "./product-subcategories.component";
 import CategoryMiniCard from "./category-mini-card.component";
 import Spinner from "../spinner/spinner.component";
@@ -8,7 +10,8 @@ import { ProductCategoriesContext } from "../../contexts/product-categories.cont
 import ProductCategoriesService from "../../services/productCategoriesService";
 
 const ProductCategories = ({ onCategorySelectEvent }) => {  
-  const { productCategories, setProductCategories } = useContext(ProductCategoriesContext);
+  const { productCategories } = useSelector((state) => state.productCategories);
+  const dispatch = useDispatch();
   const [isClicked, setIsClicked] = useState(false);
   const [clickedParentCategory, setClickedParentCategory] = useState({});
 
@@ -16,7 +19,7 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
     const fetchData = async () => {
       const productCategoriesService = new ProductCategoriesService();
       const categories = await productCategoriesService.fetchAllAsync();
-      setProductCategories(categories);
+      dispatch(setProductCategories(categories));
     }
     fetchData();
   }, []);

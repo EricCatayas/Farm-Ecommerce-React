@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getCartCount, getCartTotal } from "../utils/cart.utils";
 
 const initialState = {
   isCartOpen: false,
@@ -25,18 +26,20 @@ const cartSlice = createSlice({
         // If the item is not in the cart, add it with a quantity of 1
         state.cartItems.push({ ...productToAdd, quantity: 1 });
       }
-
-      // Update cartCount and cartTotal based on the updated cartItems
-      state.cartCount = state.cartItems.reduce(
-        (count, item) => count + item.quantity,
-        0
-      );
-
-      state.cartTotal = state.cartItems.reduce(
-        (total, item) => total + item.quantity * item.price,
-        0
-      );
+      
+      state.cartCount = getCartCount(state.cartItems);
+      state.cartTotal = getCartTotal(state.cartItems);
     },
+    setCartItems: (state, action) => {
+      const items = action.payload;
+
+      state.cartItems = items;
+      state.cartCount = getCartCount(state.cartItems);
+      state.cartTotal = getCartTotal(state.cartItems);
+    },
+    setIsCartOpen(state, action){
+      state.isCartOpen = action.payload;
+    }
   },
 });
 

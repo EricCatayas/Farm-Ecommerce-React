@@ -1,19 +1,21 @@
-import { useContext } from "react";
-import { UserContext } from "../../contexts/user.context";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentUser } from "../../redux/userSlice";
 import { SignOutUser } from "../../utils/sign-in.utils";
-import { CartContext } from "../../contexts/cart.context";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import './navbar.styles.css';
 
 const Navbar = () => {
 
-    const { isSignedIn, setSignedIn } = useContext(UserContext);
-    const { cartCount, isCartOpen, setIsCartOpen } = useContext(CartContext)
+
+    const { currentUser } = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+
+    const { cartCount, isCartOpen, setIsCartOpen } = useSelector((state) => state.cart);
 
     const handleSignOutClick = () => {
         console.log("Signing user out");
         SignOutUser();
-        setSignedIn(false);
+        dispatch(setCurrentUser(null));
     }
 
     const handleCartClick = () => {
@@ -34,11 +36,7 @@ const Navbar = () => {
               <div className="col-md-5 my-auto">
                 <form role="search">
                   <div className="input-group">  
-                    <input
-                      type="search"
-                      placeholder="Search products"
-                      className="form-control"
-                    />
+                    <input type="search" placeholder="Search products" className="form-control"/>
                     <button className="btn bg-white" type="submit">
                       <i className="fa fa-search"></i>
                     </button>
@@ -46,7 +44,7 @@ const Navbar = () => {
                 </form>
               </div>
               <div className="col-md-5 my-auto">
-                {isSignedIn ? (
+                {currentUser ? (
                   <ul className="nav justify-content-end">
                     <li className="nav-item" onClick={handleCartClick}>
                       <a className="nav-link" href="#">
@@ -63,20 +61,10 @@ const Navbar = () => {
                       </a>
                     </li> */}
                     <li className="nav-item dropdown">
-                      <a
-                        className="nav-link dropdown-toggle"
-                        href="#"
-                        id="navbarDropdown"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
+                      <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i className="fa fa-user"></i> Account
                       </a>
-                      <ul
-                        className="dropdown-menu"
-                        aria-labelledby="navbarDropdown"
-                      >
+                      <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                           <a className="dropdown-item" href="#">
                             <i className="fa fa-user"></i> Profile
@@ -93,11 +81,7 @@ const Navbar = () => {
                           </a>
                         </li>
                         <li>
-                          <a
-                            className="dropdown-item"
-                            href="#"
-                            onClick={handleSignOutClick}
-                          >
+                          <a className="dropdown-item" href="#" onClick={handleSignOutClick}>
                             <i className="fa fa-sign-out"></i> Logout
                           </a>
                         </li>

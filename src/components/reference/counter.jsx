@@ -9,9 +9,9 @@ export const UsingReducer = () => {
     const onIncrement = () => {
         dispatch(increment);
     }
-     const onIncrementByAmount = () => {
-       dispatch(incrementByAmount(1000));
-     };
+    const onIncrementByAmount = () => {
+        dispatch(incrementByAmount(1000));
+    };
     return(
         <section>
             <h1>The count is: {count}</h1>
