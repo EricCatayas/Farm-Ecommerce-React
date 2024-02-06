@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentUser } from "../../redux/userSlice";
+import { setCurrentUser } from "../../redux/user/userSlice";
 import AuthenticationService from "../../services/authenticationService";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import './navbar.styles.css';

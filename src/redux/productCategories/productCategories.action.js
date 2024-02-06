@@ -1,4 +1,4 @@
-import { setProductCategories, setErrors, setLoading } from "../productCategoriesSlice";
+import { setProductCategories, setErrors, setLoading } from "./productCategoriesSlice";
 import ProductCategoriesService from "../../services/productCategoriesService";
 
 export const fetchProductCategories = () => async (dispatch) => {

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCartCount, getCartTotal } from "../utils/cart.utils";
+import { getCartCount, getCartTotal } from "../../utils/cart.utils";
 
 const initialState = {
   isCartOpen: false,

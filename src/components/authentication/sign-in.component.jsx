@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
-import { setCurrentUser } from '../../redux/userSlice';
+import { setCurrentUser } from '../../redux/user/userSlice';
 import { FormInputField } from '../form-input/form-input-field.component';
 import AuthenticationService from '../../services/authenticationService';
 import './sign-up.styles.scss';
