@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from '../../redux/userSlice';
-import { defaultPostRequestAsync } from '../../utils/form.utils';
 import { FormInputField } from '../form-input/form-input-field.component';
-import { getCookie } from '../../utils/cookie.utils';
+import AuthenticationService from '../../services/authenticationService';
 import './sign-up.styles.scss';
 
 const loginFormData = {
@@ -14,25 +13,14 @@ const loginFormData = {
 const SignInForm = () => {
     const [formData, setFormData] = useState(loginFormData);
     const dispatch = useDispatch();
+    const authService = new AuthenticationService();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         
         //TODO: encapsulatae in service
         try{
-            var response = await defaultPostRequestAsync(
-                formData,
-                `/api/v1/Account/Login?RememberMe=${formData.rememberMe}`,
-                (data) => {
-                    // Set cookies
-                    document.cookie = `authorization= Bearer ${encodeURIComponent(data.token)}; expires=${data.expiration}`;
-                    document.cookie = `refreshToken=${encodeURIComponent(data.refreshToken)}; expires=${data.refreshTokenExpirationDateTime}`;           
-                    // Retrieve stored cookies
-                    console.log("Here is your sign in cookie");
-                    console.log(getCookie('authorization'));
-
-                },                                                         
-            );
+            var response = await authService.signInAsync(formData.email, formData.password, formData.rememberMe);
             
             dispatch(setCurrentUser(response));
             console.log("you have been authen");

@@ -1,20 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "../../redux/userSlice";
-import { SignOutUser } from "../../utils/sign-in.utils";
+import AuthenticationService from "../../services/authenticationService";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import './navbar.styles.css';
 
 const Navbar = () => {
-
-
-    const { currentUser } = useSelector((state) => state.user);
     const dispatch = useDispatch();
+    const { currentUser } = useSelector((state) => state.user);
+    const authService = new AuthenticationService
+    
 
     const { cartCount, isCartOpen, setIsCartOpen } = useSelector((state) => state.cart);
 
     const handleSignOutClick = () => {
         console.log("Signing user out");
-        SignOutUser();
+        authService.signOut();
         dispatch(setCurrentUser(null));
     }
 

@@ -42,6 +42,7 @@ const SignUpForm = () => {
         setMunicipalities(municipalities);            
     }
 
+    // TODO: implement
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
