@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ProductsContext } from "../../contexts/products.context";
 import "./products-list.styles.css";
@@ -6,7 +6,7 @@ import Spinner from "../spinner/spinner.component";
 
 // TODO: Fix loading new product if clicked on same page
 const ProductsContextVerticalList = () => {
-  const { products } = useContext(ProductsContext);
+  const { products } = useSelector((state) => state.productList);
   const navigate = useNavigate();
 
   const onViewProductClickEvent = (event) => {

@@ -1,27 +1,24 @@
-import { useState, useEffect, useContext } from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchProducts } from "../../redux/product/productListPagination.actions";
 import ProductCategories from '../category-container/product-categories.component';
 import ProductSearchFilter from '../search-filter/products-search-filter.component';
 import ProductsContextVerticalList from '../products/products-context-list.component';
-import { ProductsContext } from '../../contexts/products.context';
 import GoogleMapLocations from '../map/google-map-locations.component';
 import MainMenu from '../main-menu/main-menu.component';
-import ProductsService from '../../services/productsService';
 
 const  HomeDirectory = () => {
-    const { setProducts } = useContext(ProductsContext);
-    const productsService = new ProductsService();
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         const fetchData = async () => {
             try{
-                var response = await productsService.fetchPaginatedProductsAsync(1, 4);
-                setProducts(response.items);
+                dispatch(fetchProducts());
             }
             catch{
                 //  TODO: Error handling
             }
         }
-        
         fetchData();
 
     }, [])

@@ -1,7 +1,7 @@
 import "./product-categories.styles.scss";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProductCategories } from "../../redux/productCategories/productCategories.action.js";
+import { fetchProductCategories } from "../../redux/productCategory/productCategories.action";
 import SubCategories from "./product-subcategories.component";
 import CategoryMiniCard from "./category-mini-card.component";
 import Spinner from "../spinner/spinner.component";

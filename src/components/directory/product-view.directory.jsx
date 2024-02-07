@@ -1,10 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { BreadCrumb } from "../breadcrumb/breadcrumb.component";
 import { Advertisement } from "../advertisement/advertisement.component";
-import { ProductsContext } from '../../contexts/products.context';
-import ProductService from '../../services/productService';
-import ProductsService from '../../services/productsService';
 import MainMenu from '../main-menu/main-menu.component';
 import Product from '../products/product.component';
 import ProductsContextVerticalList from '../products/products-context-list.component';
@@ -12,19 +10,20 @@ import { ApiVersion,ProductsServicesFactory } from '../../factories/productsServ
 
 
 const ProductViewDirectory = () => { 
-    const { setProducts } = useContext(ProductsContext);
+    const { setProducts } = useSelector((state) => state.productList);
     const [ product, setProduct ] = useState(null);
+    const dispatch = useDispatch();
     const params = useParams();
     const productID = params.id;
     const breadcrumbItems = product ? ["Products", product.category_Name] : ["Products"];
-    const productsServicesFactory = new ProductsServicesFactory();    
+    const productsServicesFactory = new ProductsServicesFactory();  
 
     useEffect(() => {
         const fetchData = async () => {
           try {
             const productService = productsServicesFactory.createProductService(ApiVersion.V1);
             const productData = await productService.fetchProductAsync(productID);
-            setProduct(productData);
+            dispatch(setProduct(productData));
 
             let filteredProducts = [];
             const productsService = productsServicesFactory.createProductsService(ApiVersion.V1);
@@ -44,7 +43,7 @@ const ProductViewDirectory = () => {
         };
 
         fetchData();
-    }, []);        
+    }, [productID]);        
 
     return (
       <div className="product-view">
