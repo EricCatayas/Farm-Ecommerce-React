@@ -31,11 +31,12 @@ class ProductsService {
     const endpoint = `/api/v1/Products/GetPaginatedProducts?pageNumber=${pageNumber}&pageSize=${pageSize}`;
 
     try{
-      return await defaultGetRequestAsync(
+      const data = await defaultGetRequestAsync(
         endpoint,
         (data) => console.log(data),
         (error) => console.log(error)
       );
+      return data.items;
     }
     catch(error){
       throw error;

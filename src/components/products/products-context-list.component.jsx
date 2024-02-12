@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ProductsContext } from "../../contexts/products.context";
-import "./products-list.styles.css";
+import ProductsListPagination from "../pagination/products-list-pagination.component";
 import Spinner from "../spinner/spinner.component";
+import "./products-list.styles.css";
 
 // TODO: Fix loading new product if clicked on same page
 const ProductsContextVerticalList = () => {
@@ -92,6 +93,7 @@ const ProductsContextVerticalList = () => {
           </table>
         </div>
       </div>
+      <ProductsListPagination/>
     </section>
   );
 }

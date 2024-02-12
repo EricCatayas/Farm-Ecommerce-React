@@ -19,7 +19,7 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
     fetchData();
   }, []);
 
-  const onClickEvent = (event) => {
+  const onClickEventHandler = (event) => {
     const id = event.target.dataset.id;
     const clickedParentCategory = productCategories.find((cat) => cat.id == id);
 
@@ -31,7 +31,7 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
     }
   };
 
-  const onCloseEvent = () => {
+  const onCloseEventHandler = () => {
     setIsClicked(false);
   };
 
@@ -50,7 +50,7 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
               <CategoryMiniCard
                 key={category.id}
                 category={category}
-                onClickHandler={onClickEvent}
+                onClickHandler={onClickEventHandler}
               />
             ))):(
               <Spinner/>
@@ -61,7 +61,7 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
               category_id={clickedParentCategory.id}
               subcategories={clickedParentCategory.subCategories}
               onSelectEvent={onCategorySelectEventHandler}
-              onCloseHandler={onCloseEvent}
+              onCloseHandler={onCloseEventHandler}
             />
           ) : (
             ""
