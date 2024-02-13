@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts } from "../../redux/product/productListPagination.actions";
 import ProductCategories from '../category-container/product-categories.component';
 import ProductSearchFilter from '../search-filter/products-search-filter.component';
-import ProductsContextVerticalList from '../products/products-context-list.component';
+import ProductsContextVerticalList from '../products/products-vertical-list.component';
 import GoogleMapLocations from '../map/google-map-locations.component';
 import MainMenu from '../main-menu/main-menu.component';
 

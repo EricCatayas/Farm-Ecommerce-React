@@ -14,16 +14,20 @@ const ProductsListPagination = () => {
 
   const pageClickHandler = (event) => {
     console.log("pageClicked!");
-    //dispatch(setPageNumber(pageNumber));
-    //dispatch(fetchProducts());
+    const pageNumber = event.target.dataset.id;
+
+    dispatch(setPageNumber(pageNumber));
+    dispatch(fetchProducts());
   }
   const nextPageHandler = () => {
     console.log("next page clicked!")
-    dispatch(fetchNextPage());
+    if(pageNumber < maxPages)
+      dispatch(fetchNextPage());
   }
   const previousPageHandler = () => {
-    console.log("previous page clicked!")
-    dispatch(fetchPreviousPage());
+    console.log("previous page clicked!");
+    if(pageNumber > 1)
+      dispatch(fetchPreviousPage());
   }
 
   return (
@@ -31,10 +35,10 @@ const ProductsListPagination = () => {
       <div className="container">
         <ul className="pagination">
           <li className="pagination__btn">
-            <PreviousButton onClick={previousPageHandler}/>
+            <PreviousButton onClickEventHandler={previousPageHandler}/>
           </li>
           {pageNumbers.map((page) => (
-            <li key={page} className={`pagination__numbers ${ page === pageNumber ? "active" : "" }`} onClick={pageClickHandler}>{page}</li>
+            <li key={page} className={`pagination__numbers ${ page === pageNumber ? "active" : "" }`} data-id={page} onClick={pageClickHandler}>{page}</li>
           ))}
           {pageNumber < maxPages && 
             <>
@@ -43,7 +47,7 @@ const ProductsListPagination = () => {
             </>
           }
           <li className="pagination__btn">
-            <NextButton onClick={nextPageHandler}/>
+            <NextButton onClickEventHandler={nextPageHandler}/>
           </li>
         </ul>
       </div>

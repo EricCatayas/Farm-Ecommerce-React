@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom"; 
-import "./products-list.styles.css";
+import "./products-vertical-list.styles.css";
 
-// TODO: useContext, selectedProduct 
 
+// Note: Use ProductsVerticalList
 function ProductsVerticalList({ products }) {
   const navigate = useNavigate();
 
