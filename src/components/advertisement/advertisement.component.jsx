@@ -1,6 +1,6 @@
 
 // TODO
-export const Advertisement = () => {
+const AdvertisementBox = () => {
     return (
       <div className="alert alert-info add-ad-info">
         <div className="row">
@@ -24,3 +24,5 @@ export const Advertisement = () => {
       </div>
     );
 }
+
+export default AdvertisementBox;

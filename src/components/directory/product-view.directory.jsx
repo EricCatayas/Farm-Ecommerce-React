@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { BreadCrumb } from "../breadcrumb/breadcrumb.component";
-import { Advertisement } from "../advertisement/advertisement.component";
 import MainMenu from '../main-menu/main-menu.component';
 import Product from '../products/product.component';
 import ProductsContextVerticalList from '../products/products-vertical-list.component';
+import AdvertisementBox from "../advertisement/advertisement.component";
 import { ApiVersion,ProductsServicesFactory } from '../../factories/productsServicesFactory';
 
 
@@ -52,7 +52,7 @@ const ProductViewDirectory = () => {
           <BreadCrumb items={breadcrumbItems} />
           {/* TODO: Mini Google Maps */}          
           { product && <Product product={product} /> }
-          <Advertisement />
+          <AdvertisementBox />
           <ProductsContextVerticalList/>
           {/* TODO: Products List Menu Buttons */}
         </div>

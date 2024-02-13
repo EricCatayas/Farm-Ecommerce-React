@@ -16,7 +16,8 @@ class App extends Component {
   componentDidMount(){
     //fetch call
   }
-  // TODO: 
+  // TODO: footer preliminary design
+
   render(){
     return (
       <Routes>
