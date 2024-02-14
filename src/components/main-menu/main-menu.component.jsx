@@ -13,9 +13,9 @@ const MainMenu = () => {
                 <div className="col col-xs-9 d-flex align-items-center">
                     <div className="main-menu-nav-container">
                         <ul className="nav navbar-nav d-flex flex-row">
-                            <li className="nav-item"><span className="badge theme-color">Manage Store</span></li>
-                            <li className="nav-item"><span className="badge text-bg-danger">Free Advertisement</span></li>
-                            <li className="nav-item disabled">About Us</li>
+                            <li className="nav-item"></li>
+                            <li className="nav-item"><a className="btn btn-theme" href="/">Advertisements</a></li>
+                            <li className="nav-item"><a className="btn btn-danger">Manage Store</a></li>
                         </ul>
                     </div>
                 </div>

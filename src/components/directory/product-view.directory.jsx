@@ -5,7 +5,7 @@ import { BreadCrumb } from "../breadcrumb/breadcrumb.component";
 import MainMenu from '../main-menu/main-menu.component';
 import Product from '../products/product.component';
 import ProductsContextVerticalList from '../products/products-vertical-list.component';
-import AdvertisementBox from "../advertisement/advertisement.component";
+import AdvertisementBox from "../advertisement/advertisement-box.component";
 import { ApiVersion,ProductsServicesFactory } from '../../factories/productsServicesFactory';
 
 

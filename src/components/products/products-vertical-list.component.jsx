@@ -74,14 +74,10 @@ const ProductsContextVerticalList = () => {
                                 </div>
                               </div>
                               <div className="col-3">
-                                <button
-                                  className="btn theme-color"
-                                  value={product.id}
-                                  onClick={onViewProductClickEvent}
-                                >
+                                <button className="btn btn-theme btn-block small lowercase" value={product.id} onClick={onViewProductClickEvent}>
                                   View Advertisement
                                 </button>
-                                <button className="btn btn-primary">
+                                <button className="btn btn-primary btn-block small lowercase">
                                   Contact Seller
                                 </button>
                               </div>
