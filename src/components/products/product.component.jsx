@@ -1,4 +1,4 @@
-
+import ImageCarousel from "../carousel/image-carousel.component";
 const Product = ({product}) =>{
 
     return (
@@ -8,7 +8,8 @@ const Product = ({product}) =>{
             <div className="col-xs-8">
               <div className="row mb-20">
                 <div className="col-sm-12">
-                  {/* Product Picture & Slider */}
+                  {/* Product Picture & Slider */} 
+                  <ImageCarousel images={product.images}/>
                 </div>
               </div>
               <div className="row">

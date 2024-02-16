@@ -1,0 +1,38 @@
+.picture-slider {
+  width: 100%;
+  position: relative;
+  left: 0px;
+  top: 0px;
+  z-index: 999;
+  opacity: 1;
+  max-width: 390px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.picture-slider img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.picture-slider button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+  z-index: 1;
+}
+
+.picture-slider .prev {
+  left: 0;
+}
+
+.picture-slider .next {
+  right: 0;
+}

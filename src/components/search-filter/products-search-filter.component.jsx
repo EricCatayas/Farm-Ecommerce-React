@@ -1,7 +1,7 @@
 import React from 'react';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Dropdown } from '../form-input/dropdown.component';
-import { ProductCategoriesContext } from "../../contexts/product-categories.context";
 import { flattenCategories } from '../../utils/categories.utils';
 import ProvincesService from '../../services/provincesService';
 import MunicipalitiesService from '../../services/municipalitiesService';
@@ -20,7 +20,7 @@ const ProductSearchFilter = () => {
     const [formFields, setFormFields] = useState(searchFormData);
     const [provinces, setProvinces] = useState([]);
     const [municipalities, setMunicipalities] = useState([]);
-    const { productCategories } = useContext(ProductCategoriesContext);
+    const { productCategories, isLoading, errors } = useSelector((state) => state.productCategories);
     const allCategories = flattenCategories(productCategories);
     const {category_Id, is_negotiable, min_price, max_price, per_qty_type, municipality_Id } = formFields;
     
@@ -87,8 +87,8 @@ const ProductSearchFilter = () => {
                             </div>
                         </div>
                         <div className="col col-xs-3">                                
-                            <button type='submit'>Filter</button>  
-                            <a className='btn' href='/'>Remove Filter</a>                              
+                            <button className="btn btn-primary" type="submit">Filter</button>  
+                            <a className="btn btn-danger" href="/">Remove Filter</a>                              
                         </div>  
                     </div>
                 </form>

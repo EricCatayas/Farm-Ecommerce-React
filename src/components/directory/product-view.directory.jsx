@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { BreadCrumb } from "../breadcrumb/breadcrumb.component";
+import { setProducts } from '../../redux/product/productListSlice';
 import MainMenu from '../main-menu/main-menu.component';
 import Product from '../products/product.component';
 import ProductsContextVerticalList from '../products/products-vertical-list.component';
@@ -10,7 +11,6 @@ import { ApiVersion,ProductsServicesFactory } from '../../factories/productsServ
 
 
 const ProductViewDirectory = () => { 
-    const { setProducts } = useSelector((state) => state.productList);
     const [ product, setProduct ] = useState(null);
     const dispatch = useDispatch();
     const params = useParams();
@@ -23,7 +23,7 @@ const ProductViewDirectory = () => {
           try {
             const productService = productsServicesFactory.createProductService(ApiVersion.V1);
             const productData = await productService.fetchProductAsync(productID);
-            dispatch(setProduct(productData));
+            setProduct(productData);
 
             let filteredProducts = [];
             const productsService = productsServicesFactory.createProductsService(ApiVersion.V1);
@@ -34,7 +34,7 @@ const ProductViewDirectory = () => {
               filteredProducts = await productsService.fetchFilteredProductsAsync();
             
             console.log("Filtered Products:" + JSON.stringify(filteredProducts));
-            setProducts(filteredProducts);
+            dispatch(setProducts(filteredProducts));
             
           } catch (error) {
             console.log(error);

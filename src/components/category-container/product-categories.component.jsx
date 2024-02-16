@@ -1,22 +1,20 @@
 import "./product-categories.styles.scss";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchProductCategories } from "../../redux/productCategory/productCategories.action";
+import { useSelector } from "react-redux";
 import SubCategories from "./product-subcategories.component";
 import CategoryMiniCard from "./category-mini-card.component";
 import Spinner from "../spinner/spinner.component";
 
 const ProductCategories = ({ onCategorySelectEvent }) => {  
   const { productCategories, isLoading, errors } = useSelector((state) => state.productCategories);
-  const dispatch = useDispatch();
   const [isClicked, setIsClicked] = useState(false);
   const [clickedParentCategory, setClickedParentCategory] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
-      dispatch(fetchProductCategories());
+
     }
-    fetchData();
+    //fetchData();
   }, []);
 
   const onClickEventHandler = (event) => {
