@@ -1,4 +1,6 @@
 import "./product-subcategories.styles.scss";
+
+// Version 1
 const SubCategories = ({
   category_id,
   subcategories,
@@ -16,12 +18,21 @@ const SubCategories = ({
         <div className="col-xs-12">
           <div className="float_center">
             <ul className="child">
-              <li name="category_Id" value={category_id} onClick={onSelectEvent}>
+              <li
+                name="category_Id"
+                value={category_id}
+                onClick={onSelectEvent}
+              >
                 All
               </li>
               {subcategories
                 ? subcategories.map((sub) => (
-                    <li name="category_Id" key={sub.id} value={sub.id} onClick={onSelectEvent}>
+                    <li
+                      name="category_Id"
+                      key={sub.id}
+                      value={sub.id}
+                      onClick={onSelectEvent}
+                    >
                       {sub.name}
                     </li>
                   ))
@@ -29,7 +40,7 @@ const SubCategories = ({
             </ul>
           </div>
         </div>
-      </div>
+      </div>      
     </section>
   );
 };
