@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./image-carousel.styles.css";
 
+//TODO: Improve design
 const ImageCarousel = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 

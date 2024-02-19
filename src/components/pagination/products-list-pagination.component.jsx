@@ -5,6 +5,7 @@ import { NextButton, PreviousButton } from './pagination-buttons';
 import { getPageNumbers } from '../../utils/page-numbers.utils';
 import './products-list-pagination.styles.scss';
 
+//TODO: Button lost "active"
 const ProductsListPagination = () => {
   const { pageNumber } = useSelector((state) => state.productListPagination);
   const dispatch = useDispatch();

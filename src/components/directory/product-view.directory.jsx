@@ -5,7 +5,7 @@ import { BreadCrumb } from "../breadcrumb/breadcrumb.component";
 import { setProducts } from '../../redux/product/productListSlice';
 import MainMenu from '../main-menu/main-menu.component';
 import Product from '../products/product.component';
-import ProductsContextVerticalList from '../products/products-vertical-list.component';
+import ProductsVerticalList from '../products/products-vertical-list.component';
 import AdvertisementBox from "../advertisement/advertisement-box.component";
 import { ApiVersion,ProductsServicesFactory } from '../../factories/productsServicesFactory';
 
@@ -53,7 +53,7 @@ const ProductViewDirectory = () => {
           {/* TODO: Mini Google Maps */}          
           { product && <Product product={product} /> }
           <AdvertisementBox />
-          <ProductsContextVerticalList/>
+          <ProductsVerticalList/>
           {/* TODO: Products List Menu Buttons */}
         </div>
       </div>

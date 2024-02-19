@@ -6,8 +6,8 @@ import Spinner from "../spinner/spinner.component";
 import "./products-vertical-list.styles.css";
 
 
-const ProductsContextVerticalList = () => {
-  const { products } = useSelector((state) => state.productList);
+const ProductsVerticalList = () => {
+  const { products, isLoading } = useSelector((state) => state.productList);
   const navigate = useNavigate();
 
   const onViewProductClickEvent = (event) => {
@@ -22,7 +22,7 @@ const ProductsContextVerticalList = () => {
           <div className="col-sm-12">
             <table className="table">
               <tbody>
-                {products && products.length > 0 ? (
+                {!isLoading && products && products.length > 0 ? (
                   products.map((product) => (
                     <tr key={product.id}>
                       <td>
@@ -74,7 +74,11 @@ const ProductsContextVerticalList = () => {
                                 </div>
                               </div>
                               <div className="col-3">
-                                <button className="btn btn-theme btn-block small lowercase" value={product.id} onClick={onViewProductClickEvent}>
+                                <button
+                                  className="btn btn-theme btn-block small lowercase"
+                                  value={product.id}
+                                  onClick={onViewProductClickEvent}
+                                >
                                   View Advertisement
                                 </button>
                                 <button className="btn btn-primary btn-block small lowercase">
@@ -95,9 +99,9 @@ const ProductsContextVerticalList = () => {
           </div>
         </div>
       </section>
-      <ProductsListPagination/>
+      <ProductsListPagination />
     </>
   );
 }
 
-export default ProductsContextVerticalList;
+export default ProductsVerticalList;

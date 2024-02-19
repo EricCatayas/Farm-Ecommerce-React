@@ -3,7 +3,7 @@ import "./products-vertical-list.styles.css";
 
 
 // Note: Use ProductsVerticalList
-function ProductsVerticalList({ products }) {
+function ProductsList({ products }) {
   const navigate = useNavigate();
 
   const onViewProductClickEvent = (event) => {
@@ -84,4 +84,4 @@ function ProductsVerticalList({ products }) {
   );
 }
 
-export default ProductsVerticalList;
+export default ProductsList;

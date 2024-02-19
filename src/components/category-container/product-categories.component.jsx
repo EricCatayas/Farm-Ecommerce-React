@@ -7,8 +7,7 @@ import Spinner from "../spinner/spinner.component";
 
 const ProductCategories = ({ onCategorySelectEvent }) => {  
   const { productCategories, isLoading, errors } = useSelector((state) => state.productCategories);
-  const [isClicked, setIsClicked] = useState(false);
-  const [clickedParentCategory, setClickedParentCategory] = useState({});
+  const [clickedParentCategory, setClickedParentCategory] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,13 +23,12 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
     console.log("category clicked event");
 
     if (clickedParentCategory != null) {
-      setIsClicked(true);
       setClickedParentCategory(clickedParentCategory);
     }
   };
 
   const onCloseEventHandler = () => {
-    setIsClicked(false);
+    setClickedParentCategory(null);
   };
 
   const onCategorySelectEventHandler = (event) => {
@@ -43,18 +41,19 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
       <div className="row">
         <div className="col-xs-12">
           <ul className="nav navbar-nav justify-content-evenly d-flex flex-row">
-            { !isLoading && productCategories ? 
-            ( productCategories.map((category) => (
-              <CategoryMiniCard
-                key={category.id}
-                category={category}
-                onClickHandler={onClickEventHandler}
-              />
-            ))):(
-              <Spinner/>
+            {!isLoading && productCategories ? (
+              productCategories.map((category) => (
+                <CategoryMiniCard
+                  key={category.id}
+                  category={category}
+                  onClickHandler={onClickEventHandler}
+                />
+              ))
+            ) : (
+              <Spinner />
             )}
           </ul>
-          {isClicked ? (
+          {clickedParentCategory ? (
             <SubCategories
               category_id={clickedParentCategory.id}
               subcategories={clickedParentCategory.subCategories}
