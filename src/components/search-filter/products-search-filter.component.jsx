@@ -35,10 +35,16 @@ const ProductSearchFilter = () => {
 
     const onProvinceSelect = async (event) => {
         const province_Id = event.target.value;
-        var municipalitiesService = new MunicipalitiesService();
-        const municipalities = await municipalitiesService.fetchFromProvinceAsync(province_Id);
-        console.log("New municipalities: " + JSON.stringify(municipalities));
-        setMunicipalities(municipalities);            
+
+        if(province_Id){
+            var municipalitiesService = new MunicipalitiesService();
+            const municipalities = await municipalitiesService.fetchFromProvinceAsync(province_Id);
+            console.log("New municipalities: " + JSON.stringify(municipalities));
+            setMunicipalities(municipalities);            
+        }
+        else {
+            setMunicipalities([]);
+        }
     }
     const inputChangeHandler = async (event) => {
       const { name, value } = event.target;
@@ -63,7 +69,8 @@ const ProductSearchFilter = () => {
                     <div className='row'>
                         <div className="col col-xs-3">
                             <select className="form-select" aria-label="Default select example">
-                                <option selected>Select Project</option>
+                                {/* TODO */}
+                                <option selected>Select Quantity Unit</option>
                                 <option value="1">Farm Ecommerce</option>
                                 <option value="2">Virtubooks</option>
                                 <option value="3">Love Game</option>
