@@ -16,7 +16,8 @@ class App extends Component {
   componentDidMount(){
     //fetch call
   }
-  // TODO: footer preliminary design
+  // TODO: deal with package vulnerabilities
+  // 
 
   render(){
     return (
