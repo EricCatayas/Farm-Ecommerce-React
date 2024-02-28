@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setPageNumber } from '../../redux/product/productListPaginationSlice';
-import { fetchNextPage, fetchPreviousPage, fetchProducts } from '../../redux/product/productListPagination.actions';
+import { fetchNextPageAsync, fetchPreviousPageAsync, fetchProductsAsync } from '../../redux/product/productListPagination.actions';
 import { NextButton, PreviousButton } from './pagination-buttons';
 import { getPageNumbers } from '../../utils/page-numbers.utils';
 import './products-list-pagination.styles.scss';
@@ -18,17 +18,17 @@ const ProductsListPagination = () => {
     const pageNumber = event.target.dataset.id;
 
     dispatch(setPageNumber(pageNumber));
-    dispatch(fetchProducts());
+    dispatch(fetchProductsAsync());
   }
   const nextPageHandler = () => {
     console.log("next page clicked!")
     if(pageNumber < maxPages)
-      dispatch(fetchNextPage());
+      dispatch(fetchNextPageAsync());
   }
   const previousPageHandler = () => {
     console.log("previous page clicked!");
     if(pageNumber > 1)
-      dispatch(fetchPreviousPage());
+      dispatch(fetchPreviousPageAsync());
   }
 
   return (

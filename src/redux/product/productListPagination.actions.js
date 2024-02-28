@@ -19,12 +19,12 @@ export const fetchProductsAsync = () => async (dispatch, getState) => {
   }
 };
 
-export const fetchNextPage = () => (dispatch) => {  
+export const fetchNextPageAsync = () => (dispatch) => {  
   dispatch(incrementPage());
   dispatch(fetchProductsAsync());
 };
 
-export const fetchPreviousPage = () => (dispatch) => {
+export const fetchPreviousPageAsync = () => (dispatch) => {
   dispatch(decrementPage());
   dispatch(fetchProductsAsync());
 };
