@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from "../../redux/product/productListPagination.actions";
-import { fetchProductCategories } from '../../redux/productCategory/productCategories.action';
+import { fetchProductsAsync } from "../../redux/product/productListPagination.actions";
+import { fetchProductCategoriesAsync } from '../../redux/productCategory/productCategories.action';
 import AboutContactPanel from '../about/about-contact-panel.component';
 import AdvertisementBox from "../advertisement/advertisement-box.component";
 import GoogleMapLocations from '../map/google-map-locations.component';
@@ -16,8 +16,8 @@ const  HomeDirectory = () => {
     useEffect(()=>{
         const fetchData = async () => {
             try{
-                dispatch(fetchProducts());
-                dispatch(fetchProductCategories());
+                dispatch(fetchProductsAsync());
+                dispatch(fetchProductCategoriesAsync());
             }
             catch{
                 //  TODO: Error handling

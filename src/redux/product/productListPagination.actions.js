@@ -3,7 +3,7 @@ import { incrementPage, decrementPage } from "./productListPaginationSlice";
 import { ProductsServicesFactory, ApiVersion } from "../../factories/productsServicesFactory";
 
 
-export const fetchProducts = () => async (dispatch, getState) => {
+export const fetchProductsAsync = () => async (dispatch, getState) => {
   try {
     dispatch(setLoading(true));
     const { pageNumber, pageSize } = getState().productListPagination;
@@ -21,10 +21,10 @@ export const fetchProducts = () => async (dispatch, getState) => {
 
 export const fetchNextPage = () => (dispatch) => {  
   dispatch(incrementPage());
-  dispatch(fetchProducts());
+  dispatch(fetchProductsAsync());
 };
 
 export const fetchPreviousPage = () => (dispatch) => {
   dispatch(decrementPage());
-  dispatch(fetchProducts());
+  dispatch(fetchProductsAsync());
 };
