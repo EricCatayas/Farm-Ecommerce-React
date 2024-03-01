@@ -1,5 +1,5 @@
-import { setProducts, setErrors, setLoading } from "./productListSlice";
-import { incrementPage, decrementPage } from "./productListPaginationSlice";
+import { setProducts, setErrors, setLoading } from "./productsListsSlice";
+import { incrementPage, decrementPage } from "./productsListsPaginationSlice";
 import { ProductsServicesFactory, ApiVersion } from "../../factories/productsServicesFactory";
 
 

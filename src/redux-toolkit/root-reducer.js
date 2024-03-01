@@ -2,14 +2,14 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import userReducer from "./user/userSlice";
 import cartReducer from "./cart/cartSlice";
-import productListReducer from "./product/productListSlice";
+import productsListReducer from "./productList/productsListSlice";
 import productCategoriesReducer from "./productCategory/productCategoriesSlice";
-import productListPaginationReducer from "./product/productListPaginationSlice";
+import productListPaginationReducer from "./productList/productListPaginationSlice";
 
 const rootReducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
-  productList: productListReducer,
+  productList: productsListReducer,
   productListPagination: productListPaginationReducer,
   productCategories: productCategoriesReducer,
 });
