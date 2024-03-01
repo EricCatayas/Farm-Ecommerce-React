@@ -26,9 +26,9 @@ export const productsListPaginationReducer = (state = PRODUCTS_LIST_PAGINATION_I
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_FAILED:
         return { ...state, errors:payload, isLoading:false };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.INCREMENT_PAGE:
-        return { ...state, pageNumber: pageNumber+1 };
+        return { ...state, pageNumber: state.pageNumber+1 };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.DECREMENT_PAGE:
-        return { ...state, pageNumber: pageNumber-1 };
+        return { ...state, pageNumber: state.pageNumber-1 };
     default:
         return state;
   }

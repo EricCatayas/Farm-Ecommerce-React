@@ -1,4 +1,3 @@
-// REDUX
 import { USER_ACTION_TYPES } from "./user.types";
 import { createAction } from "../../utils/reducer/reducer.utils";
 

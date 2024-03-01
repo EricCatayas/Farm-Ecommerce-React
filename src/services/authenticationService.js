@@ -3,7 +3,7 @@ import { getCookie, deleteCookie } from "../utils/cookie.utils";
 
 class AuthenticationService {
   constructor() {}
-
+  
   async signInAsync(email, password, rememberMe) {
 
     const formData = {
@@ -16,15 +16,11 @@ class AuthenticationService {
       formData,
       `/api/v1/Account/Login?RememberMe=${formData.rememberMe}`,
       (data) => {
-        // Set cookies
-        document.cookie = `authorization= Bearer ${encodeURIComponent(
-          data.token
-        )}; expires=${data.expiration}`;
-        document.cookie = `refreshToken=${encodeURIComponent(
-          data.refreshToken
-        )}; expires=${data.refreshTokenExpirationDateTime}`;
+        // Setting authorization tokens as cookies
+        document.cookie = `authorization= Bearer ${encodeURIComponent(data.token)}; expires=${data.expiration}`;
+        document.cookie = `refreshToken=${encodeURIComponent(data.refreshToken)}; expires=${data.refreshTokenExpirationDateTime}`;
         // Retrieve stored cookies
-        console.log("Here is your sign in cookie");
+        console.log("Here is your sign in cookie:");
         console.log(getCookie("authorization"));
       }
     );
