@@ -1,5 +1,5 @@
 import { takeLatest, all, call, put, throttle } from 'redux-saga/effects';
-import { setProductCategories, setErrors, setLoading } from "./productCategoriesSlice";
+import { setProductCategories, setErrors, setLoading } from "../../redux-toolkit/productCategory/productCategoriesSlice";
 import ProductCategoriesService from '../../services/productCategoriesService';
 import { PRODUCT_CATEGORIES_ACTION_TYPES } from './productCategories.types';
 
@@ -18,12 +18,13 @@ export function* fetchProductCategoriesAsync(){
   }
 };
 
-// This saga is listening for "FETCH_PRODUCT_CATEGORIES_START" action dsispatch
+// This saga is listening for "FETCH_PRODUCT_CATEGORIES_START" action dispatch
 export function* onFetchProductCategories(){
   yield takeLatest(
     PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_START,
     fetchProductCategoriesAsync 
-  ) // "If saga is invoked, give me the latest action", arg{ action type , generator*() }
+  ) 
+  // takeLatest() : "If saga is invoked, give me the latest action", arg{ action type , generator*() }
 
   /* yield throttle('2000', 
     PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_START,

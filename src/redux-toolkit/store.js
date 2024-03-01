@@ -9,16 +9,17 @@ import { thunk } from "redux-thunk";
 
 const persistConfig = {
   key: "root",
-  storage: storageSession,
+  storage: storageSession,  
   // blacklist: ['user']
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(logger, thunk),
+  middleware: (getDefaultMiddleware) =>  getDefaultMiddleware().concat(logger, thunk) ,
 });
 
 export const persistor = persistStore(store);
