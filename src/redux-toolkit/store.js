@@ -4,8 +4,6 @@ import rootReducer from "./root-reducer";
 import storageSession from "redux-persist/lib/storage/session";
 import logger from "redux-logger";
 import { thunk } from "redux-thunk";
-// All Redux code lives here
-// Where state lives, where actions are dispatched
 
 const persistConfig = {
   key: "root",
