@@ -7,6 +7,9 @@ export const setCurrentUser = (user) =>
 export const checkUserSession = () =>
   createAction(USER_ACTION_TYPES.CHECK_USER_SESSION);
 
+export const signInStart = (email, password, rememberMe) =>
+  createAction(USER_ACTION_TYPES.SIGN_IN_START, { email, password, rememberMe} );
+
 export const signInSuccess = (user) =>
   createAction(USER_ACTION_TYPES.SIGN_IN_SUCCESS, user);
 

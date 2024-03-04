@@ -23,6 +23,8 @@ class AuthenticationService {
       }
     );
   }
+
+  //TODO: move behavior to different module
   async signInWithTokenAsync() {
     const tokenValue = getCookie("authorization");
     const token = removeBearerPrefixInToken(tokenValue);

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { FormInputField } from '../form-input/form-input-field.component';
+import { signInWithEmailStart } from '../../redux/user/user.actions';
 import AuthenticationService from '../../services/authenticationService';
 import './sign-up.styles.scss';
 
@@ -11,24 +12,20 @@ const loginFormData = {
 }
 const SignInForm = () => {
     const [formData, setFormData] = useState(loginFormData);
-    const { signInSuccess, signInFailed } = useSelector((state) => state.user);
 
     const dispatch = useDispatch();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         
-        try{
-            const authService = new AuthenticationService();
-            var response = await authService.signInAsync(formData.email, formData.password, formData.rememberMe);
-            
-            dispatch(signInSuccess(response));
+        try{                        
+            dispatch(signInWithEmailStart(formData.email, formData.password, formData.rememberMe));
             //LOG
             console.log("you have been authenticated");
             console.log(response);            
         }
         catch(error){
-            dispatch(signInFailed(error));
+            console.log("user sign in failed", error);
         }
     }
     const inputChangeHandler = (event) => {
