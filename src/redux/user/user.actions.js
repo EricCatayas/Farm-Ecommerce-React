@@ -13,6 +13,12 @@ export const signInSuccess = (user) =>
 export const signInFailed = (error) =>
   createAction(USER_ACTION_TYPES.SIGN_IN_FAILED, error);
 
+export const signInWithTokenStart = () =>
+  createAction(USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_START);
+
+export const signInWithTokenFailed = (error) =>
+  createAction(USER_ACTION_TYPES.SIGN_IN_FAILED, error);
+
 export const signUpStart = (email, password, displayName) =>
   createAction(USER_ACTION_TYPES.SIGN_UP_START, {
     email,

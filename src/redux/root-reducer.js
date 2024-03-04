@@ -1,11 +1,12 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { userReducer } from "./user/user.reducer";
+import { productsListPaginationReducer } from "./productsListPagination/productsListPagination.reducer";
+import { productCategoriesReducer } from "./productCategory/productCategories.reducer";
 
 const rootReducer = combineReducers({
   user: userReducer,
-//   productList: productListReducer,
-//   productListPagination: productListPaginationReducer,
-//   productCategories: productCategoriesReducer,
+  productsListPagination: productListPaginationReducer,
+  productCategories: productCategoriesReducer
 });
 
 // REACT-REDUX

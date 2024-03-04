@@ -1,20 +1,18 @@
 import { takeLatest, all, call, put, throttle } from 'redux-saga/effects';
-import { setProductCategories, setErrors, setLoading } from "../../redux-toolkit/productCategory/productCategoriesSlice";
+import { fetchProductCategoriesFailure, fetchProductCategoriesSuccess } from "./productCategories.action";
 import ProductCategoriesService from '../../services/productCategoriesService';
 import { PRODUCT_CATEGORIES_ACTION_TYPES } from './productCategories.types';
 
 export function* fetchProductCategoriesAsync(){
   try {
-    dispatch(setLoading(true));
     const productCategoriesService = new ProductCategoriesService();
 
-    const data = yield call(productCategoriesService.fetchAllAsync()); // "call(func, func args) converts function to effect"
+    const data = yield call(productCategoriesService.fetchAllAsync); // "call(func, func args) converts function to effect"
 
-    yield put(setProductCategories(data));
+    yield put(fetchProductCategoriesSuccess(data));
+
   } catch (error) {
-    yield put(setErrors([error.message]));
-  } finally {
-    yield put(setLoading(false));
+    yield put(fetchProductCategoriesFailure([error.message]));
   }
 };
 
@@ -23,16 +21,17 @@ export function* onFetchProductCategories(){
   yield takeLatest(
     PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_START,
     fetchProductCategoriesAsync 
-  ) 
+  );
   // takeLatest() : "If saga is invoked, give me the latest action", arg{ action type , generator*() }
 
-  /* yield throttle('2000', 
+  /* yield throttle(
+    '2000', 
     PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_START,
-      fetchProductCategoriesAsync; 
+    fetchProductCategoriesAsync 
   ) Only invoke this saga every 2 seconds*/
 }
 
-export function* categoriesSaga(){
+export function* productCategoriesSaga(){
   yield all([call(onFetchProductCategories)]) // "run all code inside", arg{ [generator*()] }
   
 }

@@ -1,12 +1,12 @@
 import { PRODUCT_CATEGORIES_ACTION_TYPES } from "./category.types";
 
 export const PRODUCT_CATEGORIES_INITIAL_STATE = {
-  categories: [],
+  productCategories: [],
   isLoading: false,
   error: null,
 };
 
-export const categoriesReducer = (
+export const productCategoriesReducer = (
   state = PRODUCT_CATEGORIES_INITIAL_STATE,
   action = {}
 ) => {
@@ -19,7 +19,7 @@ export const categoriesReducer = (
         isLoading: true,
       };
     case PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_SUCCESS:
-      return { ...state, isLoading: false, categories: payload };
+      return { ...state, isLoading: false, productCategories: payload };
     case PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_FAILED:
       return { ...state, isLoading: false, error: payload };
     default:
