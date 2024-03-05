@@ -1,6 +1,6 @@
 import { takeLatest, all, call, put } from "redux-saga/effects";
 import { USER_ACTION_TYPES } from "./user.types";
-import { signInSuccess, signInWithTokenFailed, signInWithEmFailed } from "./user.actions";
+import { signInSuccess, signInFailed, signInWithTokenSucess, signInWithTokenFailed } from "./user.actions";
 import AuthenticationService from "../../services/authenticationService";
 
 
@@ -20,7 +20,7 @@ export function* signInWithTokenAsync(){
     try{
         const authService = new AuthenticationService();
         const data = yield call(authService.signInWithTokenAsync);
-        yield put(signInSuccess(data));
+        yield put(signInWithTokenSucess(data));
     }
     catch(error){
         yield put(signInWithTokenFailed(error))

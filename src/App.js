@@ -2,7 +2,7 @@ import './App.css';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes, Outlet } from 'react-router-dom';
-
+import { signInWithTokenStart } from './redux/user/user.actions';
 import Home from './routes/home';
 import Navigation from './routes/navigation';
 import Registration from './routes/registration';
@@ -17,21 +17,12 @@ const App = () => {
    useEffect(() => {
     
      const authenticateUserOnLoad = async () => {
-       const accessToken = getAuthorizationToken();
-       const refreshToken = getRefreshToken();
-
-       if (accessToken && refreshToken) {
-         // Send request to authenticate user using tokens
-         try {
-           const userData = await dispatch(
-             authenticateUser(accessToken, refreshToken)
-           );
-           // Set user authentication state in Redux or React Context
-           console.log("User authenticated:", userData);
-         } catch (error) {
-           console.error("Error authenticating user:", error);
-         }
-       }
+      try{
+        dispatch(signInWithTokenStart());
+      }
+      catch(error){
+        console.log(error);
+      }
      };
 
      authenticateUserOnLoad();

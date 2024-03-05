@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProductsAsync } from "../../redux/product/productListPagination.actions";
 import { fetchProductCategoriesAsync } from '../../redux/productCategory/productCategories.action';
-import AboutContactPanel from '../about/about-contact-panel.component';
 import AdvertisementBox from "../advertisement/advertisement-box.component";
 import GoogleMapLocations from '../map/google-map-locations.component';
 import MainMenu from '../main-menu/main-menu.component';
@@ -16,10 +15,11 @@ const  HomeDirectory = () => {
     useEffect(()=>{
         const fetchData = async () => {
             try{
-                dispatch(fetchProductsAsync());
-                dispatch(fetchProductCategoriesAsync());
+              dispatch(fetchProductsAsync());
+              dispatch(fetchProductCategoriesAsync());
             }
-            catch{
+            catch(error){
+              console.log(error);
                 //  TODO: Error handling
             }
         }

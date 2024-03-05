@@ -19,14 +19,16 @@ export const signInFailed = (error) =>
 export const signInWithTokenStart = () =>
   createAction(USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_START);
 
-export const signInWithTokenFailed = (error) =>
-  createAction(USER_ACTION_TYPES.SIGN_IN_FAILED, error);
+export const signInWithTokenSucess = (user) =>
+  createAction(USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_SUCCESS, user);
 
-export const signUpStart = (email, password, displayName) =>
+export const signInWithTokenFailed = (error) =>
+  createAction(USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_FAILED, error);
+
+export const signUpStart = (email, password) =>
   createAction(USER_ACTION_TYPES.SIGN_UP_START, {
     email,
     password,
-    displayName,
   });
 
 export const signUpSuccess = (user, additionalDetails) =>
