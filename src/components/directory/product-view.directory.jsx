@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { BreadCrumb } from "../breadcrumb/breadcrumb.component";
-import { setProducts } from '../../redux/product/productListSlice';
+import { fetchFilteredProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
 import MainMenu from '../main-menu/main-menu.component';
 import Product from '../products/product.component';
 import ProductsVerticalList from '../products/products-vertical-list.component';
@@ -16,25 +16,19 @@ const ProductViewDirectory = () => {
     const params = useParams();
     const productID = params.id;
     const breadcrumbItems = product ? ["Products", product.category_Name] : ["Products"];
-    const productsServicesFactory = new ProductsServicesFactory();  
 
     useEffect(() => {
         const fetchData = async () => {
           try {
+            const productsServicesFactory = new ProductsServicesFactory();  
             const productService = productsServicesFactory.createProductService(ApiVersion.V1);
             const productData = await productService.fetchProductAsync(productID);
             setProduct(productData);
-
-            let filteredProducts = [];
-            const productsService = productsServicesFactory.createProductsService(ApiVersion.V1);
             
             if(productData.category_Id)
-              filteredProducts = await productsService.fetchFilteredProductsAsync(`?category_Id=${productData.category_Id}`);
+              dispatch(fetchFilteredProductsStart(`?category_Id=${productData.category_Id}`));
             else 
-              filteredProducts = await productsService.fetchFilteredProductsAsync();
-            
-            console.log("Filtered Products:" + JSON.stringify(filteredProducts));
-            dispatch(setProducts(filteredProducts));
+              dispatch(fetchFilteredProductsStart());                        
             
           } catch (error) {
             console.log(error);

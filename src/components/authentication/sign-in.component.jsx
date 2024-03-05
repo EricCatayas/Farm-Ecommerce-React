@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { FormInputField } from '../form-input/form-input-field.component';
-import { signInWithEmailStart } from '../../redux/user/user.actions';
-import AuthenticationService from '../../services/authenticationService';
+import { signInStart } from '../../redux/user/user.actions';
 import './sign-up.styles.scss';
 
 const loginFormData = {
@@ -12,14 +11,13 @@ const loginFormData = {
 }
 const SignInForm = () => {
     const [formData, setFormData] = useState(loginFormData);
-
     const dispatch = useDispatch();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         
         try{                        
-            dispatch(signInWithEmailStart(formData.email, formData.password, formData.rememberMe));
+            dispatch(signInStart(formData.email, formData.password, formData.rememberMe));
             //LOG
             console.log("you have been authenticated");
             console.log(response);            

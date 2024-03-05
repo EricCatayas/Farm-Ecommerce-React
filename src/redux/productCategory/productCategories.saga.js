@@ -1,4 +1,4 @@
-import { takeLatest, all, call, put, throttle } from 'redux-saga/effects';
+import { takeLatest, all, call, put } from 'redux-saga/effects';
 import { fetchProductCategoriesFailure, fetchProductCategoriesSuccess } from "./productCategories.action";
 import ProductCategoriesService from '../../services/productCategoriesService';
 import { PRODUCT_CATEGORIES_ACTION_TYPES } from './productCategories.types';
@@ -16,6 +16,8 @@ export function* fetchProductCategoriesAsync(){
   }
 };
 
+// LISTENERS
+
 // This saga is listening for "FETCH_PRODUCT_CATEGORIES_START" action dispatch
 export function* onFetchProductCategories(){
   yield takeLatest(
@@ -32,6 +34,6 @@ export function* onFetchProductCategories(){
 }
 
 export function* productCategoriesSaga(){
-  yield all([call(onFetchProductCategories)]) // "run all code inside", arg{ [generator*()] }
+  yield all([call(onFetchProductCategories)]); // "run all code inside", arg{ [generator*()] }
   
 }
