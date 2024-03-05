@@ -9,8 +9,6 @@ export function* fetchProductsAsync(){
         const productsListPagination = yield select(state => state.productsListPagination);
         const { pageNumber, pagSize } = productsListPagination;
 
-        //TODO: pageNumber could be < 1
-
         const data = yield call(productsService.fetchPaginatedProductsAsync, pageNumber, pagSize);
 
         yield put(fetchProductsSuccess(data));
@@ -64,9 +62,15 @@ export function* onFetchPreviousPageProducts(){
         fetchProductsAsync
     );
 }
+export function* onFetchProductsByPageNumber(){
+    yield takeLatest(
+        PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_NUMBER,
+        fetchProductsAsync
+    );
+}
 
 // SAGA
 
 export function* productsListPaginationSaga(){
-    yield all([call(onFetchProducts), call(onFetchFilteredProducts), call(onFetchNextPageProducts), call(onFetchPreviousPageProducts)]);
+    yield all([call(onFetchProducts), call(onFetchFilteredProducts), call(onFetchNextPageProducts), call(onFetchPreviousPageProducts), call(onFetchProductsByPageNumber)]);
 }
