@@ -7,7 +7,9 @@ import "./products-vertical-list.styles.css";
 
 
 const ProductsVerticalList = () => {
-  const { products, isLoading } = useSelector((state) => state.productList);
+  const { products, isLoading } = useSelector(
+    (state) => state.productsListPagination
+  );
   const navigate = useNavigate();
 
   const onViewProductClickEvent = (event) => {

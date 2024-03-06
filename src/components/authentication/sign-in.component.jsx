@@ -18,9 +18,6 @@ const SignInForm = () => {
         
         try{                        
             dispatch(signInStart(formData.email, formData.password, formData.rememberMe));
-            //LOG
-            console.log("you have been authenticated");
-            console.log(response);            
         }
         catch(error){
             console.log("user sign in failed", error);

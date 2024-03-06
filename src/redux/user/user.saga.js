@@ -10,6 +10,9 @@ export function* signInAsync({ payload: { email, password, rememberMe } }) {
     const authService = new AuthenticationService();
     const data = yield call(authService.signInAsync, email, password, rememberMe );
 
+    //LOG
+    console.log(`You have been authen: ${data}`);
+    
     yield put(signInSuccess(data));
   } catch (error) {
     yield put(signInFailed(error));

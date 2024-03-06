@@ -5,9 +5,8 @@ import { productCategoriesReducer } from "./productCategory/productCategories.re
 
 const rootReducer = combineReducers({
   user: userReducer,
-  productsListPagination: productListPaginationReducer,
+  productsListPagination: productsListPaginationReducer,
   productCategories: productCategoriesReducer
 });
 
-// REACT-REDUX
 export default rootReducer;

@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setPageNumber } from '../../redux/product/productListPaginationSlice';
-import { fetchNextPageProducts, fetchPreviousPageProducts} from '../../redux/productsListPagination/productsListPagination.action';
+import { fetchNextPageProducts, fetchPreviousPageProducts, fetchProductsByPageNumber} from '../../redux/productsListPagination/productsListPagination.action';
 import { NextButton, PreviousButton } from './pagination-buttons';
 import { getPageNumbers } from '../../utils/page-numbers.utils';
 import './products-list-pagination.styles.scss';
 
 //TODO: Button lost "active"
 const ProductsListPagination = () => {
-  const { pageNumber } = useSelector((state) => state.productListPagination);
+  const { pageNumber } = useSelector((state) => state.productsListPagination);
   const dispatch = useDispatch();
 
   const maxPages = 6;
@@ -17,7 +16,7 @@ const ProductsListPagination = () => {
     console.log("pageClicked!");
     const pageNumber = event.target.dataset.id;
 
-    dispatch(setPageNumber(pageNumber));
+    dispatch(fetchProductsByPageNumber(pageNumber));
   }
   const nextPageHandler = () => {
     console.log("next page clicked!")

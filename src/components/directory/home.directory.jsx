@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchProductsAsync } from "../../redux/product/productListPagination.actions";
-import { fetchProductCategoriesAsync } from '../../redux/productCategory/productCategories.action';
+import { useDispatch } from 'react-redux';
+import { fetchProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
+import { fetchProductCategoriesStart } from '../../redux/productCategory/productCategories.action';
 import AdvertisementBox from "../advertisement/advertisement-box.component";
 import GoogleMapLocations from '../map/google-map-locations.component';
 import MainMenu from '../main-menu/main-menu.component';
@@ -15,8 +15,8 @@ const  HomeDirectory = () => {
     useEffect(()=>{
         const fetchData = async () => {
             try{
-              dispatch(fetchProductsAsync());
-              dispatch(fetchProductCategoriesAsync());
+              dispatch(fetchProductsStart());
+              dispatch(fetchProductCategoriesStart());
             }
             catch(error){
               console.log(error);

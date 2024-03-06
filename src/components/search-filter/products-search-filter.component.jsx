@@ -60,11 +60,11 @@ const ProductSearchFilter = () => {
                         <h4>Filter Products</h4>
                     </div>
                     <div className="col">
-                        <i class="fa fa-chevron-circle-down fa-lg pull-right" data-bs-toggle="collapse" data-bs-target="#buffy-characters-body"></i>
+                        <i className="fa fa-chevron-circle-down fa-lg pull-right" data-bs-toggle="collapse" data-bs-target="#buffy-characters-body"></i>
                     </div>
                 </div>
             </div> 
-            <div class="collapse" id="buffy-characters-body">
+            <div className="collapse" id="buffy-characters-body">
                 <form>
                     <div className='row'>
                         <div className="col col-xs-3">
@@ -79,10 +79,10 @@ const ProductSearchFilter = () => {
                         <div className="col col-xs-3">
                             <Dropdown args={allCategories} selectTitle={"Select Category"} onChange={inputChangeHandler}/>                        
                             <div className="input-group">
-                                <span class="input-group-text">Php</span>
-                                <input type="text" aria-label="First name" class="form-control" placeholder='Min'/>
-                                <span class="input-group-text">-</span>
-                                <input type="text" aria-label="Last name" class="form-control" placeholder='Max'/>
+                                <span className="input-group-text">Php</span>
+                                <input type="text" aria-label="First name" className="form-control" placeholder='Min'/>
+                                <span className="input-group-text">-</span>
+                                <input type="text" aria-label="Last name" className="form-control" placeholder='Max'/>
                             </div>
                         </div>
                         <div className="col col-xs-3">

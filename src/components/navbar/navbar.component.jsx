@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutStart } from "../../redux/user/user.actions";
 import AuthenticationService from "../../services/authenticationService";
@@ -8,7 +9,9 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const { currentUser } = useSelector((state) => state.user);
 
-    const { cartCount, isCartOpen, setIsCartOpen } = useSelector((state) => state.cart);
+    // TODO
+    const  cartCount = 3;
+    const [ isCartOpen, setIsCartOpen ] = useState(false);
 
     const handleSignOutClick = () => {
         console.log("Signing user out");
