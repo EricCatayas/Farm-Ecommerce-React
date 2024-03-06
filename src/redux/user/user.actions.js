@@ -26,10 +26,7 @@ export const signInWithTokenFailed = (error) =>
   createAction(USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_FAILED, error);
 
 export const signUpStart = (email, password) =>
-  createAction(USER_ACTION_TYPES.SIGN_UP_START, {
-    email,
-    password,
-  });
+  createAction(USER_ACTION_TYPES.SIGN_UP_START, { email,password  });
 
 export const signUpSuccess = (user, additionalDetails) =>
   createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, { user, additionalDetails });

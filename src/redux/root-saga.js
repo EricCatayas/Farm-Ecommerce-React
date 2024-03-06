@@ -4,6 +4,10 @@ import { productsListPaginationSaga } from "./productsListPagination/productsLis
 import { productCategoriesSaga } from "./productCategory/productCategories.saga";
 import { userSaga } from "./user/user.saga";
 
-export function* rootSaga(){
-    yield all([call(userSaga), call(productCategoriesSaga), call(productsListPaginationSaga)]);
+export default function* rootSaga(){
+    yield all([
+        call(userSaga),
+        call(productCategoriesSaga),
+        call(productsListPaginationSaga)
+    ]);
 }

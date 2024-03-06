@@ -33,20 +33,17 @@ export function* signInWithTokenAsync(){
 //  "ACTION LISTENER" Functions
 
 export function* onSignInAsync(){
-    yield takeLatest(
-        USER_ACTION_TYPES.SIGN_IN_START,
-        signInAsync
-    );
+    yield takeLatest(USER_ACTION_TYPES.SIGN_IN_START, signInAsync);
 }
 
 export function* onSignInWithTokenAsync(){
-    yield takeLatest(
-        USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_START,
-        signInWithTokenAsync
-    );
+    yield takeLatest(USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_START, signInWithTokenAsync);
 }
 
 
 export function* userSaga() {
-  yield all([call(onSignInAsync), call(onSignInWithTokenAsync)]); // "run all code inside", arg{ [generator*()] }
+  yield all([
+    call(onSignInAsync),
+    call(onSignInWithTokenAsync)
+    ]); // "run all code inside", arg{ [generator*()] }
 }

@@ -1,4 +1,4 @@
-import { PRODUCTS_LIST_PAGINATION_ACTION_TYPES} from "./productsListPagination.types";
+import { PRODUCTS_LIST_PAGINATION_ACTION_TYPES } from "./productsListPagination.types";
 
 export const PRODUCTS_LIST_PAGINATION_INITIAL_STATE = {
   products: [],
