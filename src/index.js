@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { ProductsProvider } from "./contexts/products.context";
-import { persistor, store } from "./redux/store";
+import { persistor, store } from "./redux/store.deprecated";
 import { PersistGate } from "redux-persist/integration/react";
 import "./index.css";
 import App from "./App";
@@ -20,13 +20,9 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <ProductCategoriesProvider>
-            <ProductsProvider>
-              <CartProvider>
-                <App />
-              </CartProvider>
-            </ProductsProvider>
-          </ProductCategoriesProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
         </BrowserRouter>
       </PersistGate>
     </Provider>

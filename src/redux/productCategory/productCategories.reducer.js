@@ -6,10 +6,7 @@ export const PRODUCT_CATEGORIES_INITIAL_STATE = {
   error: null,
 };
 
-export const productCategoriesReducer = (
-  state = PRODUCT_CATEGORIES_INITIAL_STATE,
-  action = {}
-) => {
+export const productCategoriesReducer = (state = PRODUCT_CATEGORIES_INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch (type) {

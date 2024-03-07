@@ -1,6 +1,6 @@
 import { takeLatest, all, call, put } from "redux-saga/effects";
 import { USER_ACTION_TYPES } from "./user.types";
-import { signInSuccess, signInFailed, signInWithTokenSucess, signInWithTokenFailed } from "./user.actions";
+import { signInSuccess, signInFailed, signInWithTokenSuccess, signInWithTokenFailed } from "./user.actions";
 import AuthenticationService from "../../services/authenticationService";
 
 
@@ -20,14 +20,17 @@ export function* signInAsync({ payload: { email, password, rememberMe } }) {
 }
 
 export function* signInWithTokenAsync(){
-    try{
-        const authService = new AuthenticationService();
-        const data = yield call(authService.signInWithTokenAsync);
-        yield put(signInWithTokenSucess(data));
-    }
-    catch(error){
-        yield put(signInWithTokenFailed(error))
-    }
+  try{
+    //LOG
+    console.log("signInUserWithToken in Saga");
+    const authService = new AuthenticationService();
+    const data = yield call(authService.signInWithTokenAsync);
+    console.log(data);
+    yield put(signInWithTokenSuccess(data));
+  }
+  catch(error){
+    yield put(signInWithTokenFailed(error))
+  }
 }
 
 //  "ACTION LISTENER" Functions

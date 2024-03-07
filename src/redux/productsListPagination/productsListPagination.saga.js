@@ -7,10 +7,9 @@ export function* fetchProductsAsync(){
     try{
         const productsService = new ProductsService();
         const productsListPagination = yield select(state => state.productsListPagination);
-        const { pageNumber, pagSize } = productsListPagination;
+        const { pageNumber, pageSize } = productsListPagination;
 
-        const data = yield call(productsService.fetchPaginatedProductsAsync, pageNumber, pagSize);
-
+        const data = yield call(productsService.fetchPaginatedProductsAsync, pageNumber, pageSize);
         yield put(fetchProductsSuccess(data));
     }
     catch(error){
@@ -72,5 +71,11 @@ export function* onFetchProductsByPageNumber(){
 // SAGA
 
 export function* productsListPaginationSaga(){
-    yield all([call(onFetchProducts), call(onFetchFilteredProducts), call(onFetchNextPageProducts), call(onFetchPreviousPageProducts), call(onFetchProductsByPageNumber)]);
+    yield all([
+        call(onFetchProducts),
+        call(onFetchFilteredProducts), 
+        call(onFetchNextPageProducts),
+        call(onFetchPreviousPageProducts),
+        call(onFetchProductsByPageNumber)
+    ]);
 }

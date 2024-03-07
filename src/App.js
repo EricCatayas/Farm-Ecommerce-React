@@ -18,6 +18,7 @@ const App = () => {
     
      const authenticateUserOnLoad = async () => {
       try{
+        //dispatch(checkUserSession()); TODO
         dispatch(signInWithTokenStart());
       }
       catch(error){

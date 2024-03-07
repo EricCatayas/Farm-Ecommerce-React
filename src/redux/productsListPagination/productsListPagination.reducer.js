@@ -8,7 +8,7 @@ export const PRODUCTS_LIST_PAGINATION_INITIAL_STATE = {
   errors: [],
 };
 
-export const productsListPaginationReducer = (state = PRODUCTS_LIST_PAGINATION_INITIAL_STATE, action = {}) => {
+export const productsListPaginationReducer = (state = PRODUCTS_LIST_PAGINATION_INITIAL_STATE, action) => {
   
   const { type, payload } = action;
 

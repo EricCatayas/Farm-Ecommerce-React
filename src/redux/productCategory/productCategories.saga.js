@@ -5,6 +5,8 @@ import { PRODUCT_CATEGORIES_ACTION_TYPES } from './productCategories.types';
 
 export function* fetchProductCategoriesAsync(){
   try {
+    //LOG
+    console.log("Fetching ProductCategories in Saga");
     const productCategoriesService = new ProductCategoriesService();
 
     const data = yield call(productCategoriesService.fetchAllAsync); // "call(func, func args) converts function to effect"
