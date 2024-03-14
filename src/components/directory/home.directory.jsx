@@ -15,9 +15,8 @@ const  HomeDirectory = () => {
     useEffect(()=>{
         const fetchData = async () => {
             try{
-              const result = fetchProductsStart();
-              console.log("Action result: " + JSON.stringify(result));
-              dispatch(result);
+              dispatch(fetchProductCategoriesStart());
+              dispatch(fetchProductsStart());
             }
             catch(error){
               console.log(error);
