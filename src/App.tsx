@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Routes, Outlet } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { signInWithTokenStart } from './redux/user/user.actions';
 import Home from './routes/home';
 import Navigation from './routes/navigation';
@@ -10,29 +10,21 @@ import Authentication from './routes/authentication';
 import ProductCreate from './components/products/product-create.component';
 import ProductView from './routes/product-view';
 
-const App = () => {
-
+const App: React.FC = () => {
    const dispatch = useDispatch();
 
    useEffect(() => {
-    
      const authenticateUserOnLoad = async () => {
-      try{
-        //dispatch(checkUserSession()); TODO
+      try {
         dispatch(signInWithTokenStart());
-      }
-      catch(error){
+      } catch(error) {
         console.log(error);
       }
      };
 
      authenticateUserOnLoad();
-   }, []);
+   }, [dispatch]);
 
-  // TODO: deal with package vulnerabilities
-  // 
-
-  
   return (
     <Routes>
       <Route path='/' element={<Navigation/>}>
@@ -44,7 +36,6 @@ const App = () => {
       </Route>
     </Routes>
   );
-  
 }
 
 export default App;
