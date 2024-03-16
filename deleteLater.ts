@@ -1,23 +1,28 @@
-
-interface Bird {
-  fly(): void;
+interface Square {
+  kind: "square";
+  size: number;
 }
 
-interface Fish {
-  swim(): void;
+interface Rectangle {
+  kind: "rectangle";
+  width: number;
+  height: number;
 }
 
-// Type predicate function
-function isBird(animal: Bird | Fish): animal is Bird {
-  return (animal as Bird).fly !== undefined;
+interface Circle {
+  kind: "circle";
+  radius: number;
 }
 
+type Shape = Square | Rectangle | Circle;
 
-function move(animal: Bird | Fish) {
-  if ((animal as Bird).fly !== undefined) {
-    animal.fly(); // TypeScript knows 'animal' is a Bird here
-  } else {
-    animal.swim(); // TypeScript knows 'animal' is a Fish here
+function area(shape: Shape): number {
+  switch (shape.kind) {
+    case "square":
+      return shape.size ** 2;
+    case "rectangle":
+      return shape.width * shape.height;
+    case "circle":
+      return Math.PI * shape.radius ** 2;
   }
 }
-
