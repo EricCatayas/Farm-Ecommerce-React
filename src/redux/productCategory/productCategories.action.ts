@@ -2,33 +2,36 @@ import { PRODUCT_CATEGORIES_ACTION_TYPES, ProductCategory } from "./productCateg
 import { createAction, Action, ActionWithPayload, withMatcher } from "../../utils/reducer.utils";
 import { ActionCreator } from "redux";
 
-export type ProductCategoriesStart = Action<PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_START>;
+export type FetchProductCategoriesStart = Action<PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_START>;
 
-export type ProductCategoriesSuccess = ActionWithPayload<PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_SUCCESS, ProductCategory[]>;
+export type FetchProductCategoriesSuccess = ActionWithPayload<PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_SUCCESS, ProductCategory[]>;
 
-export type ProductCategoriesFailed = ActionWithPayload<PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_FAILED, Error>;
+export type FetchProductCategoriesFailed = ActionWithPayload<PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_FAILED, Error>;
 
-export type ProductCategoryAction = ProductCategoriesStart | ProductCategoriesSuccess | ProductCategoriesFailed;
+export type ProductCategoryAction = FetchProductCategoriesStart | FetchProductCategoriesSuccess | FetchProductCategoriesFailed;
 
-export const fetchProductCategoriesStart = withMatcher(() =>
+export const fetchProductCategoriesStart = withMatcher(
+  (): FetchProductCategoriesStart =>
   createAction(PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_START)
 );
 
-export const fetchProductCategoriesSuccess = withMatcher((categoriesArray: ProductCategory[]) =>
+export const fetchProductCategoriesSuccess = withMatcher(
+  (categoriesArray: ProductCategory[]) : FetchProductCategoriesSuccess =>
   createAction(PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_SUCCESS, categoriesArray)
 );
 
-export const fetchProductCategoriesFailure = withMatcher((error) =>
+export const fetchProductCategoriesFailure = withMatcher(
+  (error) : FetchProductCategoriesFailed =>
   createAction(PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_FAILED, error)
 );
 
 //#region legacy code
-//export const fetchProductCategoriesStart = (): ProductCategoriesStart =>
+//export const fetchProductCategoriesStart = (): FetchProductCategoriesStart =>
 //  createAction(PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_START);
 
-// export const fetchProductCategoriesSuccess = (categoriesArray: ProductCategory[]): ProductCategoriesSuccess =>
+// export const fetchProductCategoriesSuccess = (categoriesArray: ProductCategory[]): FetchProductCategoriesSuccess =>
 //   createAction(PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_SUCCESS, categoriesArray);
 
-// export const fetchProductCategoriesFailure = (error): ProductCategoriesFailed =>
+// export const fetchProductCategoriesFailure = (error): FetchProductCategoriesFailed =>
 //   createAction(PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_FAILED, error);
 //#endregion

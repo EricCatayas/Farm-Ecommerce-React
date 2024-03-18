@@ -4,7 +4,7 @@ export enum PRODUCT_CATEGORIES_ACTION_TYPES  {
   FETCH_PRODUCT_CATEGORIES_FAILED = "productCategory/FETCH_PRODUCT_CATEGORIES_FAILED",
 };
 
-export type ProductCategory = {
+export interface ProductCategory {
   id: number;
   name: string;
   image_Url: string;

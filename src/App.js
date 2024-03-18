@@ -10,7 +10,7 @@ import Authentication from './routes/authentication';
 import ProductCreate from './components/products/product-create.component';
 import ProductView from './routes/product-view';
 
-const App: React.FC = () => {
+const App = () => {
    const dispatch = useDispatch();
 
    useEffect(() => {

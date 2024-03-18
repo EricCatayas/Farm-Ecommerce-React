@@ -1,14 +1,26 @@
+import { AnyAction } from "redux-saga";
+import { Product } from "../product/product.types";
+import { ProductsListPaginationAction } from "./productsListPagination.action";
 import { PRODUCTS_LIST_PAGINATION_ACTION_TYPES } from "./productsListPagination.types";
 
-export const PRODUCTS_LIST_PAGINATION_INITIAL_STATE = {
+export interface ProductsListPaginationState {
+  readonly products: Product[];
+  readonly pageNumber: number;
+  readonly pageSize: number;
+  readonly isLoading: boolean;
+  readonly error: Error | null;
+}
+export const PRODUCTS_LIST_PAGINATION_INITIAL_STATE : ProductsListPaginationState = {
   products: [],
   pageNumber: 1,
   pageSize: 4,
   isLoading: false,
-  errors: [],
+  error: null
 };
 
-export const productsListPaginationReducer = (state = PRODUCTS_LIST_PAGINATION_INITIAL_STATE, action) => {
+export const productsListPaginationReducer = (
+state = PRODUCTS_LIST_PAGINATION_INITIAL_STATE,
+action = {} as AnyAction) : ProductsListPaginationState => {
   
   const { type, payload } = action;
 
@@ -24,13 +36,13 @@ export const productsListPaginationReducer = (state = PRODUCTS_LIST_PAGINATION_I
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_SUCCESS:
         return { ...state, products:payload, isLoading:false };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_FAILED:
-        return { ...state, errors:payload, isLoading:false };
+        return { ...state, error:payload, isLoading:false };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_START:
         return { ...state, isLoading: true };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_SUCCESS:
         return { ...state, products:payload, isLoading:false };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_FAILED:
-        return { ...state, errors:payload, isLoading:false };
+        return { ...state, error:payload, isLoading:false };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.INCREMENT_PAGE:
         return { ...state, pageNumber: state.pageNumber+1 };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.DECREMENT_PAGE:

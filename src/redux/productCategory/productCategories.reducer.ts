@@ -2,7 +2,7 @@ import { AnyAction } from "../../utils/reducer.utils";
 import { fetchProductCategoriesStart, fetchProductCategoriesFailure, fetchProductCategoriesSuccess } from "./productCategories.action";
 import { PRODUCT_CATEGORIES_ACTION_TYPES, ProductCategory } from "./productCategories.types";
 
-export type ProductCategoriesState = {
+export interface ProductCategoriesState {
   readonly productCategories: ProductCategory[];
   readonly isLoading: boolean;
   readonly error: Error | null;
