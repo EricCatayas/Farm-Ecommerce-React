@@ -8,7 +8,10 @@ export type FetchProductCategoriesSuccess = ActionWithPayload<PRODUCT_CATEGORIES
 
 export type FetchProductCategoriesFailed = ActionWithPayload<PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_FAILED, Error>;
 
-export type ProductCategoryAction = FetchProductCategoriesStart | FetchProductCategoriesSuccess | FetchProductCategoriesFailed;
+export type ProductCategoryAction = 
+  | FetchProductCategoriesStart 
+  | FetchProductCategoriesSuccess 
+  | FetchProductCategoriesFailed;
 
 export const fetchProductCategoriesStart = withMatcher(
   (): FetchProductCategoriesStart =>

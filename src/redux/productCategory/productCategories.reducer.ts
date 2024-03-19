@@ -1,4 +1,4 @@
-import { AnyAction } from "../../utils/reducer.utils";
+import { AnyAction } from"redux-saga";
 import { fetchProductCategoriesStart, fetchProductCategoriesFailure, fetchProductCategoriesSuccess } from "./productCategories.action";
 import { PRODUCT_CATEGORIES_ACTION_TYPES, ProductCategory } from "./productCategories.types";
 
