@@ -1,4 +1,3 @@
-import { AnyAction } from "redux-saga";
 import { Product } from "../product/product.types";
 import { ProductsListPaginationAction } from "./productsListPagination.action";
 import { PRODUCTS_LIST_PAGINATION_ACTION_TYPES } from "./productsListPagination.types";
@@ -20,29 +19,27 @@ export const PRODUCTS_LIST_PAGINATION_INITIAL_STATE : ProductsListPaginationStat
 
 export const productsListPaginationReducer = (
 state = PRODUCTS_LIST_PAGINATION_INITIAL_STATE,
-action = {} as AnyAction) : ProductsListPaginationState => {
-  
-  const { type, payload } = action;
+action = {} as ProductsListPaginationAction) : ProductsListPaginationState => {
 
-  switch(type){
+  switch(action.type){
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PRODUCTS:
-        return { ...state, products: payload };
+        return { ...state, products: action.payload };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_NUMBER:
-        return { ...state, pageNumber:payload};
+        return { ...state, pageNumber: action.payload};
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_SIZE:
-        return { ...state, pageSize:payload };
+        return { ...state, pageSize: action.payload };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_START:
         return { ...state, isLoading: true };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_SUCCESS:
-        return { ...state, products:payload, isLoading:false };
+        return { ...state, products: action.payload, isLoading:false };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_FAILED:
-        return { ...state, error:payload, isLoading:false };
+        return { ...state, error: action.payload, isLoading:false };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_START:
         return { ...state, isLoading: true };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_SUCCESS:
-        return { ...state, products:payload, isLoading:false };
+        return { ...state, products: action.payload, isLoading:false };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_FAILED:
-        return { ...state, error:payload, isLoading:false };
+        return { ...state, error: action.payload, isLoading:false };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.INCREMENT_PAGE:
         return { ...state, pageNumber: state.pageNumber+1 };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.DECREMENT_PAGE:
