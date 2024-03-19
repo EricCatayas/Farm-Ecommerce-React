@@ -1,19 +1,25 @@
-import { USER_ACTION_TYPES } from "./user.types";
+import { UserAction } from "./user.actions";
+import { USER_ACTION_TYPES, User } from "./user.types";
 
-export const USER_INITIAL_STATE = {
+export interface UserState {
+  readonly currentUser: User | null,
+  readonly isLoading: boolean,
+  readonly error: Error | null,
+
+}
+export const USER_INITIAL_STATE : UserState = {
   currentUser: null,
   isLoading: false,
   error: null,
 };
 
-export const userReducer = (state = USER_INITIAL_STATE, action) => {
-    const { type, payload } = action;
+export const userReducer = (state = USER_INITIAL_STATE, action = {} as UserAction) : UserState => {
 
-    switch (type) {
+    switch (action.type) {
       case USER_ACTION_TYPES.SET_CURRENT_USER:
       case USER_ACTION_TYPES.SIGN_IN_SUCCESS:
       case USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_SUCCESS:
-        return { ...state, currentUser: payload };
+        return { ...state, currentUser: action.payload };
       case USER_ACTION_TYPES.SIGN_IN_START:
       case USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_START:
         return { ...state, isLoading: true };
@@ -22,7 +28,7 @@ export const userReducer = (state = USER_INITIAL_STATE, action) => {
       case USER_ACTION_TYPES.SIGN_OUT_FAILED:
       case USER_ACTION_TYPES.SIGN_IN_FAILED:
       case USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_FAILED:
-        return { ...state, isLoading:false, error: payload };
+        return { ...state, isLoading:false, error: action.payload };
       default:
         return state;
     }
