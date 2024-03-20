@@ -1,8 +1,9 @@
 
 import { createSelector } from "@reduxjs/toolkit";
 import { ProductCategoriesState } from "./productCategories.reducer"
+import { RootState } from "../root.types";
 
-const selectProductCategoryReducer = (state): ProductCategoriesState => state.productCategories;
+const selectProductCategoryReducer = (state : RootState): ProductCategoriesState => state.productCategories;
 
 export const selectCategories = createSelector(
     [selectProductCategoryReducer],
