@@ -14,12 +14,3 @@ export enum USER_ACTION_TYPES {
   SIGN_OUT_SUCCESS = "user/SIGN_OUT_SUCCESS",
   SIGN_OUT_FAILED = "user/SIGN_OUT_FAILED",
 };
-
-export interface User {
-  personName: string;
-  email: string;
-  token: string;
-  expiration: string;
-  refreshToken: string;
-  refreshTokenExpirationDateTime: string;
-}
