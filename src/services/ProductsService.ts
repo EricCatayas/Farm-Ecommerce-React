@@ -1,10 +1,12 @@
-import { Exception } from "sass";
-import { defaultGetRequestAsync } from "../utils/request.utils";
+import { IProductsService } from "../service contracts/IProductsService";
+import { defaultGetRequestAsync } from "../utils/getRequest.utils";
+import Product from "../models/Product";
+import PaginatedProducts from "../models/PaginatedProducts";
 
-class ProductsService {
+class ProductsService implements IProductsService {
   constructor() {}
 
-  async fetchFilteredProductsAsync(query) {
+  async fetchFilteredProductsAsync(query: string): Promise<Product[]> {
     var endpoint = "/api/v1/Products/GetFilteredProducts";
 
     if (query) {
@@ -23,15 +25,15 @@ class ProductsService {
     }
   }
 
-  async fetchPaginatedProductsAsync(pageNumber, pageSize) {
+  async fetchPaginatedProductsAsync(pageNumber: number , pageSize: number): Promise<Product[]> {
     
     if(!pageNumber || !pageSize)
-      throw new Exception("Page number and page size must not be null.");
+      throw new Error("Page number and page size must not be null.");
 
     const endpoint = `/api/v1/Products/GetPaginatedProducts?pageNumber=${pageNumber}&pageSize=${pageSize}`;
 
     try{
-      const data = await defaultGetRequestAsync(
+      const data = await defaultGetRequestAsync<PaginatedProducts>(
         endpoint,
         (data) => console.log(data),
         (error) => console.log(error)
