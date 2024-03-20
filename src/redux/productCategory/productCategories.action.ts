@@ -1,6 +1,6 @@
 import { PRODUCT_CATEGORIES_ACTION_TYPES } from "./productCategories.types";
 import { createAction, Action, ActionWithPayload, withMatcher } from "../../utils/reducer.utils";
-import { ProductCategory } from "../../models/ProductCategory";
+import ProductCategory from "../../models/ProductCategory";
 
 export type FetchProductCategoriesStart = Action<PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_START>;
 

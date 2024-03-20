@@ -1,4 +1,4 @@
-import { Product } from "../product/product.types";
+import Product from "../../models/Product";
 import { ProductsListPaginationAction } from "./productsListPagination.action";
 import { PRODUCTS_LIST_PAGINATION_ACTION_TYPES } from "./productsListPagination.types";
 

@@ -1,6 +1,6 @@
 import { UserAction } from "./user.actions";
 import { USER_ACTION_TYPES } from "./user.types";
-import { User } from "../../models/User";
+import User from "../../models/User";
 
 export interface UserState {
   readonly currentUser: User | null,

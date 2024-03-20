@@ -1,7 +1,7 @@
 import { AnyAction } from"redux-saga";
 import { fetchProductCategoriesStart, fetchProductCategoriesFailure, fetchProductCategoriesSuccess } from "./productCategories.action";
 import { PRODUCT_CATEGORIES_ACTION_TYPES } from "./productCategories.types";
-import { ProductCategory } from "../../models/ProductCategory";
+import ProductCategory from "../../models/ProductCategory";
 
 export interface ProductCategoriesState {
   readonly productCategories: ProductCategory[];

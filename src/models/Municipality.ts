@@ -1,8 +1,10 @@
-import { Province } from "./Province";
+import Province from "./Province";
 
-export interface Municipality{
+interface Municipality{
     id: number;
     name: string;
     province: Province;
     province_Id: number;
 }
+
+export default Municipality;

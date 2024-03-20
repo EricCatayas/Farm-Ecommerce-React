@@ -1,6 +1,6 @@
 import { PRODUCTS_LIST_PAGINATION_ACTION_TYPES } from "./productsListPagination.types";
 import { createAction, Action, ActionWithPayload } from "../../utils/reducer.utils";
-import { Product } from "../product/product.types";
+import Product from "../../models/Product";
 
 export type SetProducts = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PRODUCTS, Product[]>;
 export type SetPageNumber = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_NUMBER, number>;

@@ -1,4 +1,4 @@
-export interface User {
+interface User {
   personName: string;
   email: string;
   token: string;
@@ -6,3 +6,5 @@ export interface User {
   refreshToken: string;
   refreshTokenExpirationDateTime: string;
 }
+
+export default User;
