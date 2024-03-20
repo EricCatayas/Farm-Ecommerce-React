@@ -1,4 +1,4 @@
-export interface Address {
+interface Address {
   id: string; // Consider changing to a more appropriate type
   street: string;
   barangay: string;
@@ -6,3 +6,5 @@ export interface Address {
   postal_Code: string;
   province: string;
 }
+
+export default Address;

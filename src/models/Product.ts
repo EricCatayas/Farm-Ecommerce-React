@@ -1,8 +1,8 @@
-import { Discount } from "../discount/discount.types";
-import { Image } from "../image/image.types";
-import { Store } from "../store/store.types";
+import Discount from "./Discount";
+import Image from "./Image"
+import Store from "./Store"
 
-export interface Product {
+interface Product {
   id: number;
   name: string;
   category_Id: number;
@@ -16,3 +16,5 @@ export interface Product {
   store: Store;
   discount: Discount;
 }
+
+export default Product;
