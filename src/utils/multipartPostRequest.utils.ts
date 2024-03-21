@@ -1,6 +1,6 @@
 import { getCookie } from "./cookie.utils";
 
-export const multiPartPostRequestAsync = <T>(
+export const multipartPostRequestAsync = <T>(
   formData: FormData,
   endpoint: string,
   callback?: (response: T) => void,
