@@ -1,10 +1,10 @@
 import { getCookie } from "./cookie.utils";
 
-export const formPostRequestAsync = (
-  formData,
-  endpoint,
-  callback,
-  errorCallback
+export const formPostRequestAsync = <T>(
+  formData: FormData,
+  endpoint: string,
+  callback?: (response: T) => void,
+  errorCallback?: (error: Error) => void
 ) => {
   return new Promise((resolve, reject) => {
     const url = process.env.REACT_APP_FARM_ECOMMERCE_URL + endpoint;
