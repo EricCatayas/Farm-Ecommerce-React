@@ -2,6 +2,7 @@ import { PRODUCTS_LIST_PAGINATION_ACTION_TYPES } from "./productsListPagination.
 import { createAction, Action, ActionWithPayload } from "../../utils/reducer.utils";
 import Product from "../../models/Product";
 
+//TODO: remove
 export type SetProducts = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PRODUCTS, Product[]>;
 export type SetPageNumber = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_NUMBER, number>;
 export type SetPageSize = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_SIZE, number>;
@@ -31,21 +32,21 @@ export type ProductsListPaginationAction =
 export const fetchProductsStart = () => 
     createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_START);
 
-export const fetchProductsSuccess = (products) => 
+export const fetchProductsSuccess = (products: Product[]) => 
     createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_SUCCESS, products);
 
-export const fetchProductsFailed = (error) => 
+export const fetchProductsFailed = (error: Error) => 
     createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_FAILED, error);
 
-export const fetchFilteredProductsStart = (query) => 
+export const fetchFilteredProductsStart = (query: string) => 
     createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_START, query);
 
-export const fetchFilteredProductsSuccess = (products) => 
+export const fetchFilteredProductsSuccess = (products: Product[]) => 
     createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_SUCCESS, products);
 
-export const fetchFilteredProductsFailed = (error) => 
+export const fetchFilteredProductsFailed = (error: Error) => 
     createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_FAILED, error);
 
 export const fetchNextPageProducts = () => createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.INCREMENT_PAGE);
 export const fetchPreviousPageProducts = () => createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.DECREMENT_PAGE);
-export const fetchProductsByPageNumber = (pageNumber) => createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_NUMBER, pageNumber);
+export const fetchProductsByPageNumber = (pageNumber: number) => createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_NUMBER, pageNumber);
