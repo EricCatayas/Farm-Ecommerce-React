@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import ProductCategories from "../category-container/product-categories.component";
 import { UserContext } from "../../contexts/user.context";
 import { DefaultPanel } from "../panel/panel.component";
-import { multiPartPostRequestAsync } from "../../utils/form.utils";
+import { multipartPostRequestAsync } from "../../utils/multipartPostRequest.utils";
 
 const productCreateFormFields = {
     Name : '',
@@ -21,6 +21,7 @@ const ProductCreate = () =>  {
     
     const [formFields, setFormFields] = useState(productCreateFormFields);
 
+    //TODO
     const handleSubmit = async (event) => {
         event.preventDefault();
         try{
@@ -29,7 +30,7 @@ const ProductCreate = () =>  {
             for (const key in formFields) {
                 formData.append(key, formFields[key]);
             }
-            const response = await multiPartPostRequestAsync(formData, 
+            const response = await multipartPostRequestAsync(formData, 
                 "/api/v1/Products/Create",
                 (data) => { 
                     console.log("Product Create response:\n"); 
