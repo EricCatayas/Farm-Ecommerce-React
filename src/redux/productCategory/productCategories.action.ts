@@ -24,7 +24,7 @@ export const fetchProductCategoriesSuccess = withMatcher(
 );
 
 export const fetchProductCategoriesFailure = withMatcher(
-  (error) : FetchProductCategoriesFailed =>
+  (error: Error) : FetchProductCategoriesFailed =>
   createAction(PRODUCT_CATEGORIES_ACTION_TYPES.FETCH_PRODUCT_CATEGORIES_FAILED, error)
 );
 

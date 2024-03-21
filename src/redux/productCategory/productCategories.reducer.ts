@@ -1,6 +1,5 @@
-import { AnyAction } from"redux-saga";
+import { AnyAction } from "../../utils/reducer.utils";
 import { fetchProductCategoriesStart, fetchProductCategoriesFailure, fetchProductCategoriesSuccess } from "./productCategories.action";
-import { PRODUCT_CATEGORIES_ACTION_TYPES } from "./productCategories.types";
 import ProductCategory from "../../models/ProductCategory";
 
 export interface ProductCategoriesState {
@@ -14,7 +13,7 @@ export const PRODUCT_CATEGORIES_INITIAL_STATE: ProductCategoriesState = {
   error: null,
 };
 
-export const productCategoriesReducer = (state = PRODUCT_CATEGORIES_INITIAL_STATE, action = {} as AnyAction): ProductCategoriesState => {
+export const productCategoriesReducer = (state: ProductCategoriesState = PRODUCT_CATEGORIES_INITIAL_STATE, action = {} as AnyAction): ProductCategoriesState => {
 
   if(fetchProductCategoriesStart.match(action))
     return { ...state, isLoading: true };
