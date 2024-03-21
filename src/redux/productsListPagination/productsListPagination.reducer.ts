@@ -1,6 +1,7 @@
 import Product from "../../models/Product";
 import { ProductsListPaginationAction } from "./productsListPagination.action";
 import { PRODUCTS_LIST_PAGINATION_ACTION_TYPES } from "./productsListPagination.types";
+import { AnyAction } from "../../utils/reducer.utils";
 
 export interface ProductsListPaginationState {
   readonly products: Product[];
@@ -18,8 +19,8 @@ export const PRODUCTS_LIST_PAGINATION_INITIAL_STATE : ProductsListPaginationStat
 };
 
 export const productsListPaginationReducer = (
-state = PRODUCTS_LIST_PAGINATION_INITIAL_STATE,
-action = {} as ProductsListPaginationAction) : ProductsListPaginationState => {
+state: ProductsListPaginationState = PRODUCTS_LIST_PAGINATION_INITIAL_STATE,
+action = {} as AnyAction) : ProductsListPaginationState => {
 
   switch(action.type){
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PRODUCTS:

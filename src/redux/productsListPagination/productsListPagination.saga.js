@@ -1,6 +1,6 @@
 import { takeLatest, all, call, put, select } from "redux-saga/effects";
 import { fetchProductsSuccess, fetchProductsFailed, fetchFilteredProductsSuccess, fetchFilteredProductsFailed } from "./productsListPagination.action";
-import ProductsService from "../../services/productsService";
+import ProductsService from "../../services/ProductsService";
 import { PRODUCTS_LIST_PAGINATION_ACTION_TYPES } from "./productsListPagination.types";
 
 export function* fetchProductsAsync(){
