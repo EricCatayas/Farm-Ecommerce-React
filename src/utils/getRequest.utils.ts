@@ -18,7 +18,7 @@ export const defaultGetRequestAsync = <T>(
           const errorMessages = response.statusText;
           throw new Error(errorMessages);
         }
-        return response.json();
+        return response.json() as T;
       })
       .then((jsonResponse: T) => {
         if (callback && typeof callback === "function") 

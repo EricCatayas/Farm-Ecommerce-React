@@ -1,4 +1,4 @@
-export const removeBearerPrefixInToken = (token:string):string => {
+export const removeBearerPrefixInToken = (token:string): string => {
     const bearerPrefix = "Bearer ";
 
     // Check if the token starts with the Bearer prefix
