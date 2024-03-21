@@ -2,7 +2,7 @@ import { IAuthenticationService } from "../service contracts/IAuthenticationServ
 import { defaultPostRequestAsync} from "../utils/postRequest.utils";
 import { getCookie, deleteCookie } from "../utils/cookie.utils";
 import { removeBearerPrefixInToken } from "../utils/auth.utils";
-import { User } from "../models/User";
+import User from "../models/User";
 
 class AuthenticationService implements IAuthenticationService {
   constructor() {}
@@ -18,7 +18,7 @@ class AuthenticationService implements IAuthenticationService {
       formData,
       `/api/v1/Account/Login?RememberMe=${formData.rememberMe}`,
       (response) => {
-        this.#setAuthCookies(response);
+        this.setAuthCookies(response);
         //LOG
         console.log("Here is your sign in cookie:");
         console.log(getCookie("authorization"));
@@ -38,7 +38,7 @@ class AuthenticationService implements IAuthenticationService {
       null,
       `/api/v1/Account/LoginWithToken?token=${token}`,
       (response) => {
-        this.#setAuthCookies(response);
+        this.setAuthCookies(response);
         //LOG
         console.log("Here is your new sign in cookie:");
         console.log(getCookie("authorization"));
@@ -46,7 +46,7 @@ class AuthenticationService implements IAuthenticationService {
     );
   }
 
-  #setAuthCookies(response: User): void{
+  private setAuthCookies(response: User): void{
     document.cookie = `authorization=Bearer ${encodeURIComponent(
       response.token
     )}; expires=${response.expiration}`;
