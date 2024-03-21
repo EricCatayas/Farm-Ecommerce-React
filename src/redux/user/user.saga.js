@@ -1,7 +1,7 @@
 import { takeLatest, all, call, put } from "redux-saga/effects";
 import { USER_ACTION_TYPES } from "./user.types";
 import { signInSuccess, signInFailed, signInWithTokenSuccess, signInWithTokenFailed } from "./user.actions";
-import AuthenticationService from "../../services/authenticationService";
+import AuthenticationService from "../../services/AuthenticationService";
 
 
 

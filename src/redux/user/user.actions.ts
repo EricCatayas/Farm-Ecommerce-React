@@ -1,6 +1,6 @@
 import { USER_ACTION_TYPES } from "./user.types";
 import User from "../../models/User";
-import { Action, ActionWithPayload, createAction } from "../../utils/reducer.utils";
+import { Action, ActionWithPayload, AnyAction, createAction } from "../../utils/reducer.utils";
 
 export type SetCurrentUser = ActionWithPayload<USER_ACTION_TYPES.SET_CURRENT_USER, User>;
 export type CheckUserSession = Action<USER_ACTION_TYPES.CHECK_USER_SESSION>;
