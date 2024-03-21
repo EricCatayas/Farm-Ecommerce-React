@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutStart } from "../../redux/user/user.actions";
-import AuthenticationService from "../../services/authenticationService";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import './navbar.styles.css';
 
