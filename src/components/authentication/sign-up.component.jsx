@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { RegisterUserAsync } from '../../utils/sign-up.utils';
 import { CreateUserAddressAsync } from '../../utils/user-address.utils';
-import ProvincesService from '../../services/provincesService';
-import MunicipalitiesService from '../../services/municipalitiesService';
+import ProvincesService from '../../services/ProvincesService';
+import MunicipalitiesService from '../../services/MunicipalitiesService';
 import './sign-up.styles.scss';
 
 const registrationFormData = {

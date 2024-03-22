@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Dropdown } from '../form-input/dropdown.component';
 import { flattenCategories } from '../../utils/categories.utils';
-import ProvincesService from '../../services/provincesService';
-import MunicipalitiesService from '../../services/municipalitiesService';
+import ProvincesService from '../../services/ProvincesService';
+import MunicipalitiesService from '../../services/MunicipalitiesService';
 
 const searchFormData = {
     category_Id : '',
