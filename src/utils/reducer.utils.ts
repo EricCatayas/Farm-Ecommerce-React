@@ -2,10 +2,9 @@ export type Action<T extends string = string> = {
   type: T
 }
 
-export type ActionWithPayload<T,P> = {
-  type: T;
-  payload: P
-}
+export type ActionWithPayload<T extends string, P> = Action<T> & {
+  payload: P;
+};
 
 export interface AnyAction extends Action {
   [extraProps: string]: any;

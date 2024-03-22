@@ -1,4 +1,4 @@
-import { ProductCategory } from "../redux/productCategory/productCategories.types";
+import ProductCategory from "../models/ProductCategory";
 
 export const flattenCategories = (categories: ProductCategory[]) => {
   let flattenedArray: ProductCategory[] = [];
