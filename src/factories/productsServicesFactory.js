@@ -1,5 +1,5 @@
-import ProductService from "../services/productService"
-import ProductsService from "../services/productsService";
+import ProductService from "../services/ProductService"
+import ProductsService from "../services/ProductsService";
 
 export const ApiVersion = {
     V1:"V1",
