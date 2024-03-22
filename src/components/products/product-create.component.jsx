@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react";
 import ProductCategories from "../category-container/product-categories.component";
-import { UserContext } from "../../contexts/user.context";
 import { DefaultPanel } from "../panel/panel.component";
 import { multipartPostRequestAsync } from "../../utils/multipartPostRequest.utils";
 
@@ -16,8 +15,6 @@ const productCreateFormFields = {
 }
 
 const ProductCreate = () =>  {
-    //TODO Authenticate user first
-    const { isSignedIn } = useContext(UserContext);
     
     const [formFields, setFormFields] = useState(productCreateFormFields);
 
