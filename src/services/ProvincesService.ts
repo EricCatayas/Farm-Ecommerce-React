@@ -1,7 +1,7 @@
 import Province from "../models/Province";
 import { IProvincesService } from "../service contracts/IProvincesService"
 import { defaultGetRequestAsync } from "../utils/getRequest.utils";
-import CookieService from "./cookieService";
+import CookieService from "./CookieService";
 
 class ProvincesService implements IProvincesService {
   private cookieName: string;
