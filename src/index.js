@@ -14,7 +14,7 @@ import { Provider } from "react-redux";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // test1@example.com _Test1
-// TODO: config proj to use typescript
+// TODO: Error is not serializable; modify error property to be string type and modify code
 
 root.render(
   <React.StrictMode>
