@@ -18,12 +18,7 @@ export function* signInAsync(action: PayloadAction<{ email: string, password: st
     
     yield put(signInSuccess(data));
   } catch (error: any) {
-    if (error instanceof Error) {
-      yield put(signInFailed(error));
-    }
-    else {
-      yield put(signInFailed(new Error(`An error occured: ${error}`)))
-    }
+      yield put(signInFailed(error.message));
   }
 }
 
@@ -37,7 +32,7 @@ export function* signInWithTokenAsync(): SagaIterator{
     yield put(signInWithTokenSuccess(data));
   }
   catch(error: any){
-    yield put(signInWithTokenFailed(error as Error));        
+    yield put(signInWithTokenFailed(error.message));        
   }
 }
 

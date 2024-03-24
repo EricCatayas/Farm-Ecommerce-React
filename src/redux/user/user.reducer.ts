@@ -5,7 +5,7 @@ import { AnyAction } from "../../utils/reducer.utils";
 export interface UserState {
   readonly currentUser: User | null,
   readonly isLoading: boolean,
-  readonly error: Error | null,
+  readonly error: string | null,
 
 }
 export const USER_INITIAL_STATE : UserState = {
@@ -24,7 +24,7 @@ export const userReducer = (state: UserState = USER_INITIAL_STATE, action = {} a
     case USER_ACTION_TYPES.SIGN_IN_START:
     case USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_START:
       return { ...state, isLoading: true };
-    case USER_ACTION_TYPES.SIGN_OUT_SUCCESS:
+    case USER_ACTION_TYPES.SIGN_OUT_SUCCESS:  
       return { ...state, currentUser: null };
     case USER_ACTION_TYPES.SIGN_OUT_FAILED:
     case USER_ACTION_TYPES.SIGN_IN_FAILED:

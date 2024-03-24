@@ -8,10 +8,10 @@ export type SetPageNumber = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TY
 export type SetPageSize = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_SIZE, number>;
 export type FetchProductsStart = Action<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_START>;
 export type FetchProductsSuccess = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_SUCCESS, Product[]>;
-export type FetchProductsFailed = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_FAILED, Error>;
+export type FetchProductsFailed = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_FAILED, string>;
 export type FetchFilteredProductsStart = Action<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_START>;
 export type FetchFilteredProductsSuccess = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_SUCCESS, Product[]>;
-export type FetchFilteredProductsFailed = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_FAILED, Error>;
+export type FetchFilteredProductsFailed = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_FAILED, string>;
 export type FetchNextPageProducts = Action<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.INCREMENT_PAGE>;
 export type FetchPreviousPageProducts = Action<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.DECREMENT_PAGE>;
 
@@ -35,7 +35,7 @@ export const fetchProductsStart = () =>
 export const fetchProductsSuccess = (products: Product[]) => 
     createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_SUCCESS, products);
 
-export const fetchProductsFailed = (error: Error) => 
+export const fetchProductsFailed = (error: string) => 
     createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_FAILED, error);
 
 export const fetchFilteredProductsStart = (query: string) => 
@@ -44,7 +44,7 @@ export const fetchFilteredProductsStart = (query: string) =>
 export const fetchFilteredProductsSuccess = (products: Product[]) => 
     createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_SUCCESS, products);
 
-export const fetchFilteredProductsFailed = (error: Error) => 
+export const fetchFilteredProductsFailed = (error: string) => 
     createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_FAILED, error);
 
 export const fetchNextPageProducts = () => createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.INCREMENT_PAGE);

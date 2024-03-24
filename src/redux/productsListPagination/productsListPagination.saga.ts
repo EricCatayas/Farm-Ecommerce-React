@@ -19,7 +19,7 @@ export function* fetchProductsAsync(): SagaIterator{
         yield put(fetchProductsSuccess(data));
     }
     catch(error: any){
-        yield put(fetchProductsFailed(error));
+        yield put(fetchProductsFailed(error.message));
     }
 }
 
@@ -36,7 +36,7 @@ export function* fetchFilteredProductsAsync(action: PayloadAction<string>): Saga
 
     yield put(fetchFilteredProductsSuccess(data));
   } catch (error: any) {
-    yield put(fetchFilteredProductsFailed(error));
+    yield put(fetchFilteredProductsFailed(error.message));
   }
 }
 

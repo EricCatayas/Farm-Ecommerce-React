@@ -13,15 +13,8 @@ export function* fetchProductCategoriesAsync(): SagaIterator {
     const data = yield call(productCategoriesService.fetchAllAsync); // "call(func, func args) converts function to effect"
 
     yield put(fetchProductCategoriesSuccess(data));
-  } catch (error: any) {
-    if(error instanceof Error){
-      yield put(fetchProductCategoriesFailure(error));
-    }
-    else {
-      yield put(
-        fetchProductCategoriesFailure(new Error(`An error occured: ${error}`))
-      );
-    }
+  } catch (error: any) {   
+    yield put(fetchProductCategoriesFailure(error.message));
   }
 }
 

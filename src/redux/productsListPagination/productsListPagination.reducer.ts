@@ -8,7 +8,7 @@ export interface ProductsListPaginationState {
   readonly pageNumber: number;
   readonly pageSize: number;
   readonly isLoading: boolean;
-  readonly error: Error | null;
+  readonly error: string | null;
 }
 export const PRODUCTS_LIST_PAGINATION_INITIAL_STATE : ProductsListPaginationState = {
   products: [],

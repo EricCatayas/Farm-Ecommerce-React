@@ -5,7 +5,7 @@ import ProductCategory from "../../models/ProductCategory";
 export interface ProductCategoriesState {
   readonly productCategories: ProductCategory[];
   readonly isLoading: boolean;
-  readonly error: Error | null;
+  readonly error: string | null;
 }
 export const PRODUCT_CATEGORIES_INITIAL_STATE: ProductCategoriesState = {
   productCategories: [],

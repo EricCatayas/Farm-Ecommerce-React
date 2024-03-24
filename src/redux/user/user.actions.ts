@@ -7,16 +7,16 @@ export type SetCurrentUser = ActionWithPayload<USER_ACTION_TYPES.SET_CURRENT_USE
 export type CheckUserSession = Action<USER_ACTION_TYPES.CHECK_USER_SESSION>;
 export type SignInStart = Action<USER_ACTION_TYPES.SIGN_IN_START>;
 export type SignInSuccess = ActionWithPayload<USER_ACTION_TYPES.SIGN_IN_SUCCESS, User>;
-export type SignInFailed = ActionWithPayload<USER_ACTION_TYPES.SIGN_IN_FAILED, Error>;
+export type SignInFailed = ActionWithPayload<USER_ACTION_TYPES.SIGN_IN_FAILED, string>;
 export type SignInWithTokenStart = Action<USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_START>;
 export type SignInWithTokenSuccess = ActionWithPayload<USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_SUCCESS, User>;
-export type SignInWithTokenFailed = ActionWithPayload<USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_FAILED, Error>;
+export type SignInWithTokenFailed = ActionWithPayload<USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_FAILED, string>;
 export type SignUpStart = Action<USER_ACTION_TYPES.SIGN_UP_START>;
 export type SignUpSuccess = ActionWithPayload<USER_ACTION_TYPES.SIGN_UP_SUCCESS, User>;
-export type SignUpFailed = ActionWithPayload<USER_ACTION_TYPES.SIGN_UP_FAILED, Error>;
+export type SignUpFailed = ActionWithPayload<USER_ACTION_TYPES.SIGN_UP_FAILED, string>;
 export type SignOutStart = Action<USER_ACTION_TYPES.SIGN_OUT_START>;
 export type SignOutSuccess = Action<USER_ACTION_TYPES.SIGN_OUT_SUCCESS>;
-export type SignOutFailed = ActionWithPayload<USER_ACTION_TYPES.SIGN_OUT_FAILED, Error>;
+export type SignOutFailed = ActionWithPayload<USER_ACTION_TYPES.SIGN_OUT_FAILED, string>;
 
 export type UserAction = 
   | SetCurrentUser 
@@ -46,7 +46,7 @@ export const signInStart = (email: string, password: string, rememberMe: boolean
 export const signInSuccess = (user: User) =>
   createAction(USER_ACTION_TYPES.SIGN_IN_SUCCESS, user);
 
-export const signInFailed = (error: Error) =>
+export const signInFailed = (error: string) =>
   createAction(USER_ACTION_TYPES.SIGN_IN_FAILED, error);
 
 export const signInWithTokenStart = () =>
@@ -55,7 +55,7 @@ export const signInWithTokenStart = () =>
 export const signInWithTokenSuccess = (user: User) =>
   createAction(USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_SUCCESS, user);
 
-export const signInWithTokenFailed = (error: Error) =>
+export const signInWithTokenFailed = (error: string) =>
   createAction(USER_ACTION_TYPES.SIGN_IN_WITH_TOKEN_FAILED, error);
 
 export const signUpStart = (email: string, password: string) =>
@@ -64,7 +64,7 @@ export const signUpStart = (email: string, password: string) =>
 export const signUpSuccess = (user: User) =>
   createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, user);
 
-export const signUpFailed = (error: Error) =>
+export const signUpFailed = (error: string) =>
   createAction(USER_ACTION_TYPES.SIGN_UP_FAILED, error);
 
 export const signOutStart = () =>
@@ -73,5 +73,5 @@ export const signOutStart = () =>
 export const signOutSuccess = () =>
   createAction(USER_ACTION_TYPES.SIGN_OUT_SUCCESS);
 
-export const signOutFailed = (error: Error) =>
+export const signOutFailed = (error: string) =>
   createAction(USER_ACTION_TYPES.SIGN_OUT_FAILED, error);
