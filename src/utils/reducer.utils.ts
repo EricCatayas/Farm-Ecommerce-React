@@ -23,14 +23,12 @@ export function withMatcher<AC extends (...args:any[]) => AnyAction>(actionCreat
 
 export function withMatcher(actionCreator: Function){
   const type = actionCreator().type;
-  return Object.assign(
-    {      
-      type,
-      match(action: AnyAction){
-        return action == type;
-      }
-    }
-  )
+  return Object.assign(actionCreator, {
+    type,
+    match(action: AnyAction) {
+      return action.type === type;
+    },
+  });
 }
 
 
