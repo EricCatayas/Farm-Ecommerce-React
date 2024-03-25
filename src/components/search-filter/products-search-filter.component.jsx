@@ -70,7 +70,7 @@ const ProductSearchFilter = () => {
                         <div className="col col-xs-3">
                             <select className="form-select" aria-label="Default select example">
                                 {/* TODO */}
-                                <option selected>Select Quantity Unit</option>
+                                <option defaultValue={null}>Select Quantity Unit</option>
                                 <option value="1">Farm Ecommerce</option>
                                 <option value="2">Virtubooks</option>
                                 <option value="3">Love Game</option>
