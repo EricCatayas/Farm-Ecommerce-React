@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchNextPageProducts, fetchPreviousPageProducts, fetchProductsByPageNumber} from '../../redux/productsListPagination/productsListPagination.action';
 import { NextButton, PreviousButton } from './pagination-buttons';
+import PaginationListNumber from "./pagination-list-number"
 import { getPageNumbers } from '../../utils/page-numbers.utils';
 import './products-list-pagination.styles.scss';
 
@@ -37,7 +38,7 @@ const ProductsListPagination = () => {
             <PreviousButton onClickEventHandler={previousPageHandler}/>
           </li>
           {pageNumbers.map((page) => (
-            <li key={page} className={`pagination__numbers ${ page === pageNumber ? "active" : "" }`} data-id={page} onClick={pageClickHandler}>{page}</li>
+            <PaginationListNumber page={page} isActive={page === pageNumber} onClickEventHandler={pageClickHandler}/>
           ))}         
           {/* <li className="pagination__dots">...</li>*/}
           <li className="pagination__btn">
