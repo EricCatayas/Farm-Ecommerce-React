@@ -18,6 +18,7 @@
   },
   "include": [
     "src",
-    "tsconfig.json"
-    ]
+    "tsconfig.json",
+    "jest.config.js"    
+, "tests/App.test.js", "tests/components/product.component.test.js"  ]
 }
