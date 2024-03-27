@@ -1,8 +1,14 @@
 import { useNavigate } from "react-router-dom"; 
 import "./products-vertical-list.styles.css";
 
-
-// Note: Use ProductsVerticalList
+/**
+ * @deprecated This component is deprecated. Please use ProductsVerticalList instead.
+ * 
+ * Renders a list of products.
+ * 
+ * @param {Array} products - An array of product objects.
+ * @returns {JSX.Element} - The rendered component.
+ */
 function ProductsList({ products }) {
   const navigate = useNavigate();
 
