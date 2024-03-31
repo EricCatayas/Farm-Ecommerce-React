@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
+import { fetchProductsStart, fetchFilteredProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
 import { fetchProductCategoriesStart } from '../../redux/productCategory/productCategories.action';
 import AdvertisementBox from "../advertisement/advertisement-box.component";
 import GoogleMapLocations from '../map/google-map-locations.component';
@@ -27,8 +27,8 @@ const  HomeDirectory = () => {
 
     }, [])
 
-    const categorySelectEventHandler = (event) => {
-        console.log("Target: " + event.target);
+    const categorySelectEventHandler = (categoryId) => {
+      dispatch(fetchFilteredProductsStart(`category_Id=${categoryId}`));
     }
     
     console.log("HomeDirectory is rendered");
@@ -37,7 +37,7 @@ const  HomeDirectory = () => {
       <div className="home">
         <div className="container">
           <MainMenu />
-          <ProductCategories onCategorySelectEvent={categorySelectEventHandler}/>
+          <ProductCategories onSelectEventHandler={categorySelectEventHandler}/>
           <GoogleMapLocations />
           <ProductSearchFilter />
           <ProductsContextVerticalList />

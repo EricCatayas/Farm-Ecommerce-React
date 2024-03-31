@@ -5,16 +5,9 @@ import SubCategories from "./product-subcategories.component.v2";
 import CategoryMiniCard from "./category-mini-card.component";
 import Spinner from "../spinner/spinner.component";
 
-const ProductCategories = ({ onCategorySelectEvent }) => {  
+const ProductCategories = ({ onSelectEventHandler }) => {  
   const { productCategories, isLoading, errors } = useSelector((state) => state.productCategories);
   const [clickedParentCategory, setClickedParentCategory] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-
-    }
-    //fetchData();
-  }, []);
 
   const onClickEventHandler = (event) => {
     const id = event.target.dataset.id;
@@ -31,9 +24,9 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
     setClickedParentCategory(null);
   };
 
-  const onCategorySelectEventHandler = (event) => {
-    if (onCategorySelectEvent) 
-      onCategorySelectEvent(event);
+  const onSubCategoryClickHandler = (categoryId) => {
+    if (onSelectEventHandler) 
+      onSelectEventHandler(categoryId);
   };
 
   return (
@@ -57,7 +50,7 @@ const ProductCategories = ({ onCategorySelectEvent }) => {
             <SubCategories
               category_id={clickedParentCategory.id}
               subcategories={clickedParentCategory.subCategories}
-              onSelectEvent={onCategorySelectEventHandler}
+              onClickHandler={onSubCategoryClickHandler}
               onCloseHandler={onCloseEventHandler}
             />
           ) : (
