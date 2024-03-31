@@ -1,6 +1,7 @@
 import { PRODUCTS_LIST_PAGINATION_ACTION_TYPES } from "./productsListPagination.types";
 import { createAction, Action, ActionWithPayload } from "../../utils/reducer.utils";
 import Product from "../../models/Product";
+import ProductQueryParams from "../../models/ProductQueryParams";
 
 //TODO: remove
 export type SetProducts = ActionWithPayload<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PRODUCTS, Product[]>;
@@ -38,8 +39,8 @@ export const fetchProductsSuccess = (products: Product[]) =>
 export const fetchProductsFailed = (error: string) => 
     createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_FAILED, error);
 
-export const fetchFilteredProductsStart = (query: string) => 
-    createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_START, query);
+export const fetchFilteredProductsStart = (queryParams: ProductQueryParams) => 
+    createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_START, queryParams);
 
 export const fetchFilteredProductsSuccess = (products: Product[]) => 
     createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_SUCCESS, products);

@@ -1,6 +1,7 @@
 import Product from "../models/Product";
+import ProductQueryParams from "../models/ProductQueryParams";
 
 export interface IProductsService {
-  fetchFilteredProductsAsync: (query: string) => Promise<Product[]>;
+  fetchFilteredProductsAsync: (queryParams: ProductQueryParams) => Promise<Product[]>;
   fetchPaginatedProductsAsync: (pageNumber: number, pageSize: number) => Promise<Product[]>;  
 }

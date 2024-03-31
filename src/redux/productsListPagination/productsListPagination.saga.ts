@@ -4,6 +4,7 @@ import ProductsService from "../../services/ProductsService";
 import { PRODUCTS_LIST_PAGINATION_ACTION_TYPES } from "./productsListPagination.types";
 import { SagaIterator } from "redux-saga";
 import { PayloadAction } from "@reduxjs/toolkit";
+import ProductQueryParams from "../../models/ProductQueryParams";
 
 export function* fetchProductsAsync(): SagaIterator{
     //LOG
@@ -22,7 +23,7 @@ export function* fetchProductsAsync(): SagaIterator{
     }
 }
 
-export function* fetchFilteredProductsAsync(action: PayloadAction<string>): SagaIterator{
+export function* fetchFilteredProductsAsync(action: PayloadAction<ProductQueryParams>): SagaIterator{
   try {
     const productsService = new ProductsService();
 
