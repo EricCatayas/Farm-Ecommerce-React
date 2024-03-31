@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchNextPageProducts, fetchPreviousPageProducts, fetchProductsByPageNumber} from '../../redux/productsListPagination/productsListPagination.action';
-import { NextButton, PreviousButton } from './pagination-buttons';
-import PaginationListNumber from "./pagination-list-number"
+import { NextButton, PreviousButton, PaginationListNumber } from './pagination-buttons';
 import { getPageNumbers } from '../../utils/page-numbers.utils';
 import './products-list-pagination.styles.scss';
 
@@ -10,13 +9,14 @@ const ProductsListPagination = () => {
   const { pageNumber } = useSelector((state) => state.productsListPagination);
   const dispatch = useDispatch();
 
+  console.log("current Page number: " + pageNumber);
   const maxPages = 6;
   const pageNumbers = getPageNumbers(pageNumber, maxPages);
 
   const pageClickHandler = (event) => {
-    console.log("pageClicked!");
     const pageNumber = event.target.dataset.id;
 
+    console.log("pageClicked!");
     dispatch(fetchProductsByPageNumber(pageNumber));
   }
   const nextPageHandler = () => {
@@ -38,9 +38,8 @@ const ProductsListPagination = () => {
             <PreviousButton onClickEventHandler={previousPageHandler}/>
           </li>
           {pageNumbers.map((page) => (
-            <PaginationListNumber page={page} isActive={page === pageNumber} onClickEventHandler={pageClickHandler}/>
+            <PaginationListNumber page={page} isActive={page == pageNumber} onClickHandler={pageClickHandler}/>
           ))}         
-          {/* <li className="pagination__dots">...</li>*/}
           <li className="pagination__btn">
             <NextButton onClickEventHandler={nextPageHandler}/>
           </li>
