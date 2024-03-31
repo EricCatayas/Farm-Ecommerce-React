@@ -1,10 +1,9 @@
 import { takeLatest, all, call, put, select } from "redux-saga/effects";
-import { fetchProductsSuccess, fetchProductsFailed, fetchFilteredProductsSuccess, fetchFilteredProductsFailed } from "./productsListPagination.action";
+import { fetchProductsStart, fetchProductsSuccess, fetchProductsFailed, fetchFilteredProductsSuccess, fetchFilteredProductsFailed } from "./productsListPagination.action";
 import ProductsService from "../../services/ProductsService";
 import { PRODUCTS_LIST_PAGINATION_ACTION_TYPES } from "./productsListPagination.types";
 import { SagaIterator } from "redux-saga";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../store";
 
 export function* fetchProductsAsync(): SagaIterator{
     //LOG
@@ -40,6 +39,16 @@ export function* fetchFilteredProductsAsync(action: PayloadAction<string>): Saga
   }
 }
 
+export function* fetchProductsByPageStart() : SagaIterator {
+    try{
+        console.log("fetchProductsByPageStart")
+        yield put(fetchProductsStart());
+    }
+    catch(error: any){
+        yield put(fetchProductsFailed(error.message));
+    }
+}
+
 // LISTENERS
 
 export function* onFetchProducts(): SagaIterator{
@@ -54,23 +63,23 @@ export function* onFetchFilteredProducts(): SagaIterator{
         fetchFilteredProductsAsync
     );
 }
-export function* onFetchNextPageProducts(): SagaIterator{
+export function* onIncrementPage(): SagaIterator{
     yield takeLatest(
         PRODUCTS_LIST_PAGINATION_ACTION_TYPES.INCREMENT_PAGE,
-        fetchProductsAsync
+        fetchProductsByPageStart
     );
 }
 
-export function* onFetchPreviousPageProducts(): SagaIterator{
+export function* onDecrementPage(): SagaIterator{
     yield takeLatest(
         PRODUCTS_LIST_PAGINATION_ACTION_TYPES.DECREMENT_PAGE,
-        fetchProductsAsync
+        fetchProductsByPageStart
     );
 }
-export function* onFetchProductsByPageNumber(): SagaIterator{
+export function* onSetPageNumber(): SagaIterator{
     yield takeLatest(
         PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_NUMBER,
-        fetchProductsAsync
+        fetchProductsByPageStart
     );
 }
 
@@ -80,8 +89,8 @@ export function* productsListPaginationSaga(): SagaIterator{
     yield all([
         call(onFetchProducts),
         call(onFetchFilteredProducts), 
-        call(onFetchNextPageProducts),
-        call(onFetchPreviousPageProducts),
-        call(onFetchProductsByPageNumber)
+        call(onIncrementPage),
+        call(onDecrementPage),
+        call(onSetPageNumber)
     ]);
 }
