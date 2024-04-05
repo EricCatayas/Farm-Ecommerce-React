@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutStart } from "../../redux/user/user.actions";
+import { fetchFilteredProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
+import { createProductQueryParams } from "../../utils/productQueryParams";
+import SearchBar from "../searchbar/searchbar.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import './navbar.styles.css';
+
 
 const Navbar = () => {
     const dispatch = useDispatch();
@@ -17,6 +21,15 @@ const Navbar = () => {
         dispatch(signOutStart());
     }
 
+    const handleSearchClick = (searchField) => {
+      console.log(`Search product: ${searchField}`);
+
+      if (searchField) {
+        const query = createProductQueryParams('product_name', searchField);
+        dispatch(fetchFilteredProductsStart(query));
+      }
+    }
+
     const handleCartClick = () => {
       console.log("Cart link clicked");
       console.log(isCartOpen);
@@ -29,18 +42,10 @@ const Navbar = () => {
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
-              {/* TODO: remove decor */}
-                <h5 className="brand-name"><a href="/">Farm Ecommerce</a></h5>             
+                <h5 className="website-name"><a href="/">Farm Ecommerce</a></h5>             
               </div>
               <div className="col-md-5 my-auto">
-                <form role="search">
-                  <div className="input-group">  
-                    <input type="search" placeholder="Search products" className="form-control"/>
-                    <button className="btn bg-white" type="submit">
-                      <i className="fa fa-search"></i>
-                    </button>
-                  </div>
-                </form>
+                <SearchBar handleSearch={handleSearchClick}/>
               </div>
               <div className="col-md-5 my-auto">
                 {currentUser ? (
