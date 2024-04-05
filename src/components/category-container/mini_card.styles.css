@@ -6,11 +6,15 @@
   margin: 1em;
 }
 
-.mini-card .ico-container {
-  max-width: 80%;
+.mini-card .ico-container img {
+  vertical-align: middle;
 }
 
 .category-mini-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 0.1em; 
   cursor: pointer;
 }
 

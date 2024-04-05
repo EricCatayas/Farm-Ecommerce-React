@@ -2,7 +2,7 @@ import "./mini_card.styles.css";
 
 const CategoryMiniCard = ({ category, onClickHandler }) => {
   return (
-    <li key={category.id} className="mini-card align-items-center theme-color">
+    <li key={category.id} className="mini-card theme-color">
       <div className="category-mini-card-container" data-id={category.id} onClick={onClickHandler}>
         <div className="ico-container">
           <img src={category.image_Url}/>
