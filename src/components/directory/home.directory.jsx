@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchProductsStart, fetchFilteredProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
-import { fetchProductCategoriesStart } from '../../redux/productCategory/productCategories.action';
+import { createProductQueryParams } from '../../utils/productQueryParams';
 import AdvertisementBox from "../advertisement/advertisement-box.component";
 import GoogleMapLocations from '../map/google-map-locations.component';
 import MainMenu from '../main-menu/main-menu.component';
@@ -15,7 +15,6 @@ const  HomeDirectory = () => {
     useEffect(()=>{
         const fetchData = async () => {
             try{
-              dispatch(fetchProductCategoriesStart());
               dispatch(fetchProductsStart());
             }
             catch(error){
@@ -28,7 +27,8 @@ const  HomeDirectory = () => {
     }, [])
 
     const categorySelectEventHandler = (categoryId) => {
-      dispatch(fetchFilteredProductsStart(`category_Id=${categoryId}`));
+      const query = createProductQueryParams('category_Id', categoryId)
+      dispatch(fetchFilteredProductsStart(query));
     }
     
     console.log("HomeDirectory is rendered");
