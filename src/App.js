@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { signInWithTokenStart } from './redux/user/user.actions';
-import { fetchProductCategoriesStart } from "../../redux/productCategory/productCategories.action";
+import { fetchProductCategoriesStart } from "./redux/productCategory/productCategories.action";
 import Home from './routes/home';
 import Navigation from './routes/navigation';
 import Registration from './routes/registration';
@@ -22,7 +22,7 @@ const App = () => {
         console.log(error);
       }
      };
-     const fetchCategoriesOnLoad = async() => {
+     const fetchProductCategoriesOnLoad = async() => {
       try{
         dispatch(fetchProductCategoriesStart());
       } catch(error){
@@ -31,7 +31,7 @@ const App = () => {
      }
 
      authenticateUserOnLoad();
-     fetchCategoriesOnLoad();
+     fetchProductCategoriesOnLoad();
    }, [dispatch]);
 
   return (

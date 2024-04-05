@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { BreadCrumb } from "../breadcrumb/breadcrumb.component";
 import { fetchFilteredProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
+import { createProductQueryParams } from "../../utils/productQueryParams";
 import MainMenu from '../main-menu/main-menu.component';
-import Product from '../products/product.component';
+import ProductDetails from '../products/product-details.component';
 import ProductsVerticalList from '../products/products-vertical-list.component';
 import AdvertisementBox from "../advertisement/advertisement-box.component";
-import { ApiVersion,ProductsServicesFactory } from '../../factories/productsServicesFactory';
-
+import ProductService from "../../services/ProductService";
 
 const ProductViewDirectory = () => { 
     const [ product, setProduct ] = useState(null);
@@ -19,16 +19,18 @@ const ProductViewDirectory = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-          try {
-            const productsServicesFactory = new ProductsServicesFactory();  
-            const productService = productsServicesFactory.createProductService(ApiVersion.V1);
+          try { 
+            const productService = new ProductService();
             const productData = await productService.fetchProductAsync(productID);
             setProduct(productData);
             
-            if(productData.category_Id)
-              dispatch(fetchFilteredProductsStart(`?category_Id=${productData.category_Id}`));
-            else 
+            if(productData.category_Id){
+              const query = createProductQueryParams('category_Id', productData.category_Id);
+              dispatch(fetchFilteredProductsStart(query));
+            }
+            else {
               dispatch(fetchFilteredProductsStart());                        
+            }
             
           } catch (error) {
             console.log(error);
@@ -45,7 +47,7 @@ const ProductViewDirectory = () => {
           <MainMenu/>
           <BreadCrumb items={breadcrumbItems} />
           {/* TODO: Mini Google Maps */}          
-          { product && <Product product={product} /> }
+          { product && <ProductDetails product={product} /> }
           <AdvertisementBox />
           <ProductsVerticalList/>
           {/* TODO: Products List Menu Buttons */}

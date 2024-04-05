@@ -4,7 +4,7 @@ import "./product-subcategories.styles.scss";
 const SubCategories = ({
   category_id,
   subcategories,
-  onSelectEvent,
+  onClickHandler,
   onCloseHandler,
 }) => {
   return (
@@ -21,7 +21,7 @@ const SubCategories = ({
               <li
                 name="category_Id"
                 value={category_id}
-                onClick={onSelectEvent}
+                onClick={onClickHandler}
               >
                 All
               </li>
@@ -31,7 +31,7 @@ const SubCategories = ({
                       name="category_Id"
                       key={sub.id}
                       value={sub.id}
-                      onClick={onSelectEvent}
+                      onClick={onClickHandler}
                     >
                       {sub.name}
                     </li>
