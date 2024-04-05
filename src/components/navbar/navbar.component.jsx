@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutStart } from "../../redux/user/user.actions";
 import { fetchFilteredProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
@@ -21,14 +21,14 @@ const Navbar = () => {
         dispatch(signOutStart());
     }
 
-    const handleSearchClick = (searchField) => {
+    const handleSearchClick = useCallback((searchField) => {
       console.log(`Search product: ${searchField}`);
 
       if (searchField) {
         const query = createProductQueryParams('product_name', searchField);
         dispatch(fetchFilteredProductsStart(query));
       }
-    }
+    }, []);
 
     const handleCartClick = () => {
       console.log("Cart link clicked");
