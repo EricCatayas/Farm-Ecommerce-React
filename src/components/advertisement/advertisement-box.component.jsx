@@ -6,10 +6,8 @@ const AdvertisementBox = () => {
         <div className="row">
           <div className="col-xs-8">
             <h4>
-              Would you like to buy or to sell the product you are searching
-              for?
+              Would you like to advertise your products?
             </h4>
-            <h4>Post a SALE or PURCHASE advertisement</h4>
           </div>
           <div className="col-xs-4">
             <a href="/product/create" className="btn btn-theme mt-12">

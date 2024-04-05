@@ -57,7 +57,7 @@ const ProductCreate = () =>  {
     }
     const categorySelectEventHandler = (event) => {
 
-        const { value, innerText } = event.target;
+        const { value } = event.target;
         const categoryId = parseInt(value); 
         setFormFields((prevFormFields) => ({
             ...prevFormFields,

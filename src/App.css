@@ -35,3 +35,11 @@ span.line-break {
   background-color: black;
   margin: 10px 0; /* Optional margin for spacing */
 }
+
+.pull-left {
+    float: left !important;
+}
+
+.pull-right {
+    float: right !important;
+}
