@@ -1,5 +1,5 @@
 
-export const Dropdown = ({ args, selectTitle, onChange }) => {
+const Dropdown = ({ args, selectTitle, onChange }) => {
   return (
     <select className="form-select" aria-label="Default select example" onChange={onChange}>
       { selectTitle && 
@@ -13,3 +13,5 @@ export const Dropdown = ({ args, selectTitle, onChange }) => {
     </select>
   );
 };
+
+export default Dropdown;
