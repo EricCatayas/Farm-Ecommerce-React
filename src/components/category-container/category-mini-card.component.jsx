@@ -1,11 +1,16 @@
-import "./mini_card.styles.css";
+import "./category-mini-card.styles.css";
 
-const CategoryMiniCard = ({ category, onClickHandler }) => {
+
+const CategoryMiniCard = ({ category }) => {
   return (
     <li key={category.id} className="mini-card theme-color">
-      <div className="category-mini-card-container" data-id={category.id} onClick={onClickHandler}>
+      <div
+        className="category-mini-card-container"
+        data-id={category.id}
+        // onClick={onClickHandler}
+      >
         <div className="ico-container">
-          <img src={category.image_Url}/>
+          <img src={category.image_Url} />
         </div>
         <div className="ico-text">{category.name}</div>
       </div>
