@@ -21,7 +21,6 @@ const ProductSearchFilter = () => {
   const [ municipalities, setMunicipalities ] = useState([]);
   const [ subCategories, setSubcategories ] = useState(null);
   const { productCategories } = useSelector((state) => state.productCategories);
-  const { category_Id, is_negotiable, min_price, max_price, per_qty_type, municipality_Id } = formFields;
   const qtyUnitOptions = [{id:1, name:"Love Game"}, {id:2, name:"Conquest"}, {id:3, name:"5AM Club"} ]; // TODO
 
   //LOG
