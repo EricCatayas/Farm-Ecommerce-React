@@ -1,13 +1,13 @@
 import "./category-mini-card.styles.css";
 
 
-const CategoryMiniCard = ({ category }) => {
+const CategoryMiniCard = ({ category, onClickHandler }) => {
   return (
     <li key={category.id} className="mini-card theme-color">
       <div
         className="category-mini-card-container"
         data-id={category.id}
-        // onClick={onClickHandler}
+        onClick={onClickHandler}
       >
         <div className="ico-container">
           <img src={category.image_Url} />
