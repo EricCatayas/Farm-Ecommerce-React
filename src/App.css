@@ -8,26 +8,6 @@
     background-color: #e6e6e6;
 }
 
-.panel-heading {
-  h4, i {
-  display: inline-block;
-  padding: 5px;
-  margin: 0px;
-  }
-  i {
-    margin: 4px;
-    -webkit-transition: 0.25s ease-in-out;
-    -moz-transition: 0.25s ease-in-out;
-    transition: 0.25s ease-in-out;
-  }
-  &.collapsed i {
-    -webkit-transform: rotate(-180deg);
-    -moz-transform: rotate(-180deg);
-    -ms-transform: rotate(-180deg);
-    transform: rotate(-180deg);
-  }
-}
-
 .panel-body p {
   margin-left: 10px;
 }
@@ -37,7 +17,7 @@ span.line-break {
   width: 100%;
   height: 1px;
   background-color: black;
-  margin: 10px 0; /* Optional margin for spacing */
+  margin: 10px 0;
 }
 
 .pull-left {
@@ -47,6 +27,7 @@ span.line-break {
 .pull-right {
     float: right !important;
 }
+
 
 @media only screen and (max-width: 550px){
   .mobile-hide {

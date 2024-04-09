@@ -1,12 +1,5 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  
-} */
 html {
-  font-family: sans-serif, "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: Verdana, Geneva, sans-serif, "Helvetica Neue",Helvetica,Arial,sans-serif;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   font-size: 14px;
@@ -140,15 +133,21 @@ h4 {
 {
   margin:0
 }
-@media (max-width:991px)
+
+/* WEB RESPONSIVENESS  */
+
+@media only screen and (max-width:991px)
 {
   .site-footer [class^=col-]
   {
     margin-bottom:30px
   }
 }
-@media (max-width:767px)
+@media only screen and (max-width:767px)
 {
+   html, body {
+    font-size: 12px;
+  }
   .site-footer
   {
     padding-bottom:0
