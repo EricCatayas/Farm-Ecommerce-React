@@ -18,9 +18,12 @@ const ImageCarousel = ({ images }) => {
   };
 
   return (
-    <div className="picture-slider">
+    <div className="picture-slider" data-testid="image-carousel">
       <button className="prev" onClick={prevSlide}>&#10094;</button>
-      <img src={images[currentImageIndex].image_Url} alt={`Slide ${currentImageIndex + 1}`} />
+      <img
+        src={images[currentImageIndex].image_Url}
+        alt={`Slide ${currentImageIndex + 1}`}
+      />
       <button className="next" onClick={nextSlide}>&#10095;</button>
     </div>
   );

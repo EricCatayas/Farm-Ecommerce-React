@@ -46,7 +46,7 @@ class AuthenticationService implements IAuthenticationService {
     );
   }
 
-  private setAuthCookies(response: User): void{
+  private setAuthCookies = (response: User): void => {
     document.cookie = `authorization=Bearer ${encodeURIComponent(
       response.token
     )}; expires=${response.expiration}`;

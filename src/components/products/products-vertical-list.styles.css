@@ -1,5 +1,26 @@
 
-img {
+.products-list-container img {
   max-width: 200px;
   height: auto; 
+
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-info-description {
+    overflow: hidden;
+}
+

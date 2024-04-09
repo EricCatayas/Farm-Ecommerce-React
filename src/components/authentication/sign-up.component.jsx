@@ -47,15 +47,16 @@ const SignUpForm = () => {
         event.preventDefault();
         try{
             var isRegisterSuccess = await RegisterUserAsync(userName, email, contactNum1, contactNum2, password, confirmPassword);
-            console.log(isRegisterSuccess);
+            console.log(`Is registration success: ${isRegisterSuccess}`);
+            
+            if(isRegisterSuccess){
+                //create address            
+                var isAddressSuccess = await CreateUserAddressAsync(street, barangay, postalCode, municipality_Id);
+                // redirect
+            }
         }
         catch(error){
             alert(error.message)
-        }
-        if(isRegisterSuccess){
-            //create address            
-            var isAddressSuccess = await CreateUserAddressAsync(street, barangay, postalCode, municipality_Id);
-            // redirect
         }
     }
     const inputChangeHandler = async (event) => {

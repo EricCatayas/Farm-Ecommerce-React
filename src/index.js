@@ -14,8 +14,11 @@ import { Provider } from "react-redux";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // test1@example.com _Test1
-// TODO: Error is not serializable; modify error property to be string type and modify code
-
+// TODO: ProductsSearchFilterComponent implementation
+//       Cannot read properties of 'setAuthCookies'
+//       Web Responsiveness
+//           ProductCategories mobile dropdown
+//
 root.render(
   <React.StrictMode>
     <Provider store={store}>

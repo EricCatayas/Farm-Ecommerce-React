@@ -1,18 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { formatDate, truncateString } from "../../utils/format.utils";
+import { LabelContentItem, SingleRowContent } from "./product-info-item";
 import ProductsListPagination from "../pagination/products-list-pagination.component";
 import Spinner from "../spinner/spinner.component";
 import "./products-vertical-list.styles.css";
 
-
-const ProductInfoItem = ({label, content}) => {
-  return (
-    <div className="col">
-      <div className="row">{label}</div>
-      <div className="row">{content}</div>
-    </div>
-  );
-}
 
 const ProductsVerticalList = () => {
   const { products, isLoading } = useSelector(
@@ -21,9 +14,8 @@ const ProductsVerticalList = () => {
 
   const navigate = useNavigate();
 
-  const onViewProductClickEvent = (event) => {
-    const selectedProductId = event.target.value;
-    navigate(`/product/${selectedProductId}`);
+  const onViewProductHandler = (productId) => {
+    navigate(`/product/${productId}`);
   };
 
   return (
@@ -38,61 +30,80 @@ const ProductsVerticalList = () => {
                     <tr key={product.id}>
                       <td>
                         <div className="row">
-                          <div className="col-3">
+                          {/* Picture */}
+                          <div className="col col-md-3">
                             <img
-                              src={
-                                product.images[0] && product.images[0].image_Url
-                              }
+                              src={product.images[0] && product.images[0].image_Url}
                               alt={`Product: ${product.name}`}
                             />
-                          </div>
-                          <div className="col-6">
-                            {/* First Row */}
-                            <div className="row">
-                              <div className="co">{product.name}</div>
-                            </div>
-                            {/* Second Row */}
-                            <div className="row mt-1">
-                              <div className="col-9">{product.description}</div>
-                            </div>
-                            {/* Third Row */}
-                            <div className="row mt-1">
-                              <ProductInfoItem
-                                label="Price"
-                                content={product.price}
-                              />
-                              <ProductInfoItem
-                                label="Sold Per"
-                                content={product.per_Qty_Type}
-                              />
-                              <ProductInfoItem
-                                label="Stock Quantity"
-                                content={product.qty_In_Stock}
-                              />
-                              <ProductInfoItem
-                                label="Upload Date"
-                                content={product.images[0].upload_Date}
-                              />
+                            <div className="mt-1 text-center mobile-show">
+                              <SingleRowContent content={product.name}/>
                             </div>
                           </div>
-                          <div className="col-3">
+
+                          {/* Middle */}
+                          <div className="col col-md-9">
                             <div className="row">
-                              {product.store.address.province}
-                            </div>
-                            <div className="row">
-                              Brgy. {product.store.address.barangay}
-                            </div>
-                            <div className="row">
-                              <button
-                                className="btn btn-theme btn-block small lowercase"
-                                value={product.id}
-                                onClick={onViewProductClickEvent}
-                              >
-                                View Advertisement
-                              </button>
-                              <button className="btn btn-primary btn-block small lowercase">
-                                Contact Seller
-                              </button>
+                              <div className="col-md-8 col-sm-12">
+                                <div className="mt-1 mobile-hide">
+                                  <SingleRowContent content={product.name}/>
+                                  <SingleRowContent content={truncateString(product.description, 60)}/>
+                                </div>
+                                <div className="row mt-1">
+                                  <LabelContentItem
+                                    label="Price"
+                                    content={product.price}
+                                  />
+                                  <LabelContentItem
+                                    label="Sold Per"
+                                    content={product.per_Qty_Type}
+                                  />
+                                  <LabelContentItem
+                                    label="Stock Quantity"
+                                    content={product.qty_In_Stock}
+                                  />
+                                  <LabelContentItem
+                                    label="Upload Date"
+                                    content={formatDate(
+                                      product.images[0].upload_Date
+                                    )}
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="col-md-4 col-sm-12">
+                                <div className="mobile-hide">
+                                <SingleRowContent content={product.store.address.province}/>
+                                <SingleRowContent content={product.store.address.barangay}/>
+                                  <div className="row">
+                                    <button
+                                      className="btn btn-theme btn-block small lowercase"
+                                      onClick={() => onViewProductHandler(product.id)}
+                                    >
+                                      View Advertisement
+                                    </button>
+                                    <button className="btn btn-primary btn-block small lowercase">
+                                      Contact Seller
+                                    </button>
+                                  </div>
+                                </div>
+
+                                <div className="row row-cols-2 mobile-show">
+                                  <div className="col">
+                                    <button
+                                      className="btn btn-theme btn-block small lowercase"
+                                      onClick={() => onViewProductHandler(product.id)}
+                                    >
+                                      View
+                                    </button>
+                                  </div>
+                                  <div className="col">
+                                    <button className="btn btn-primary btn-block small lowercase">
+                                      Contact
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
