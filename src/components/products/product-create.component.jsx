@@ -8,7 +8,7 @@ const productCreateFormFields = {
     Description : '',
     Price: null,
     Category_Id : null,
-    Per_Qty_Type: '',
+    quantity_Unit: '',
     Qty_In_Stock : null,
     Is_Negotiable: false,
     Image_Files : null,
@@ -111,7 +111,7 @@ const ProductCreate = () =>  {
           />
           <input
             type="text"
-            name="Per_Qty_Type"
+            name="quantity_Unit"
             placeholder="Sold Per Qty"
             required
             onChange={textInputChangeHandler}

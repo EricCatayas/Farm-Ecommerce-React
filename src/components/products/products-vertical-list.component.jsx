@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { formatDate, truncateString } from "../../utils/format.utils";
@@ -8,6 +9,7 @@ import "./products-vertical-list.styles.css";
 
 
 const ProductsVerticalList = () => {
+  const [descriptionLength, setDescriptionLength ] = useState(60);
   const { products, isLoading } = useSelector(
     (state) => state.productsListPagination
   );
@@ -33,11 +35,13 @@ const ProductsVerticalList = () => {
                           {/* Picture */}
                           <div className="col col-md-3">
                             <img
-                              src={product.images[0] && product.images[0].image_Url}
+                              src={
+                                product.images[0] && product.images[0].image_Url
+                              }
                               alt={`Product: ${product.name}`}
                             />
                             <div className="mt-1 text-center mobile-show">
-                              <SingleRowContent content={product.name}/>
+                              <SingleRowContent content={product.name} />
                             </div>
                           </div>
 
@@ -46,8 +50,13 @@ const ProductsVerticalList = () => {
                             <div className="row">
                               <div className="col-md-8 col-sm-12">
                                 <div className="mt-1 mobile-hide">
-                                  <SingleRowContent content={product.name}/>
-                                  <SingleRowContent content={truncateString(product.description, 60)}/>
+                                  <SingleRowContent content={product.name} />
+                                  <SingleRowContent
+                                    content={truncateString(
+                                      product.description,
+                                      descriptionLength
+                                    )}
+                                  />
                                 </div>
                                 <div className="row mt-1">
                                   <LabelContentItem
@@ -56,7 +65,7 @@ const ProductsVerticalList = () => {
                                   />
                                   <LabelContentItem
                                     label="Sold Per"
-                                    content={product.per_Qty_Type}
+                                    content={product.quantity_Unit}
                                   />
                                   <LabelContentItem
                                     label="Stock Quantity"
@@ -73,16 +82,22 @@ const ProductsVerticalList = () => {
 
                               <div className="col-md-4 col-sm-12">
                                 <div className="mobile-hide">
-                                <SingleRowContent content={product.store.address.province}/>
-                                <SingleRowContent content={product.store.address.barangay}/>
+                                  <SingleRowContent
+                                    content={product.store.address.province}
+                                  />
+                                  <SingleRowContent
+                                    content={product.store.address.barangay}
+                                  />
                                   <div className="row">
                                     <button
-                                      className="btn btn-theme btn-block small lowercase"
-                                      onClick={() => onViewProductHandler(product.id)}
+                                      className="btn btn-theme btn-block small lowercase mt-2"
+                                      onClick={() =>
+                                        onViewProductHandler(product.id)
+                                      }
                                     >
                                       View Advertisement
                                     </button>
-                                    <button className="btn btn-primary btn-block small lowercase">
+                                    <button className="btn btn-primary btn-block small lowercase mt-2">
                                       Contact Seller
                                     </button>
                                   </div>
@@ -91,14 +106,16 @@ const ProductsVerticalList = () => {
                                 <div className="row row-cols-2 mobile-show">
                                   <div className="col">
                                     <button
-                                      className="btn btn-theme btn-block small lowercase"
-                                      onClick={() => onViewProductHandler(product.id)}
+                                      className="btn btn-theme btn-block small lowercase my-2"
+                                      onClick={() =>
+                                        onViewProductHandler(product.id)
+                                      }
                                     >
                                       View
                                     </button>
                                   </div>
                                   <div className="col">
-                                    <button className="btn btn-primary btn-block small lowercase">
+                                    <button className="btn btn-primary btn-block small lowercase my-2">
                                       Contact
                                     </button>
                                   </div>

@@ -5,6 +5,7 @@ import { FormInputGroupText, Checkbox } from "../form-input/form-input-field.com
 import Dropdown from "../dropdown/dropdown.component";
 import ProvincesService from "../../services/ProvincesService";
 import MunicipalitiesService from "../../services/MunicipalitiesService";
+import "./products-search-filter.styles.scss";
 
 const searchFormData = {
   category_Id: "",
@@ -15,17 +16,23 @@ const searchFormData = {
   municipality_Id: null,
 };
 
+const qtyUnitOptions = [
+  { id: "", name: "piece" },
+  { id: "", name: "kilo" },
+  { id: "", name: "liter" },
+  { id: "", name: "dozen" },
+  { id: "", name: "gallon" },
+];
+
 const ProductSearchFilter = () => {
   const [ formFields, setFormFields ] = useState(searchFormData);
   const [ provinces, setProvinces ] = useState([]);
   const [ municipalities, setMunicipalities ] = useState([]);
   const [ subCategories, setSubcategories ] = useState(null);
   const { productCategories } = useSelector((state) => state.productCategories);
-  const qtyUnitOptions = [{id:1, name:"Love Game"}, {id:2, name:"Conquest"}, {id:3, name:"5AM Club"} ]; // TODO
 
   //LOG
-  console.log("ProductSearchFilter Rerender");
-  console.log(formFields);
+  console.log("ProductSearchFilter rendered");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,7 +78,7 @@ const ProductSearchFilter = () => {
   return (
     <section className="products-search-filter my-5" id="buffy-stuff-accordion-group">
       <div className="container">
-        <div className="panel-heading" data-bs-toggle="collapse" data-parent="#buffy-stuff-accordion-group" href="#buffy-characters-body">
+        <div className="panel-accordion" data-bs-toggle="collapse" data-parent="#buffy-stuff-accordion-group" href="#buffy-characters-body">
           <div className="row justify-content-between">
             <div className="col">
               <h4>Filter Products</h4>

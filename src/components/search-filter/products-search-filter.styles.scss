@@ -1,0 +1,21 @@
+.panel-accordion {
+  h4, i {
+  display: inline-block;
+  padding: 5px;
+  margin: 0px;
+  cursor: pointer;    
+  }
+  i {
+    margin: 4px;
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;    
+  }
+
+  &.collapsed i {
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+  }
+}

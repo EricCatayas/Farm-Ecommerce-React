@@ -52,7 +52,7 @@ function ProductsList({ products }) {
                           </div>
                           <div className="col-2">
                             <div className="row">Sold Per</div>
-                            <div className="row">{product.per_Qty_Type}</div>
+                            <div className="row">{product.quantity_Unit}</div>
                           </div>
                           <div className="col-2">
                             <div className="row">Stock Qty</div>

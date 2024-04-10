@@ -34,13 +34,13 @@ const ProductDetails = ({product}) =>{
                   <div className="row mb-10">
                     <ProductInformation
                       label="Sold Per"
-                      content={product.per_Qty_Type}
+                      content={product.quantity_Unit}
                     />
                   </div>
                   <div className="row mb-10">
                     <ProductInformation
                       label="Sold Per"
-                      content={product.per_Qty_Type}
+                      content={product.quantity_Unit}
                     />
                   </div>
                   <div className="row mb-10">
