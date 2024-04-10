@@ -10,7 +10,7 @@ interface Product {
   description: string;
   price: number;
   is_Negotiable: boolean;
-  per_Qty_Type: string;
+  quantity_Unit: string;
   qty_In_Stock: number;
   images: Image[];
   store: Store;

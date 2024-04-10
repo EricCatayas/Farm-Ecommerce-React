@@ -1,25 +1,22 @@
-.something {
-    min-width: 1170px;
-    height: 40px;
-    line-height: 40px;
-    font-size: 12px;
-    font-weight: 300;
-}
-
 .main-navbar{
     border-bottom: 1px solid #ccc;
+}
+.main-navbar .website-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+}
+.main-navbar .menu-toggle{
+    margin: .5rem !important;
+    cursor: pointer;
 }
 .main-navbar .top-navbar{
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.main-navbar .top-navbar .website-name{
-    color: #fff;
-    text-decoration: none;
-}
 .main-navbar .top-navbar .nav-link{
-    color: #fff;
-    font-size: 16px;
+    color: azure;
+    font-size: 18px;
     font-weight: 500;
 }
 .main-navbar .top-navbar .dropdown-menu{
@@ -37,19 +34,7 @@
     color: #2874f0;
     font-size: 14px;
 }
-.main-navbar .navbar{
-    padding: 0px;
-    background-color: #ddd;
-}
-.main-navbar .navbar .nav-item .nav-link{
-    padding: 8px 20px;
-    color: #000;
-    font-size: 15px;
-}
-
-@media only screen and (max-width: 600px) {
-    .main-navbar .top-navbar .nav-link{
-        font-size: 12px;
-        padding: 8px 10px;
-    }
+.main-navbar .navbar-nav{
+    margin: auto;
+    /* Todo: Center vertically */
 }

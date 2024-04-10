@@ -8,7 +8,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ProductCategoriesProvider } from "./contexts/product-categories.context";
-import { CartProvider } from "./contexts/cart.context";
 import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -17,16 +16,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // TODO: ProductsSearchFilterComponent implementation
 //       Cannot read properties of 'setAuthCookies'
 //       Web Responsiveness
-//           ProductCategories mobile dropdown
+//          Sidebar 
 //
 root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <CartProvider>
-            <App />
-          </CartProvider>
+          <App />
         </BrowserRouter>
       </PersistGate>
     </Provider>

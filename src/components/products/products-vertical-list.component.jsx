@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { formatDate, truncateString } from "../../utils/format.utils";
+import { getPricePerUnit } from "../../utils/product.utils";
 import { LabelContentItem, SingleRowContent } from "./product-info-item";
 import ProductsListPagination from "../pagination/products-list-pagination.component";
 import Spinner from "../spinner/spinner.component";
@@ -61,15 +62,11 @@ const ProductsVerticalList = () => {
                                 <div className="row mt-1">
                                   <LabelContentItem
                                     label="Price"
-                                    content={product.price}
-                                  />
-                                  <LabelContentItem
-                                    label="Sold Per"
-                                    content={product.quantity_Unit}
+                                    content={getPricePerUnit(product)}
                                   />
                                   <LabelContentItem
                                     label="Stock Quantity"
-                                    content={product.qty_In_Stock}
+                                    content={`Php${product.qty_In_Stock}`}
                                   />
                                   <LabelContentItem
                                     label="Upload Date"

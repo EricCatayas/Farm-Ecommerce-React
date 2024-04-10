@@ -1,21 +1,20 @@
-import { useCallback, useState } from "react";
+import { useCallback, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signOutStart } from "../../redux/user/user.actions";
 import { fetchFilteredProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
 import { createProductQueryParams } from "../../utils/productQueryParams";
+import NavigationContext from "../../contexts/navigation.context";
 import SearchBar from "../searchbar/searchbar.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import './navbar.styles.css';
 
 
 const Navbar = () => {
-    const dispatch = useDispatch();
     const { currentUser } = useSelector((state) => state.user);
+    const { setToggleSidebar } = useContext(NavigationContext);
 
-    // TODO
-    const  cartCount = 3;
-    const [ isCartOpen, setIsCartOpen ] = useState(false);
-
+    const dispatch = useDispatch();
+    
     const handleSignOutClick = () => {
         console.log("Signing user out");
         dispatch(signOutStart());
@@ -30,35 +29,31 @@ const Navbar = () => {
       }
     }, []);
 
-    const handleCartClick = () => {
-      console.log("Cart link clicked");
-      console.log(isCartOpen);
-      setIsCartOpen(!isCartOpen);
-    };
+    const toggleSidebar = () => {
+      setToggleSidebar(true);
+    }
 
     return (
       <nav className="main-navbar shadow-sm sticky-top theme-color">
         <div className="top-navbar">
-          <div className="container-fluid">
+          <div className="container-fluid"> 
             <div className="row">
-              <div className="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
-                <h5 className="website-name"><a href="/">Farm Ecommerce</a></h5>             
+              <div className="col col-md-3">
+                <div className="navbar-nav">
+                  <h5 className="website-title mobile-hide">
+                    <a className="navbar-brand" href="/">Farm Ecommerce</a>
+                  </h5>
+                  <div className="menu-toggle">
+                    <i class="fa fa-bars fa-2x mobile-show" aria-hidden="true" onClick={toggleSidebar}></i>
+                  </div>
+                </div>
               </div>
-              <div className="col-md-5 my-auto">
-                <SearchBar handleSearch={handleSearchClick}/>
+              <div className="col col-md-5">
+                <SearchBar handleSearch={handleSearchClick} />
               </div>
-              <div className="col-md-5 my-auto">
+              <div className="col col-md-4 mobile-hide">
                 {currentUser ? (
-                  <ul className="nav justify-content-end">
-                    <li className="nav-item" onClick={handleCartClick}>
-                      <a className="nav-link" href="#">
-                        <i className="fa fa-shopping-cart"></i> Cart (
-                        {cartCount})
-                      </a>
-                    </li>
-                    {
-                      isCartOpen && <CartDropdown />
-                    }
+                  <ul className="navbar-nav pull-right">
                     {/* <li className="nav-item">
                       <a className="nav-link" href="#">
                         <i className="fa fa-heart"></i> Wishlist (0)
@@ -68,7 +63,10 @@ const Navbar = () => {
                       <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i className="fa fa-user"></i> Account
                       </a>
-                      <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <ul
+                        className="dropdown-menu"
+                        aria-labelledby="navbarDropdown"
+                      >
                         <li>
                           <a className="dropdown-item" href="#">
                             <i className="fa fa-user"></i> Profile
@@ -78,7 +76,7 @@ const Navbar = () => {
                           <a className="dropdown-item" href="#">
                             <i className="fa fa-list"></i> My Orders
                           </a>
-                        </li>                        
+                        </li>
                         <li>
                           <a className="dropdown-item" href="#">
                             <i className="fa fa-shopping-cart"></i> My Cart
@@ -93,7 +91,7 @@ const Navbar = () => {
                     </li>
                   </ul>
                 ) : (
-                  <ul className="nav justify-content-end">
+                  <ul className="navbar-nav pull-right">
                     <li className="nav-item">
                       <a className="nav-link" href="/sign-in">
                         <i className="fa fa-sign-in"></i> Sign In

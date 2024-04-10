@@ -1,14 +1,16 @@
 import { Outlet } from "react-router-dom";
-import {Fragment } from 'react';
+import { NavigationProvider } from "../contexts/navigation.context";
 import Navbar from "../components/navbar/navbar.component";
+import Sidebar from "../components/sidebar/sidebar.component";
 
 const Navigation = () => {
 
     return (
-        <Fragment>
-            <Navbar/>
-            <Outlet/>
-        </Fragment>
+      <NavigationProvider>
+        <Sidebar />
+        <Navbar />
+        <Outlet />
+      </NavigationProvider>
     );
 }
 
