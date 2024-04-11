@@ -3,3 +3,9 @@
     width: 100%;
     height: 400px;
 }
+
+@media only screen and (max-width: 550px){
+  .google-map-container {
+    height: 300px;
+}
+}
