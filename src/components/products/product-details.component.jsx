@@ -1,10 +1,13 @@
+import { formatDate } from "../../utils/format.utils";
+import { getPricePerUnit } from "../../utils/product.utils";
 import ImageCarousel from "../carousel/image-carousel.component";
+import "./product-details.styles.css";
 
 const ProductInformation = ({ label, content }) => {
   return (
     <div className="col-xs-12">
       <span className="info-details-label">{label}:</span>
-      <span className="info-details-content">{content}</span>
+      <span className="info-details-content"> {content}</span>
     </div>
   );
 };
@@ -29,24 +32,24 @@ const ProductDetails = ({product}) =>{
                     <ProductInformation label="Name" content={product.name} />
                   </div>
                   <div className="row mb-10">
-                    <ProductInformation label="Price" content={product.price} />
-                  </div>
-                  <div className="row mb-10">
                     <ProductInformation
-                      label="Sold Per"
-                      content={product.quantity_Unit}
+                      label="Price"
+                      content={`Php${getPricePerUnit(product)}`}
                     />
                   </div>
                   <div className="row mb-10">
                     <ProductInformation
-                      label="Sold Per"
-                      content={product.quantity_Unit}
+                      label="Stock Quantity"
+                      content={product.qty_In_Stock}
                     />
                   </div>
                   <div className="row mb-10">
                     <ProductInformation
                       label="Upload Date"
-                      content={product.images[0] && product.images[0].upload_Date}
+                      content={
+                        product.images[0] &&
+                        formatDate(product.images[0].upload_Date)
+                      }
                     />
                   </div>
                 </div>
@@ -68,7 +71,9 @@ const ProductDetails = ({product}) =>{
               </div>
               <div className="row">
                 {/* ProductDetails Description */}
-                <ProductInformation content={product.description} />
+                <div className="description-container">
+                  {product.description}
+                </div>
               </div>
             </div>
           </section>

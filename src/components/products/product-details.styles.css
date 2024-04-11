@@ -1,0 +1,15 @@
+.info-details-label {
+    color: #808588;
+    font-weight: 400;
+}
+
+.info-details-content {
+    font-weight: 700;
+}
+
+.description-container {
+    color: #383c3e;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+}
