@@ -1,0 +1,23 @@
+.about-section {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+.about-content {
+    text-align: center;
+}
+
+.about-img {
+    margin-bottom: 20px;
+}
+
+.about-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (min-width: 768px) {
+    .about-img {
+        margin-bottom: 0;
+    }
+}

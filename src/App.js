@@ -4,12 +4,13 @@ import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { signInWithTokenStart } from './redux/user/user.actions';
 import { fetchProductCategoriesStart } from "./redux/productCategory/productCategories.action";
+import AboutUs from './routes/about-us';
+import Authentication from './routes/authentication';
 import Home from './routes/home';
 import Navigation from './routes/navigation';
-import Registration from './routes/registration';
-import Authentication from './routes/authentication';
 import ProductCreate from './components/products/product-create.component';
 import ProductView from './routes/product-view';
+import Registration from './routes/registration';
 
 const App = () => {
    const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const App = () => {
         <Route index element={<Home/>} />
         <Route path='sign-up' element={<Registration/>} />        
         <Route path='sign-in' element={<Authentication/>} />       
+        <Route path='about-us' element={<AboutUs/>} />       
         <Route path='product/create' element={<ProductCreate/>}/>
         <Route path='product/:id' element={<ProductView/>}/>
       </Route>
