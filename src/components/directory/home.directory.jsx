@@ -7,7 +7,7 @@ import GoogleMapLocations from '../map/google-map-locations.component';
 import MainMenu from '../main-menu/main-menu.component';
 import ProductCategories from '../category-container/product-categories.component';
 import ProductSearchFilter from '../search-filter/products-search-filter.component';
-import ProductsContextVerticalList from '../products/products-vertical-list.component';
+import ProductsVerticalList from '../products/products-vertical-list.component';
 
 const  HomeDirectory = () => {
     const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const  HomeDirectory = () => {
           <ProductCategories onSelectEventHandler={categorySelectEventHandler}/>
           <GoogleMapLocations />
           <ProductSearchFilter />
-          <ProductsContextVerticalList />
+          <ProductsVerticalList />
           <AdvertisementBox />
         </div>
       </div>
