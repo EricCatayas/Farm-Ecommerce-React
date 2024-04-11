@@ -28,6 +28,9 @@ span.line-break {
     float: right !important;
 }
 
+.lowercase {
+    text-transform: none !important;
+}
 
 @media only screen and (max-width: 550px){
   .mobile-hide {

@@ -13,11 +13,17 @@ import { Provider } from "react-redux";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // test1@example.com _Test1
-// TODO: ProductsSearchFilterComponent implementation
-//       Cannot read properties of 'setAuthCookies'
-//       Web Responsiveness
+// TODO: 
+//       Pagination: numbers and button
+//       IAuthenticationService: Cannot read properties of 'setAuthCookies'
+//       Component Implementation:
 //          Sidebar 
-//
+//          About Us
+//          ProductView
+//          Navbar
+//       Display: "Error: Feature has not been implemented yet." or something
+//       Try: Tailwind css
+//       Try: Lazy Loading
 root.render(
   <React.StrictMode>
     <Provider store={store}>
