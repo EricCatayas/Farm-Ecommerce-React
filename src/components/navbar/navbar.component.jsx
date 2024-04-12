@@ -43,7 +43,7 @@ const Navbar = () => {
                   <h5 className="website-title mobile-hide">
                     <a className="navbar-brand" href="/">Farm Ecommerce</a>
                   </h5>
-                  <div className="menu-toggle">
+                  <div className="menu-toggle mobile-show">
                     <i class="fa fa-bars fa-2x mobile-show" aria-hidden="true" onClick={toggleSidebar}></i>
                   </div>
                 </div>

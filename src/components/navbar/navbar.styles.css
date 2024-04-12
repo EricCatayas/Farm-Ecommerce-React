@@ -11,8 +11,8 @@
     cursor: pointer;
 }
 .main-navbar .top-navbar{
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 8px;
+    padding-bottom: 5px;
 }
 .main-navbar .top-navbar .nav-link{
     color: azure;
