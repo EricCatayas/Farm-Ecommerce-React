@@ -11,6 +11,7 @@ import Navigation from './routes/navigation';
 import ProductCreate from './components/products/product-create.component';
 import ProductView from './routes/product-view';
 import Registration from './routes/registration';
+import Store from "./routes/store";
 
 const App = () => {
    const dispatch = useDispatch();
@@ -44,6 +45,7 @@ const App = () => {
         <Route path='about-us' element={<AboutUs/>} />       
         <Route path='product/create' element={<ProductCreate/>}/>
         <Route path='product/:id' element={<ProductView/>}/>
+        <Route path='store' element={<Store/>}/>
       </Route>
     </Routes>
   );
