@@ -1,10 +1,10 @@
 type ProductQueryParams = {
-  product_name?: string,
-  store_Id?: number,
-  category_Id?: number,
-  min_price?: number,
-  max_price?: number,
-  is_negotiable?: boolean
-}
+  product_name: string | null;
+  store_Id: number | null;
+  category_Id: number | null;
+  min_price: number | null;
+  max_price: number | null;
+  is_negotiable: boolean | null;
+};
 
 export default ProductQueryParams;
