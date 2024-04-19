@@ -10,7 +10,7 @@ const ProductsListPagination = () => {
   const dispatch = useDispatch();
 
   console.log("current Page number: " + pageNumber);
-  const maxPages = 6;
+  const maxPages = 5;
   const pageNumbers = getPageNumbers(pageNumber, maxPages);
 
   const pageClickHandler = (event) => {
