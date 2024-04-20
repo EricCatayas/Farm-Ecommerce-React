@@ -66,7 +66,7 @@ const ProductsVerticalList = () => {
                                   />
                                   <LabelContentItem
                                     label="Stock Quantity"
-                                    content={`Php${product.qty_In_Stock}`}
+                                    content={product.qty_In_Stock}
                                   />
                                   <LabelContentItem
                                     label="Upload Date"
