@@ -27,6 +27,22 @@ export const FormInputGroupText = ({ label, placeholder, name, onChangeHandler }
   );
 };
 
+export const FormLabelAndInput = ({ label, placeholder, name, onChangeHandler }) => {
+  return (
+    <>
+      <span className="input-group-text">{label}</span>
+      <input
+        type="text"
+        aria-label={label}
+        className="form-control"
+        name={name}
+        placeholder={placeholder}
+        onChange={onChangeHandler}
+      />
+    </>
+  );
+};
+
 export const Checkbox = ({ label, name, onChangeHandler }) => {
 
   const onCheck = (event) => {
