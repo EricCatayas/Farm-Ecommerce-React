@@ -1,9 +1,8 @@
-import NavLink from './main-menu-navlink.component';
 import './main-menu.styles.scss';
+import NavLink from './main-menu-navlink.component';
 
 
 const MainMenu = () => {    
-
     return(
         <section className="main-menu text-center">
             <div className="container">
@@ -16,7 +15,7 @@ const MainMenu = () => {
                     <div className="col col-xs-9 mobile-hide">
                         <div className="nav-container">
                             <ul className="nav navbar-nav d-flex flex-row">
-                                <NavLink name={"Advertisements"} href={"/"} altHref={"#products-list-container"}/>
+                                <NavLink name={"Advertisements"} href={"/"}/>
                                 <NavLink name={"About Us"} href={"/about-us"}/>
                                 <NavLink name={"Manage Store"} href={"/store"}/>
                             </ul>
