@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../redux/productCategory/productCategories.selector";
-import { FormInputGroupText, Checkbox } from "../form-input/form-input-field.component";
+import { FormInputGroupText, FormLabelAndInput, Checkbox } from "../form-input/form-input-field.component";
+import { fetchFilteredProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
 import Dropdown from "../dropdown/dropdown.component";
 import ProvincesService from "../../services/ProvincesService";
 import MunicipalitiesService from "../../services/MunicipalitiesService";
@@ -12,7 +13,7 @@ const searchFormData = {
   is_negotiable: "",
   min_price: "",
   max_price: "",
-  per_qty_type: "",
+  quantity_Unit: "",
   municipality_Id: null,
 };
 
@@ -30,6 +31,7 @@ const ProductSearchFilter = () => {
   const [ municipalities, setMunicipalities ] = useState([]);
   const [ subCategories, setSubcategories ] = useState(null);
   const { productCategories } = useSelector((state) => state.productCategories);
+  const dispatch = useDispatch();
 
   //LOG
   console.log("ProductSearchFilter rendered");
@@ -51,7 +53,6 @@ const ProductSearchFilter = () => {
       const municipalities = await municipalitiesService.fetchFromProvinceAsync(
         province_Id
       );
-      console.log("New municipalities: " + JSON.stringify(municipalities));
       setMunicipalities(municipalities);
     } else {
       setMunicipalities([]);
@@ -65,14 +66,30 @@ const ProductSearchFilter = () => {
 
   const onCategorySelectHandler = (event) => {
     const categoryId = event.target.value;
-    const clickedParentCategory = productCategories.find(
-      (cat) => cat.id == categoryId
-    );
-    setFormFields({...formFields, ['category_Id']: categoryId});
 
-    if (clickedParentCategory != null) {
-      setSubcategories(clickedParentCategory.subCategories);
-    }    
+    if(categoryId){
+      const clickedParentCategory = productCategories.find(
+        (cat) => cat.id == categoryId
+      );
+
+      console.log(`onCategorySelectHandler, categoryId: ${categoryId}`);
+      setFormFields({...formFields, ['category_Id']: categoryId});
+
+      if (clickedParentCategory != null) {
+        setSubcategories(clickedParentCategory.subCategories);
+      }    
+    }
+    else {
+      setFormFields({ ...formFields, ["category_Id"]: null });
+      setSubcategories([]);
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const { category_Id, is_negotiable, min_price, max_price, quantity_Unit } = formFields;    
+    dispatch(fetchFilteredProductsStart({category_Id, is_negotiable, min_price, max_price, quantity_Unit}))
   }
 
   return (
@@ -89,7 +106,7 @@ const ProductSearchFilter = () => {
           </div>
         </div>
         <div className="collapse show" id="buffy-characters-body">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="row">
               <div className="col col-xs-3">
                 <Dropdown
@@ -108,12 +125,12 @@ const ProductSearchFilter = () => {
                 <Dropdown 
                   args={qtyUnitOptions}
                   selectTitle={"Select Quantity Unit"}
-                  name={"per_qty_type"}
+                  name={"quantity_Unit"}
                   onChange={inputChangeHandler}  
                 />
                 <div className="input-group">
-                  <FormInputGroupText label={"Php"} placeholder={"Min"} name={"min_price"} onChangeHandler={inputChangeHandler}/>
-                  <FormInputGroupText label={"-"} placeholder={"Max"} name={"max_price"} onChangeHandler={inputChangeHandler}/>
+                  <FormLabelAndInput label={"Php"} placeholder={"Min"} name={"min_price"} onChangeHandler={inputChangeHandler}/>
+                  <FormLabelAndInput label={"-"} placeholder={"Max"} name={"max_price"} onChangeHandler={inputChangeHandler}/>
                 </div>
               </div>
               <div className="col col-xs-3">
