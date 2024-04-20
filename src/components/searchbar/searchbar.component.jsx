@@ -25,8 +25,8 @@ const SearchBar = ({ handleSearch }) => {
           placeholder="Search products"
           onChange={handleChange}
         />
-        <button className="btn" type="submit" onClick={handleSubmit}>
-          <i className="fa fa-search theme-color" aria-hidden="true"></i>
+        <button className="btn small" type="submit" onClick={handleSubmit}>
+          <i className="fa fa-search" aria-hidden="true"></i>
         </button>
       </div>
     </form>
