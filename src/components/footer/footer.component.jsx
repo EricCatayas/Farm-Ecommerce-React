@@ -7,7 +7,7 @@ const Footer = () => {
                 <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <h6>About</h6>
-                    <p class="text-justify"><i>[APP NAME]</i> is an online marketplace that facilitates exchange of agricultural products in the Philippines. [APP NAME] is inspired from <a href="https://agro-market24.eu/" target="_blank">Agro-Market24</a>, an international agricultural exchange platform based in Europe.</p>
+                    <p class="text-justify"><i>Agri-Store</i> is an online marketplace that facilitates exchange of agricultural products in the Philippines. Agri-Store is inspired from <a href="https://agro-market24.eu/" target="_blank">Agro-Market24</a>, an international agricultural exchange platform based in Europe.</p>
                 </div>
 
                 <div class="col-sm-12 col-md-6">
