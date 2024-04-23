@@ -7,20 +7,18 @@ const AboutUs = () => {
                 <div className="row">
                     <div className="col-12 col-lg-6 order-lg-2">
                         <div className="about-img">
-                            <img src="https://unlimitedworks.blob.core.windows.net/farmecommerce/about-us-landing.jfif" alt="Right Image 1"/>
+                            <img src="https://unlimitedworks.blob.core.windows.net/farmecommerce/about-us-landing.jpg" alt="about us image"/>
                         </div>
                     </div>
                     <div className="col-12 col-lg-6 order-lg-1 about-content">
-                        <h1 className="mb-4">Agro-Market24</h1>
-                        <p>Agro-Market24 is a modern International agricultural exchange. We gather the agricultural and fruit
-                            growing community in one place. In Agro-Market24 producers and buyers can acquire commercial contacts
-                            and cooperate in an easy and fast way. You can add and view advertisement, contact other users via
-                            messenger and carry out transactions.</p>
-                        <h2 className="text-center mt-5">Who uses Agro-Market24?</h2>
+                        <h1 className="mb-4">Agri-Store</h1>
+                        <p>Agri-Store is a modern agricultural exchange platform based in the Philippines. 
+                            In here, producers and buyers can easily establish commercial connections and collaborate swiftly. 
+                            Advertise your products, connect with other sellers and buyers, and conduct seamless transactions all in one place.</p>
+                        <h2 className="text-center mt-5">Who uses Agri-Store?</h2>
                         <ul>
-                            <li>Fruit growers</li>
                             <li>Farmers</li>
-                            <li>Distributors of agricultural products</li>
+                            <li>Livestock buyers and sellers</li>
                             <li>Exporters of agricultural products</li>
                             <li>Importers of agricultural products</li>
                             <li>Agricultural products wholesalers</li>
