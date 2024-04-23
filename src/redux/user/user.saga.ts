@@ -1,11 +1,10 @@
 import { takeLatest, all, call, put, select } from "redux-saga/effects";
 import { USER_ACTION_TYPES } from "./user.types";
 import { signInSuccess, signInFailed, signInWithTokenSuccess, signInWithTokenFailed } from "./user.actions";
-import { addNotification } from "../notification/notification.actions";
+import { addErrorNotification } from "../notification/notification.actions";
 import { SagaIterator } from "redux-saga";
 import { PayloadAction } from "@reduxjs/toolkit";
 import AuthenticationService from "../../services/AuthenticationService";
-import NotificationType from "../../enums/NotificationType";
 
 
 
@@ -44,7 +43,7 @@ export function* signInAsyncFailed(): SagaIterator{
     console.log("signInFailed in Saga");
     const user = yield select(state => state.user);
     const { error } = user;
-    yield put(addNotification(`Sign in failed: ${error}`, NotificationType.error));
+    yield put(addErrorNotification(`Sign in failed: ${error}`));
   }
   catch(error: any){
     console.log(error.message);    
