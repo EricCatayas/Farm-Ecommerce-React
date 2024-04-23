@@ -9,7 +9,7 @@ const MainMenu = () => {
                 <div className="row">
                     <div className="col col-xs-3">
                         <div className="logo-container">
-                            <img src="/logo192.png"/>
+                            <img src="/logo-agri-store.png"/>
                         </div>
                     </div>
                     <div className="col col-xs-9 mobile-hide">
