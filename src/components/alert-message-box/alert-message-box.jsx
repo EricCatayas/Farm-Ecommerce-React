@@ -69,7 +69,7 @@ const MessageBox = ({ message, type }) => {
     if(type === NotificationType.info)
         return <MessageBoxInfo message={message} />
 
-    if(type === NotificationType.warn)
+    if(type === NotificationType.warning)
         return <MessageBoxWarning message={message} />
 
     if(type === NotificationType.error)
