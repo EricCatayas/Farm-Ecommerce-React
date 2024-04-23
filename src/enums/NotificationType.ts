@@ -2,7 +2,7 @@ enum NotificationType {
   success,
   error,
   info,
-  warn,
+  warning,
 }
 
 export default NotificationType;
