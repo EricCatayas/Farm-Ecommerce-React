@@ -14,16 +14,22 @@ class AuthenticationService implements IAuthenticationService {
       rememberMe,
     };    
 
-    return await defaultPostRequestAsync(
-      formData,
-      `/api/v1/Account/Login?RememberMe=${formData.rememberMe}`,
-      (response) => {
-        this.setAuthCookies(response);
-        //LOG
-        console.log("Here is your sign in cookie:");
-        console.log(getCookie("authorization"));
-      }
-    );
+    try{
+      return await defaultPostRequestAsync(
+        formData,
+        `/api/v1/Account/Login?RememberMe=${formData.rememberMe}`,
+        (response) => {
+          this.setAuthCookies(response);
+          //LOG
+          console.log("Here is your sign in cookie:");
+          console.log(getCookie("authorization"));
+        },
+        (error) => { console.log(error);}
+      );
+    } catch(error){
+      throw error;
+    }    
+
   }
 
   //TODO: move behavior to different module
