@@ -11,7 +11,6 @@ const ProductCategories = ({ onSelectEventHandler }) => {
 
   const onClickEventHandler = (event) => {    
     const categoryId = event.target.dataset.id;
-    console.log("On Category Clicked: " + categoryId);
     const clickedParentCategory = productCategories.find((cat) => cat.id == categoryId);
 
     if (clickedParentCategory != null) {
@@ -26,6 +25,7 @@ const ProductCategories = ({ onSelectEventHandler }) => {
   const onSubCategoryClickHandler = (categoryId) => {
     if (onSelectEventHandler) 
       onSelectEventHandler(categoryId);
+    setClickedParentCategory(null);
   };
 
   return (
