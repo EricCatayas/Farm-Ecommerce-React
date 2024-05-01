@@ -15,7 +15,7 @@ const ProductInformation = ({ label, content }) => {
 const ProductDetails = ({product}) =>{
 
     return (
-      <section className="">
+      <section className="my-5">
         <div className="container">
           <section className="row product-details">
             <div className="col-xs-8">
