@@ -1,21 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addNotification } from "../redux/notification/notification.actions";
-import NotificationType from "../enums/NotificationType";
+import { addErrorNotification } from "../redux/notification/notification.actions";
 
-//TODO: Implement
+//TODO: Implement ref Agrionline.ph
 const Store = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
       useEffect(() => {
-        dispatch(
-          addNotification(
-            "Sorry, page is undergoing development",
-            NotificationType.error
-          )
-        );
+        dispatch(addErrorNotification("Sorry, page is undergoing development"));
         navigate("/");
       }, [dispatch, navigate]);
 
