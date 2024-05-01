@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ProductCategories from "../category-container/product-categories.component";
 import { DefaultPanel } from "../panel/panel.component";
+import { convertProductToFormData } from "../../utils/formData";
 import { multipartPostRequestAsync } from "../../utils/multipartPostRequest.utils";
 
 const productCreateFormFields = {
@@ -8,7 +9,7 @@ const productCreateFormFields = {
     Description : '',
     Price: null,
     Category_Id : null,
-    quantity_Unit: '',
+    Quantity_Unit: '',
     Qty_In_Stock : null,
     Is_Negotiable: false,
     Image_Files : null,
@@ -18,31 +19,27 @@ const productCreateFormFields = {
 const ProductCreateDirectory = () =>  {
     
     const [formFields, setFormFields] = useState(productCreateFormFields);
-    const { Category_Id } = formFields;
+
     //TODO
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        try{
-            const formData = new FormData();
+      event.preventDefault();
+      try{
+        const formData = convertProductToFormData(formFields);
 
-            for (const key in formFields) {
-                formData.append(key, formFields[key]);
-            }
-
-            console.log(`Form Data: ${formData}`);
-            // const response = await multipartPostRequestAsync(formData, 
-            //     "/api/v1/Products/Create",
-            //     (data) => { 
-            //         console.log("Product Create response:\n"); 
-            //         console.log(data);
-            //     },
-            //     (error)=>{ 
-            //         console.error(error);
-            //     });              
-        }
-        catch(error){
-            console.log(error.message);
-        }
+        const response = await multipartPostRequestAsync(formData, 
+          "/api/v1/Products/Create",
+          (data) => { 
+              console.log("Product Create response:\n"); 
+              console.log(data);
+          },
+          (error)=>{ 
+              console.error(error);
+          }
+        );              
+      }
+      catch(error){
+          console.log(error.message);
+      }
     }
 
     const textInputChangeHandler = async (event) => {
@@ -66,11 +63,13 @@ const ProductCreateDirectory = () =>  {
     };
     const handleFileInputChange = (event) => {
       const selectedFiles = event.target.files;
+
       setFormFields({
         ...formFields,
         Image_Files: selectedFiles,
       });
     };
+
     console.log("Form Fields in Product Create");
     console.log(formFields);
 
@@ -81,7 +80,7 @@ const ProductCreateDirectory = () =>  {
             <div className="row mb-3">
               <div className="col">
                 <DefaultPanel heading={"1. Category"} />
-                <p>Selected Category: {Category_Id}</p>
+                <p>Selected Category: {formFields.Category_Id}</p>
                 <ProductCategories
                   onSelectEventHandler={categorySelectEventHandler}
                 />
@@ -149,8 +148,8 @@ const ProductCreateDirectory = () =>  {
                 <input
                   type="text"
                   className="form-control"
-                  name="quantity_Unit"
-                  placeholder="Quantity Unit per Item"
+                  name="Quantity_Unit"
+                  placeholder="(e.g. ton, kilo, piece, etc.)"
                   required
                   onChange={textInputChangeHandler}
                 />
@@ -189,7 +188,7 @@ const ProductCreateDirectory = () =>  {
                 <input
                   className="btn btn-primary"
                   type="submit"
-                  value="Add Product"
+                  value="Add Advertisement"
                 />
               </div>
             </div>
