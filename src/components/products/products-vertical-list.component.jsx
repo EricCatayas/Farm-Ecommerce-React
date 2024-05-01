@@ -1,4 +1,4 @@
-import { useState } from "react";
+import "./products-vertical-list.styles.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { formatDate, truncateString } from "../../utils/format.utils";
@@ -6,11 +6,9 @@ import { getPricePerUnit } from "../../utils/product.utils";
 import { LabelContentItem, SingleRowContent } from "./product-info-item";
 import ProductsListPagination from "../pagination/products-list-pagination.component";
 import Spinner from "../spinner/spinner.component";
-import "./products-vertical-list.styles.css";
 
 
 const ProductsVerticalList = () => {
-  const [descriptionLength, setDescriptionLength ] = useState(60);
   const { products, isLoading } = useSelector(
     (state) => state.productsListPagination
   );
@@ -55,7 +53,7 @@ const ProductsVerticalList = () => {
                                   <SingleRowContent
                                     content={truncateString(
                                       product.description,
-                                      descriptionLength
+                                      130
                                     )}
                                   />
                                 </div>
