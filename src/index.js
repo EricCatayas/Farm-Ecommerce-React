@@ -1,29 +1,28 @@
+import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { ProductsProvider } from "./contexts/products.context";
 import { persistor, store } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ProductCategoriesProvider } from "./contexts/product-categories.context";
 import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // test1@example.com _Test1
 // TODO: 
-//       Pagination: numbers and button
 //       IAuthenticationService: Cannot read properties of 'setAuthCookies'
-//       Component Implementation:
+//       import "styles.css" should be first line
+//       
+//       Design Nearly Complete:
 //          Sidebar 
-//          About Us
-//          ProductView
-//          Navbar
-//       Display: "Error: Feature has not been implemented yet." or something
-//       Try: Tailwind css
-//       Try: Lazy Loading
+//          Google Maps 
+
+//       Create Product Request
+//       Jest & React Testing Library
+//       ReadMe
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
