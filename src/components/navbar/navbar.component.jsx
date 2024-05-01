@@ -42,7 +42,7 @@ const Navbar = () => {
             <div className="col col-md-3">
               <div className="navbar-nav">
                 <h5 className="website-title mobile-hide">
-                  <a className="navbar-brand" href="/">Farm Ecommerce</a>
+                  <a className="navbar-brand title-font" href="/">Agri-Store</a>
                 </h5>
                 <div className="menu-toggle mobile-show">
                   <i className="fa fa-bars fa-2x mobile-show" aria-hidden="true" onClick={toggleSidebar}></i>
