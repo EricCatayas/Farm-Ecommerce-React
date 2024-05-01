@@ -4,6 +4,18 @@
   color: #ffffff;  
 }
 
+.title-font {
+  font-family: "Oleo Script", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.title-font-bold {
+  font-family: "Oleo Script", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
 .grey-background {
     background-color: #e6e6e6;
 }
