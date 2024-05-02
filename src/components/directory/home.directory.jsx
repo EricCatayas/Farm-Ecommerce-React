@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { fetchProductsStart, fetchFilteredProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
 import { createProductQueryParams } from '../../utils/productQueryParams';
 import AdvertisementBox from "../advertisement/advertisement-box.component";
-import GoogleMapLocations from '../map/google-map-locations.component';
+import GoogleMapLocations from '../google-map/google-map-locations.component';
 import MainMenu from '../main-menu/main-menu.component';
 import ProductCategories from '../category-container/product-categories.component';
 import ProductSearchFilter from '../search-filter/products-search-filter.component';
