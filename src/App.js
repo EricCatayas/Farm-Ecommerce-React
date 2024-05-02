@@ -1,17 +1,18 @@
 import './App.css';
-import { useEffect } from 'react';
+import React, { Suspense, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
 import { signInWithTokenStart } from './redux/user/user.actions';
+import { addInfoNotification } from './redux/notification/notification.actions';
 import { fetchProductCategoriesStart } from "./redux/productCategory/productCategories.action";
-import AboutUs from './routes/about-us';
-import Authentication from './routes/authentication';
-import Home from './routes/home';
-import Navigation from './routes/navigation';
-import ProductCreate from './components/products/product-create.component';
-import ProductView from './routes/product-view';
-import Registration from './routes/registration';
-import Store from "./routes/store";
+const AboutUs = React.lazy(() => import('./routes/about-us'));
+const Authentication = React.lazy(() => import('./routes/authentication'));
+const Home = React.lazy(() => import('./routes/home'));
+const Navigation = React.lazy(() => import('./routes/navigation'));
+const ProductCreate = React.lazy(() => import('./routes/product-create'));
+const ProductView = React.lazy(() => import('./routes/product-view'));
+const Registration = React.lazy(() => import('./routes/registration'));
+const Store = React.lazy(() => import('./routes/store'));
 
 const App = () => {
    const dispatch = useDispatch();
@@ -34,20 +35,23 @@ const App = () => {
 
      authenticateUserOnLoad();
      fetchProductCategoriesOnLoad();
-   }, [dispatch]);
+     dispatch(addInfoNotification("This app is currently in development stage; many features are not yet available."))
+   }, []);
 
   return (
-    <Routes>
-      <Route path='/' element={<Navigation/>}>
-        <Route index element={<Home/>} />
-        <Route path='sign-up' element={<Registration/>} />        
-        <Route path='sign-in' element={<Authentication/>} />       
-        <Route path='about-us' element={<AboutUs/>} />       
-        <Route path='product/create' element={<ProductCreate/>}/>
-        <Route path='product/:id' element={<ProductView/>}/>
-        <Route path='store' element={<Store/>}/>
-      </Route>
-    </Routes>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route path='/' element={<Navigation/>}>
+          <Route index element={<Home/>} />
+          <Route path='sign-up' element={<Registration/>} />        
+          <Route path='sign-in' element={<Authentication/>} />       
+          <Route path='about-us' element={<AboutUs/>} />       
+          <Route path='product/create' element={<ProductCreate/>}/>
+          <Route path='product/:id' element={<ProductView/>}/>
+          <Route path='store' element={<Store/>}/>
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 
