@@ -92,6 +92,7 @@ $grey:#cccccc;
   input {
     &[type="text"],
     &[type="email"],
+    &[type="tel"],
     &[type="password"] {
       width: 100%;
       padding: 8px 10px 9px 35px;

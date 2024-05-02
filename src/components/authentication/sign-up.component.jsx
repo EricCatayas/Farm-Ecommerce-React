@@ -157,8 +157,7 @@ const SignUpForm = () => {
                     </div>
                 </div>
             </div>
-        <p className="credit">Developed by <a href="http://www.designtheway.com" target="_blank">Design the way</a></p>      
-      </div>
+        </div>
     )
 }
 

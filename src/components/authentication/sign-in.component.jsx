@@ -68,7 +68,7 @@ const SignInForm = () => {
                     </div>
                 </div>
             </div>
-        <p className="credit"><a href="/sign-up" target="_blank">Sign Up Here</a></p>      
+        <p className="credit"><a href="/sign-up">Sign Up Here</a></p>      
       </div>
     )
 }
