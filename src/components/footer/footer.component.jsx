@@ -16,17 +16,17 @@ const Footer = () => {
                         <h6>Contact Info</h6>
                         <ul class="footer-links">
                         <li>catayasericjay@gmail.com</li>
-                        <li>UI Design</li>
-                        <li>PHP</li>
+                        <li>(+63) 936 728 8737</li>
+                        <li>P. Gomez Street, Cebu City</li>
                         </ul>
                     </div>
 
                     <div class="col col-6">
                         <h6>Links</h6>
                         <ul class="footer-links">
-                        <li><a href="http://scanfcode.com/about/">Portfolio</a></li>
-                        <li><a href="http://scanfcode.com/contact/">Contact</a></li>
-                        <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Github</a></li>
+                        <li><a href="https://farmecommerce.azurewebsites.net/swagger/index.html" target="_blank">API</a></li>
+                        <li><a href="https://ericjay.azurewebsites.net" target="_blank">Portfolio</a></li>
+                        <li><a href="https://github.com/EricCatayas" target="_blank">Github</a></li>
                         </ul>
                     </div>
                     </div>
