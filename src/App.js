@@ -32,10 +32,13 @@ const App = () => {
         console.log(error);
       }
      }
+     const displayNotificationOnLoad = async () => {
+        dispatch(addInfoNotification("This app is currently in development stage; many features are not yet available."));
+     }
 
      authenticateUserOnLoad();
      fetchProductCategoriesOnLoad();
-     dispatch(addInfoNotification("This app is currently in development stage; many features are not yet available."))
+     displayNotificationOnLoad();
    }, []);
 
   return (
