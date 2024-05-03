@@ -1,8 +1,8 @@
+import "./advertisement-box.styles.css";
 
-// TODO
 const AdvertisementBox = () => {
     return (
-      <div className="alert alert-info add-ad-info">
+      <div className="alert alert-info advertisement-box">
         <div className="row">
           <div className="col-xs-8">
             <h4>
