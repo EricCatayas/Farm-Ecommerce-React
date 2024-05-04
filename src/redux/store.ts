@@ -11,6 +11,7 @@ import rootSaga from "./root.saga";
 
 export type RootState = ReturnType<typeof rootReducer>;
 
+// whitelist must only contain key values inside the RootState
 type ExtendedPersistConfig = PersistConfig<RootState> & {
   whitelist: (keyof RootState)[];
 };
