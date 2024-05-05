@@ -25,6 +25,5 @@
 * Redux Saga
 * React Testing Library
 # IV. Live Demo 
-### Currently in development
-Preview Front-End App at: https://agri-store.azurewebsites.net/
-Preview Back-End API at: https://farmecommerce.azurewebsites.net/swagger/index.html
+###Preview Front-End App at: https://agristore-online.netlify.app
+###Preview Back-End API at: https://farmecommerce.azurewebsites.net/swagger/index.html
