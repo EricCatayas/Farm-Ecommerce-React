@@ -19,6 +19,8 @@
   "include": [
     "src",
     "tsconfig.json",
-    "jest.config.js", "tests/components/product.component.test.js"  
-  ]
+    "jest.config.js",
+    "@testing-library/jest-dom"
+, "tests/setupTests.js"  ],
+  "types": ["node", "jest", "@testing-library/jest-dom"]
 }
