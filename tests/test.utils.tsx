@@ -1,20 +1,20 @@
 import React, { PropsWithChildren } from "react";
+import { configureStore, EnhancedStore } from "@reduxjs/toolkit";
 import { render } from "@testing-library/react";
-import type { RenderOptions } from "@testing-library/react";
 import { rootReducer } from "../src/redux/root.reducer";
-import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
+import type { RenderOptions } from "@testing-library/react";
 
 import type { store, RootState } from "../src/redux/store";
 
 // This type interface extends the default options for render from RTL, as well
 // as allows the user to specify other things such as initialState, store.
-interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
+export interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   preloadedState?: Partial<RootState>;
   store?: typeof store;
 }
 
-export function setupStore(preloadedState?: Partial<RootState>) {
+export function setupStore(preloadedState?: Partial<RootState>): EnhancedStore<RootState> {
   return configureStore({
     reducer: rootReducer,
     preloadedState,
@@ -37,8 +37,7 @@ export function renderWithProviders(
 ) {
   const {
     preloadedState = {},
-    // Automatically create a store instance if no store was passed in
-    store = setupStore(preloadedState),
+    store = setupStore(preloadedState), // Automatically create a store instance if no store was passed in
     ...renderOptions
   } = extendedRenderOptions;
 
