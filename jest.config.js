@@ -13,7 +13,6 @@ module.exports = {
     "\\.(scss|sass)$",
   ],
   setupFilesAfterEnv: [
-    "<rootDir>/tests/setupTests.js",
-    '<rootDir>/tests/jest.setup.ts'
+    "<rootDir>/tests/setupTests.js"
   ]
 };
