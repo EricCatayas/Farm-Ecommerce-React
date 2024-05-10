@@ -14,7 +14,7 @@ interface Product {
   qty_In_Stock: number;
   images: Image[];
   store: Store;
-  discount: Discount;
+  discount: Discount | null;
 }
 
 export default Product;
