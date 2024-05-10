@@ -2,7 +2,7 @@ import React from "react";
 import "@testing-library/jest-dom";
 import { ProductCategoriesState } from "../../../src/redux/productCategory/productCategories.reducer";
 import { renderWithProviders } from "../../test.utils";
-import { mockCategories } from "../../mockData/productCategories";
+import { mockCategories } from "../../mocks/productCategories";
 import ProductCategories from "../../../src/components/category-container/product-categories.component"; // Import the component you're testing
 
 test("renders subcomponents of ProductCategories", () => {
