@@ -29,12 +29,11 @@ const ProductCategories = ({ onSelectEventHandler }) => {
   };
 
   return (
-    <section className="product-categories-container">
+    <section className="product-categories-container" data-testid="product-categories-component">
       <div className="row">
         <div className="col-xs-12">
-        {/* TODO: fix */}
           {!isLoading && productCategories ? (
-            <CategoryListCard categories={productCategories} onClickHandler={onClickEventHandler}/>          
+            <CategoryListCard categories={productCategories} onClickHandler={onClickEventHandler} data-testid="category-list-card"/>          
               ) : (
             <Spinner />
           )}          
