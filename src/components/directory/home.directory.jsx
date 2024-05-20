@@ -29,9 +29,7 @@ const  HomeDirectory = () => {
     const categorySelectEventHandler = (categoryId) => {
       const query = createProductQueryParams('category_Id', categoryId)
       dispatch(fetchFilteredProductsStart(query));
-    }
-    
-    console.log("HomeDirectory is rendered");
+    }    
 
     return (
       <div className="home">
