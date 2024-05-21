@@ -1,15 +1,17 @@
+import './navbar.styles.css';
 import { useCallback, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { signOutStart } from "../../redux/user/user.actions";
 import { fetchFilteredProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
 import { createProductQueryParams } from "../../utils/productQueryParams";
 import NavigationContext from "../../contexts/navigation.context";
 import SearchBar from "../searchbar/searchbar.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-import './navbar.styles.css';
 
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
   const { setToggleSidebar } = useContext(NavigationContext);
 
@@ -29,6 +31,11 @@ const Navbar = () => {
 
     }
   }, []);
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    navigate("/sign-in");
+  }
 
   const toggleSidebar = () => {
     setToggleSidebar(true);
@@ -94,7 +101,7 @@ const Navbar = () => {
               ) : (
                 <ul className="navbar-nav pull-right">
                   <li className="nav-item">
-                    <a className="nav-link" href="/sign-in">
+                    <a className="nav-link" onClick={handleSignIn}>
                       <i className="fa fa-sign-in"></i> Sign In
                     </a>
                   </li>
