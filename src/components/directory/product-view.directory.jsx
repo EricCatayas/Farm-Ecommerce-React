@@ -50,7 +50,6 @@ const ProductViewDirectory = () => {
           { product && <ProductDetails product={product} /> }
           <AdvertisementBox />
           <ProductsVerticalList/>
-          {/* TODO: Products List Menu Buttons */}
         </div>
       </div>
     );
