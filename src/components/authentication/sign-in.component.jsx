@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { FormInputField } from '../form-input/form-input-field.component';
 import { signInStart } from '../../redux/user/user.actions';
 import './sign-up.styles.scss';
+import { useNavigate } from 'react-router-dom';
 
 const loginFormData = {
     email : '',
@@ -12,6 +13,7 @@ const loginFormData = {
 
 const SignInForm = () => {
     const [formData, setFormData] = useState(loginFormData);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleSubmit = async (event) => {
@@ -24,6 +26,12 @@ const SignInForm = () => {
             console.log("user sign in failed", error);
         }
     }
+    
+    const handleSignUp = (e) => {
+        e.preventDefault();
+        navigate("/sign-up");
+    }
+
     const inputChangeHandler = (event) => {
         const { name, value } = event.target;
         setFormData({...formData, [name]:value});
@@ -68,7 +76,7 @@ const SignInForm = () => {
                     </div>
                 </div>
             </div>
-        <p className="credit"><a href="/sign-up">Sign Up Here</a></p>      
+        <p className="credit"><a onClick={handleSignUp}>Sign Up Here</a></p>      
       </div>
     )
 }
