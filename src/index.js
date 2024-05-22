@@ -10,19 +10,6 @@ import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// test1@example.com _Test1
-// TODO: 
-//       IAuthenticationService: Cannot read properties of 'setAuthCookies'
-//       import "styles.css" should be first line
-//       
-//       Design Nearly Complete:
-//          Sidebar 
-//          Google Maps 
-
-//       Create Product Request
-//       Jest & React Testing Library
-//       ReadMe
-
 root.render(
   <React.StrictMode>
     <Provider store={store}>
