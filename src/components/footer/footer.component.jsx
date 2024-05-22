@@ -26,7 +26,7 @@ const Footer = () => {
                         <ul class="footer-links">
                         <li><a href="https://farmecommerce.azurewebsites.net/swagger/index.html" target="_blank">API</a></li>
                         <li><a href="https://ericjay.azurewebsites.net" target="_blank">Portfolio</a></li>
-                        <li><a href="https://github.com/EricCatayas" target="_blank">Github</a></li>
+                        <li><a href="https://github.com/EricCatayas/Farm-Ecommerce-React" target="_blank">Github</a></li>
                         </ul>
                     </div>
                     </div>
