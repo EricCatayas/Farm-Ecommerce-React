@@ -38,7 +38,7 @@ const ProductsListPagination = () => {
             <PreviousButton onClickEventHandler={previousPageHandler}/>
           </li>
           {pageNumbers.map((page) => (
-            <PaginationListNumber page={page} isActive={page == pageNumber} onClickHandler={pageClickHandler}/>
+            <PaginationListNumber key={page} page={page} isActive={page == pageNumber} onClickHandler={pageClickHandler}/>
           ))}         
           <li className="pagination__btn">
             <NextButton onClickEventHandler={nextPageHandler}/>

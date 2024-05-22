@@ -17,7 +17,7 @@ export const PreviousButton = ({onClickEventHandler}) =>{
 
 export const PaginationListNumber = ({ page, isActive = false, onClickHandler}) => {
     return (
-        <li key={page} className={`pagination__numbers ${ isActive ? "active" : "" }`} data-id={page} onClick={onClickHandler}>{page}</li>
+        <li className={`pagination__numbers ${ isActive ? "active" : "" }`} data-id={page} onClick={onClickHandler}>{page}</li>
     );
 }
 
