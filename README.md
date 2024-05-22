@@ -27,3 +27,23 @@
 # IV. Live Demo 
 ###Preview Front-End App at: https://agristore-online.netlify.app
 ###Preview Back-End API at: https://farmecommerce.azurewebsites.net/swagger/index.html
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm start
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Compiles and runs tests
+```
+npm test
+```
