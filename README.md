@@ -28,6 +28,10 @@
 ###Preview Front-End App at: https://agristore-online.netlify.app
 ###Preview Back-End API at: https://farmecommerce.azurewebsites.net/swagger/index.html
 
+# V. User Accounts
+username: test1@example.com 
+password: _Test1
+
 ## Project setup
 ```
 npm install
