@@ -21,7 +21,7 @@ const ProductsVerticalList = () => {
 
   return (
     <>
-      <section id="products-list-container" className="my-5">
+      <section id="products-list-container" className="my-5" data-testid="products-list-container">
         <div className="row">
           <div className="col-sm-12">
             <table className="table">
@@ -84,12 +84,24 @@ const ProductsVerticalList = () => {
                                     content={product.store.address.barangay}
                                   />
                                   <div className="row">
-                                    <button className="btn btn-theme btn-block small lowercase mt-2" onClick={() => onViewProductHandler(product.id)}>
-                                      <i className="fa fa-search" aria-hidden="true"></i>
+                                    <button
+                                      className="btn btn-theme btn-block small lowercase mt-2"
+                                      onClick={() =>
+                                        onViewProductHandler(product.id)
+                                      }
+                                    >
+                                      <i
+                                        className="fa fa-search"
+                                        aria-hidden="true"
+                                      ></i>
                                       View Advertisement
                                     </button>
                                     <button className="btn btn-primary btn-block small lowercase mt-2">
-                                      <i className="fa fa-comment-o" aria-hidden="true" style={{transform: 'scaleX(-1)'}}></i>
+                                      <i
+                                        className="fa fa-comment-o"
+                                        aria-hidden="true"
+                                        style={{ transform: "scaleX(-1)" }}
+                                      ></i>
                                       Contact Seller
                                     </button>
                                   </div>
@@ -97,7 +109,12 @@ const ProductsVerticalList = () => {
 
                                 <div className="row row-cols-2 mobile-show">
                                   <div className="col">
-                                    <button className="btn btn-theme btn-block small lowercase my-2" onClick={() => onViewProductHandler(product.id)}>
+                                    <button
+                                      className="btn btn-theme btn-block small lowercase my-2"
+                                      onClick={() =>
+                                        onViewProductHandler(product.id)
+                                      }
+                                    >
                                       View
                                     </button>
                                   </div>
