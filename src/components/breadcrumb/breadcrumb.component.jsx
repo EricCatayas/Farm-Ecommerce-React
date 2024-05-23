@@ -2,7 +2,7 @@
 // TODO
 export const BreadCrumb = ({items}) => {
   return (
-    <nav aria-label="breadcrumb" >
+    <nav aria-label="breadcrumb" data-testid="breadcrumb">
       <ol className="breadcrumb">
         <li className="breadcrumb-item">
           <a href="/">Home</a>
