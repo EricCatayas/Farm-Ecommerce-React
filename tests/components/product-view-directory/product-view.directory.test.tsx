@@ -3,7 +3,12 @@ import "@testing-library/jest-dom";
 import { renderWithProviders } from "../../test.utils";
 import { server } from "../../mocks/server";
 import { BrowserRouter } from "react-router-dom";
+import { mockProduct } from "../../mocks/mockProduct";
 import ProductViewDirectory from "../../../src/components/directory/product-view.directory";
+import ProductService from "../../../src/services/ProductService";
+
+// Mock the ProductService class
+// jest.mock('../../../services/ProductService');
 
 // Enable API mocking before tests.
 beforeAll(() => server.listen());
@@ -14,12 +19,42 @@ afterEach(() => server.resetHandlers());
 // Disable API mocking after the tests are done.
 afterAll(() => server.close());
 
-test("renders productViewDirectory and subcomponents", async () => {
-  const { findByTestId} = renderWithProviders(
-    <BrowserRouter>
-      <ProductViewDirectory />
-    </BrowserRouter>
-  );
+describe("ProductViewDirectory Component", () => {
 
-  expect(await findByTestId("main-menu")).toBeInTheDocument();
+  it("fetches display product data, and renders ProductDetails component", async () => {
+
+    // Mock the fetchProductAsync method
+    const fetchProductAsyncMock = jest
+      .spyOn(ProductService.prototype, "fetchProductAsync")
+      .mockResolvedValue(mockProduct);
+
+    const { findByTestId } = renderWithProviders(
+      <BrowserRouter>
+        <ProductViewDirectory />
+      </BrowserRouter>
+    );
+
+    expect(await findByTestId("main-menu")).toBeInTheDocument();
+    expect(await findByTestId("product-details-component")).toBeInTheDocument();
+    expect(await findByTestId("products-list-container")).toBeInTheDocument();
+  });
+
+  it("renders component and subcomponents", async () => {
+
+    // Mock the fetchProductAsync method
+    const fetchProductAsyncMock = jest
+      .spyOn(ProductService.prototype, "fetchProductAsync")
+      .mockResolvedValue(mockProduct);
+
+    const { findByTestId } = renderWithProviders(
+      <BrowserRouter>
+        <ProductViewDirectory />
+      </BrowserRouter>
+    );
+
+    expect(await findByTestId("main-menu")).toBeInTheDocument();
+    expect(await findByTestId("breadcrumb")).toBeInTheDocument();
+    expect(await findByTestId("products-list-container")).toBeInTheDocument();
+  });
+
 });
