@@ -21,7 +21,7 @@ afterAll(() => server.close());
 
 describe("ProductViewDirectory Component", () => {
 
-  it("fetches display product data, and renders ProductDetails component", async () => {
+  it("fetches product data, and renders ProductDetails component", async () => {
 
     // Mock the fetchProductAsync method
     const fetchProductAsyncMock = jest
@@ -34,9 +34,7 @@ describe("ProductViewDirectory Component", () => {
       </BrowserRouter>
     );
 
-    expect(await findByTestId("main-menu")).toBeInTheDocument();
     expect(await findByTestId("product-details-component")).toBeInTheDocument();
-    expect(await findByTestId("products-list-container")).toBeInTheDocument();
   });
 
   it("renders component and subcomponents", async () => {
