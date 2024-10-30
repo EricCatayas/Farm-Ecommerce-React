@@ -1,5 +1,4 @@
 import Product from "../../models/Product";
-import { ProductsListPaginationAction } from "./productsListPagination.action";
 import { PRODUCTS_LIST_PAGINATION_ACTION_TYPES } from "./productsListPagination.types";
 import { AnyAction } from "../../utils/reducer.utils";
 

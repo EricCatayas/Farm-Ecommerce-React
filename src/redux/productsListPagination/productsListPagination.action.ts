@@ -7,70 +7,6 @@ import {
 import Product from "../../models/Product";
 import ProductQueryParams from "../../models/ProductQueryParams";
 
-//TODO: remove
-export type SetProducts = ActionWithPayload<
-  PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PRODUCTS,
-  Product[]
->;
-export type SetPageNumber = ActionWithPayload<
-  PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_NUMBER,
-  number
->;
-export type SetPageSize = ActionWithPayload<
-  PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_SIZE,
-  number
->;
-export type FetchProductsStart =
-  Action<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_START>;
-export type FetchProductsSuccess = ActionWithPayload<
-  PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_SUCCESS,
-  Product[]
->;
-export type FetchProductsFailed = ActionWithPayload<
-  PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_FAILED,
-  string
->;
-export type FetchFilteredProductsStart =
-  Action<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_START>;
-export type FetchFilteredProductsSuccess = ActionWithPayload<
-  PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_SUCCESS,
-  Product[]
->;
-export type FetchFilteredProductsFailed = ActionWithPayload<
-  PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_FAILED,
-  string
->;
-export type FetchSearchProductsStart =
-  Action<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_SEARCH_PRODUCTS_START>;
-export type FetchSearchProductsSuccess = ActionWithPayload<
-  PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_SEARCH_PRODUCTS_SUCCESS,
-  Product[]
->;
-export type FetchSearchProductsFailed = ActionWithPayload<
-  PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_SEARCH_PRODUCTS_FAILED,
-  string
->;
-export type FetchNextPageProducts =
-  Action<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.INCREMENT_PAGE>;
-export type FetchPreviousPageProducts =
-  Action<PRODUCTS_LIST_PAGINATION_ACTION_TYPES.DECREMENT_PAGE>;
-
-export type ProductsListPaginationAction =
-  | SetProducts
-  | SetPageNumber
-  | SetPageSize
-  | FetchProductsStart
-  | FetchProductsSuccess
-  | FetchProductsFailed
-  | FetchFilteredProductsStart
-  | FetchFilteredProductsSuccess
-  | FetchFilteredProductsFailed
-  | FetchSearchProductsStart
-  | FetchSearchProductsSuccess
-  | FetchSearchProductsFailed
-  | FetchNextPageProducts
-  | FetchPreviousPageProducts;
-
 export const fetchProductsStart = () =>
   createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_START);
 
@@ -124,8 +60,10 @@ export const fetchSearchProductsFailed = (error: string) =>
 
 export const fetchNextPageProducts = () =>
   createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.INCREMENT_PAGE);
+
 export const fetchPreviousPageProducts = () =>
   createAction(PRODUCTS_LIST_PAGINATION_ACTION_TYPES.DECREMENT_PAGE);
+
 export const fetchProductsByPageNumber = (pageNumber: number) =>
   createAction(
     PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_NUMBER,
