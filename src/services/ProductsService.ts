@@ -3,6 +3,7 @@ import { defaultGetRequestAsync } from "../utils/getRequest.utils";
 import ProductQueryParams from "../models/ProductQueryParams";
 import Product from "../models/Product";
 import PaginatedProducts from "../models/PaginatedProducts";
+import { createProductQueryParams } from "../utils/productQueryParams";
 
 class ProductsService implements IProductsService {
   constructor() {}
@@ -27,12 +28,25 @@ class ProductsService implements IProductsService {
 
     try {
       const url = queryString ? `${endpoint}?${queryString}` : endpoint;
-      
+
       return await defaultGetRequestAsync(
         url,
         (data) => console.log(data),
         (error) => console.log(error)
       );
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async fetchSearchProductsAsync(searchTerm: string): Promise<Product[]> {
+    var query = createProductQueryParams([
+      { fieldName: "product_name", value: searchTerm },
+      { fieldName: "description", value: searchTerm },
+    ]);
+
+    try {
+      return await this.fetchFilteredProductsAsync(query);
     } catch (error) {
       throw error;
     }

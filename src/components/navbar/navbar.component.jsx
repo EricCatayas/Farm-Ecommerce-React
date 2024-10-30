@@ -1,14 +1,12 @@
-import './navbar.styles.css';
+import "./navbar.styles.css";
 import { useCallback, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signOutStart } from "../../redux/user/user.actions";
-import { fetchFilteredProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
-import { createProductQueryParams } from "../../utils/productQueryParams";
 import NavigationContext from "../../contexts/navigation.context";
 import SearchBar from "../searchbar/searchbar.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-
+import { fetchSearchProductsStart } from "../../redux/productsListPagination/productsListPagination.action";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -16,43 +14,47 @@ const Navbar = () => {
   const { setToggleSidebar } = useContext(NavigationContext);
 
   const dispatch = useDispatch();
-  
+
   const handleSignOutClick = () => {
-      console.log("Signing user out");
-      dispatch(signOutStart());
-  }
+    console.log("Signing user out");
+    dispatch(signOutStart());
+  };
 
   const handleSearchClick = useCallback((searchField) => {
     console.log(`Search product: ${searchField}`);
 
     if (searchField) {
-      const query = createProductQueryParams('product_name', searchField);
-      dispatch(fetchFilteredProductsStart(query));
-
+      dispatch(fetchSearchProductsStart(searchField));
     }
   }, []);
 
   const handleSignIn = (e) => {
     e.preventDefault();
     navigate("/sign-in");
-  }
+  };
 
   const toggleSidebar = () => {
     setToggleSidebar(true);
-  }
+  };
 
   return (
     <nav className="main-navbar shadow-sm sticky-top theme-color">
       <div className="top-navbar">
-        <div className="container-fluid"> 
+        <div className="container-fluid">
           <div className="row">
             <div className="col col-md-3">
               <div className="navbar-nav">
                 <h5 className="website-title mobile-hide">
-                  <a className="navbar-brand title-font" href="/">Agri-Store</a>
+                  <a className="navbar-brand title-font" href="/">
+                    Agri-Store
+                  </a>
                 </h5>
                 <div className="menu-toggle mobile-show">
-                  <i className="fa fa-bars fa-2x mobile-show" aria-hidden="true" onClick={toggleSidebar}></i>
+                  <i
+                    className="fa fa-bars fa-2x mobile-show"
+                    aria-hidden="true"
+                    onClick={toggleSidebar}
+                  ></i>
                 </div>
               </div>
             </div>
@@ -68,7 +70,14 @@ const Navbar = () => {
                     </a>
                   </li> */}
                   <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a
+                      className="nav-link dropdown-toggle"
+                      href="#"
+                      id="navbarDropdown"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
                       <i className="fa fa-user"></i> Account
                     </a>
                     <ul
@@ -91,7 +100,11 @@ const Navbar = () => {
                         </a>
                       </li>
                       <li>
-                        <a className="dropdown-item" href="#" onClick={handleSignOutClick}>
+                        <a
+                          className="dropdown-item"
+                          href="#"
+                          onClick={handleSignOutClick}
+                        >
                           <i className="fa fa-sign-out"></i> Logout
                         </a>
                       </li>
@@ -113,6 +126,6 @@ const Navbar = () => {
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

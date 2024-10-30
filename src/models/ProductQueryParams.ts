@@ -1,5 +1,6 @@
 type ProductQueryParams = {
   product_name?: string | null;
+  description?: string | null;
   category_Id?: number | null;
   min_price?: number | null;
   max_price?: number | null;

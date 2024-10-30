@@ -10,45 +10,52 @@ export interface ProductsListPaginationState {
   readonly isLoading: boolean;
   readonly error: string | null;
 }
-export const PRODUCTS_LIST_PAGINATION_INITIAL_STATE : ProductsListPaginationState = {
-  products: [],
-  pageNumber: 1,
-  pageSize: 4,
-  isLoading: false,
-  error: null
-};
+export const PRODUCTS_LIST_PAGINATION_INITIAL_STATE: ProductsListPaginationState =
+  {
+    products: [],
+    pageNumber: 1,
+    pageSize: 4,
+    isLoading: false,
+    error: null,
+  };
 
 export const productsListPaginationReducer = (
-state: ProductsListPaginationState = PRODUCTS_LIST_PAGINATION_INITIAL_STATE,
-action = {} as AnyAction) : ProductsListPaginationState => {
-
-  switch(action.type){
+  state: ProductsListPaginationState = PRODUCTS_LIST_PAGINATION_INITIAL_STATE,
+  action = {} as AnyAction
+): ProductsListPaginationState => {
+  switch (action.type) {
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PRODUCTS:
-        return { ...state, products: action.payload };
+      return { ...state, products: action.payload };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_NUMBER:
-        return { ...state, pageNumber: action.payload};
+      return { ...state, pageNumber: action.payload };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.SET_PAGE_SIZE:
-        return { ...state, pageSize: action.payload };
+      return { ...state, pageSize: action.payload };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_START:
-        return { ...state, isLoading: true };
+      return { ...state, isLoading: true };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_SUCCESS:
-        return { ...state, products: action.payload, isLoading:false };
+      return { ...state, products: action.payload, isLoading: false };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_PRODUCTS_FAILED:
-        return { ...state, error: action.payload, isLoading:false };
+      return { ...state, error: action.payload, isLoading: false };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_START:
-        return { ...state, isLoading: true };
+      return { ...state, isLoading: true };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_SUCCESS:
-        return { ...state, products: action.payload, isLoading:false };
+      return { ...state, products: action.payload, isLoading: false };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_FILTERED_PRODUCTS_FAILED:
-        return { ...state, error: action.payload, isLoading:false };
+      return { ...state, error: action.payload, isLoading: false };
+    case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_SEARCH_PRODUCTS_START:
+      return { ...state, isLoading: true };
+    case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_SEARCH_PRODUCTS_SUCCESS:
+      return { ...state, products: action.payload, isLoading: false };
+    case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.FETCH_SEARCH_PRODUCTS_FAILED:
+      return { ...state, error: action.payload, isLoading: false };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.INCREMENT_PAGE:
-        return { ...state, pageNumber: state.pageNumber+1 };
+      return { ...state, pageNumber: state.pageNumber + 1 };
     case PRODUCTS_LIST_PAGINATION_ACTION_TYPES.DECREMENT_PAGE:
-        if (state.pageNumber > 0) {
-            return { ...state, pageNumber: state.pageNumber - 1 };
-        }
-        return state;
+      if (state.pageNumber > 0) {
+        return { ...state, pageNumber: state.pageNumber - 1 };
+      }
+      return state;
     default:
-        return state;
+      return state;
   }
 };
