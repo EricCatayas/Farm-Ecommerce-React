@@ -1,6 +1,7 @@
 # Agri-Store
 ## This app is an online marketplace that facilitates exchange of agricultural products in the Philippines. It is inspired from Agro-Market24, an international agricultural exchange platform based in Europe.
 # I. Preview
+Live Website: [https://agristore-online.netlify.app/](https://agristore-online.netlify.app)
 ## Home Page
 ![Farm Ecommerce_Home](https://unlimitedworks.blob.core.windows.net/farmecommerce/FarmEcommerce-Home.jpeg)
 ## View Product
